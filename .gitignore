@@ -1,5 +1,5 @@
 /vendor/
+/sql/
 app/config.php
 /phpDocumentor.phar
 *.log
-/sql/
