@@ -1,5 +1,9 @@
 <?php
 	
 	$w_routes = array(
-		['GET', '/', 'Default#home', 'default_home'],
+		//accueil
+		['GET|POST'      , '/'         , 'Default#home', 'default_home'],
+		
+		['GET|POST' , '/register'  ,'Security#register', 'security_register'], //inscription
+		
 	);
