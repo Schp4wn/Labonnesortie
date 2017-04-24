@@ -25,8 +25,8 @@ class SecurityController extends Controller
             $password   = trim($_POST['password']);
             $cfpassword = trim($_POST['cfpassword']);
 
+            $user_manager = new UserModel();  //on dois crée User model et m'herié de W de base 
 
-            $user_manager = new UserModel();  //on dois crée User model et m'herié de W de base
 
             $errors = [];
                 if (strlen($firstname) < 2 ) {
@@ -53,6 +53,7 @@ class SecurityController extends Controller
                 $auth_manager = new \W\Security\AuthentificationModel();
                   //si il n'y a pas d'erreur on inscrit lutilisateur en bdd
                   $user_manager->insert([
+                      
                       'firstname'=> $firstname,
                       'lastname' => $lastname,
                       'username' => $username,
