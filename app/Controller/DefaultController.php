@@ -16,14 +16,6 @@ class DefaultController extends Controller
 	}
 
 	 /**
-	  * Page d'accueil après avoir cliqué sur la carte
-	  */
-	 public function frontPage()
-	 {
-	 	$this->show('default/frontPage');
-	 }
-
-	 /**
 	  * Page contact
 	  */
 	 public function contact()
