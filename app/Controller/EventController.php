@@ -28,18 +28,18 @@ class EventController extends Controller
 
              $errors=[];
 
-             if( strlen($title) < 3 )
+             if( strlen($title) < 3 && !empty($title) )
              {
                  $errors['title'] = "Le titre doit comporter 3 caractères minimum.";
              }
 
-             if( strlen($event) < 15)
+             if( strlen($event) < 15 && !empty($title))
              {
                  $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
              }
-             if(!is_numeric(strtotime($_POST['date']) ) )
+             if(!is_numeric(strtotime($_POST['date']) )  && !empty($date))
              {
-                 $errors['date']= "Votre date doit etre au format days/Month/Years.";
+                 $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
              }
 
              if( empty($error) )
@@ -58,9 +58,21 @@ class EventController extends Controller
                   $message = ["L'evenement a bien etait enregistré"];
              }
              else{
-                 $errors = $message ;
+                 $message = $errors ;
              }
         }
         $this->show('event/create' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
+    }
+
+    public function view($id)
+    {   
+        $event_manager = new EventsModel();  
+        $event = $event_manager->find($id);
+        $this->show('event/view' , ['event'=> $event]);
+    }
+
+    public function index()
+    {
+        $this->show('event/index');
     }
 }
