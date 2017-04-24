@@ -2,8 +2,8 @@
 
 namespace Controller;
 
+use W\Model\UsersModel;
 use \W\Controller\Controller;
-use \Model\UsersModel;
 
 class SecurityController extends Controller
 {
@@ -15,6 +15,7 @@ class SecurityController extends Controller
         $username  = null;
         $email     = null;
         $password  = null;
+        $message   = null;
 
         if (!empty($_POST) ) {
             $firstname  = trim($_POST['firstname']);
@@ -24,40 +25,52 @@ class SecurityController extends Controller
             $password   = trim($_POST['password']);
             $cfpassword = trim($_POST['cfpassword']);
 
-            $user_manager = new UserModel();  //on dois crée User model et m'herié de W de base '
+
+            $user_manager = new UsersModel();  //on dois crée User model et m'herié de W de base 
 
             $errors = [];
+                if (strlen($firstname) < 2 ) {
+                    $errors['firstname'] = "Le prenom doit comporter au moins 2 caractères.";
+                }
+                if (strlen($lastname) < 2 ) {
+                    $errors['lastname'] = "Le nom doit comporter au moins 2 caratères.";
+                }
                 if ( $user_manager->emailExists($email) || $user_manager->usernameExists($username) ) {
                     $errors['exists'] = "Lemail ou l'username existe deja";
                 }
-
-                if ( empty($username) || !filter_var($email, FILTER_VALIDATE_EMAIL) ){
-                $errors['username'] = "L'email ou l'username sont vide ou invalide";
+                if ( empty($email)) {
+                    $errors['email'] = "L'email est vide";
+                }
+                if ( empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) ){
+                    $errors['username'] = "L'email ou l'username sont vide ou invalide";
                 }
 
-                if ( $password !== $cfpassword ){
-                $errors['password'] = "Les mots de passe ne correspondent pas";
+                if ( $password != $cfpassword ){
+                    $errors['password'] = "Les mots de passe ne correspondent pas";
                 }
-            
+                         
             if(empty($errors)){
-                $auth_manager = new W\Security\AuthentificationModel();
-
-                  //si il nya pas derreur on inscrit lutilisateur en bdd
+                $auth_manager = new \W\Security\AuthentificationModel();
+                  //si il n'y a pas d'erreur on inscrit lutilisateur en bdd
                   $user_manager->insert([
+                      'firstname'=> $firstname,
+                      'lastname' => $lastname,
                       'username' => $username,
                       'email'    => $email ,
-                      'password' => $auth_manager->hashPassword($password),
-                      'role'     => 'admin'
+                      'role'     => 'admin',
+                      'password' => $auth_manager->hashPassword($password) //$auth_manager->hashPassword() pbm avec hashage de mt d passe 
+
                   ]);
+ 
 
                   $message = ["Vous etes bien inscris"];
             }else{
 
                 $message = $errors;
             }
-            
+           
           }
-        $this->show('security/register' , ['message' => $message , 'username' => $username , 'email' => $email ]);
+        $this->show('security/register' , ['message' => $message ,'firstname'=>$firstname,'lastname' => $lastname,'username' => $username , 'email' => $email ]);
     }
 
     

@@ -2,13 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-    <?php
-       if (!empty($message)) {
-            foreach ($message as $mess) {
-                echo '<div>' . $mess . '</div>';
-            }
-        }
-   ?>
+    
 <form class="col-lg-7" method="POST">
 
   <div class="form-group <?= (isset($message['lastname'])) ? 'has-error' : ''?>">
@@ -32,7 +26,7 @@
   <div class="form-group<?= (isset($message['email'])) ? 'has-error' : ''?> ">
     <label for="email">Email :</label>
     <input type="text" class="form-control" id="email" name="email" value="<?= $email ?>">
-    <?= (isset($message['email'])) ? '<span class="help-block">'.$message['email'].' .</span>'  : '' ?>
+    <?= (isset($message['email']) ) ? '<span class="help-block">'.$message['email'].' .</span>'  : '' ?>
   </div>
 
   <div class="form-group">
@@ -47,5 +41,15 @@
   <input type="submit" class="btn btn-submit" value="Valider">
 
 </form>
+
+<?php var_dump($message); ?>
+
+  <?php
+       if (!empty($message)) {
+            foreach ($message as $mess) {
+                echo '<h1 class="text-danger">' . $mess . '</h1>';
+            }
+        }
+   ?>
 
 <?php $this->stop('main_content') ?>
