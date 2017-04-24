@@ -73,6 +73,8 @@ class EventController extends Controller
 
     public function index()
     {
-        $this->show('event/index');
+        $event_manager = new EventsModel();
+        $events =  $event_manager->findAll();
+        $this->show('event/index' , ['events' => $events]);
     }
 }
