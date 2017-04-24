@@ -102,10 +102,9 @@ class EventController extends Controller
         $event   = null ;
         $date    = null ;
         $message = null ;
-        $this->allowTo('admin');
-        $this->allowTo('user');
+        // $this->allowTo(['admin', 'user']);
 
-
+        $event_manager = new EventsModel();
         $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
 
         if (!empty($_POST)) {
@@ -134,12 +133,12 @@ class EventController extends Controller
           {
               $auth_manager = new \W\Security\AuthentificationModel();
 
-         $result = $event_manager->insert([
+         $result = $event_manager->update([
                  'title'     => $title,
                  'event'     => $event,
-                 'date_time' => $date,
-                 'user_id'   => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
-               ]);
+                 'date_time' => $date
+                   // ici l'id de lutilisateur connecté $this->getuser()['id']
+               ], $id);
 
               // var_dump($result);
 
@@ -152,4 +151,14 @@ class EventController extends Controller
 
         $this->show('event/update' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
     }
+
+    //on recupere l'id de l'article avec l'url pour le supprimer
+  public function delete($id)
+  {
+    $event_manager = new EventsModel();
+    $event_manager->delete($id); // ici on supprime l'article de la bdd
+
+    $this->redirectToRoute('event_index');
+    //var_dump($id);
+  }
 }

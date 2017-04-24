@@ -1,9 +1,9 @@
-<?php $this->layout('layout', ['title' => 'event_update' . $article['title']]); ?>
+<?php $this->layout('layout', ['title' => 'event_update']); ?>
 
 <?php $this->start('main_content'); ?>
 
     <div>
-        <a href="<?php echo $this->url('article_index') ?>">< Revenir à la liste des articles</a>
+        <a href="<?php echo $this->url('event_index') ?>">< Revenir à la liste des articles</a>
     </div>
 
     <form method="POST" action="">
