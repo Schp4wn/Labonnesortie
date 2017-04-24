@@ -18,11 +18,11 @@ class EventController extends Controller
 
         if(!empty($_POST))
         {
-            $title   = trim($_POST['title']);
-            $event   = trim($_POST['event']);
-            $date    = date('Y-m-d H:i:s' ,strtotime( $_POST['date'] ));
+            $title = trim($_POST['title']);
+            $event = trim($_POST['event']);
+            $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
 
-var_dump($_POST);
+        //var_dump($_POST);
 
              $event_manager = new EventsModel();
 
@@ -46,14 +46,14 @@ var_dump($_POST);
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
 
-                  $result = $event_manager->insert([
+            $result = $event_manager->insert([
                     'title'     => $title,
                     'event'     => $event,
                     'date_time' => $date,
                     'user_id'   => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
                   ]);
 
-                  var_dump($result);
+                 // var_dump($result);
 
                   $message = ["L'evenement a bien etait enregistré"];
              }

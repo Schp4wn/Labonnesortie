@@ -42,7 +42,7 @@
 
 </form>
 
-<?php var_dump($message); ?>
+<?php //var_dump($message); ?>
 
   <?php
        if (!empty($message)) {
