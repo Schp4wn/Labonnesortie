@@ -9,9 +9,13 @@ use  Model\EventsModel;
 class EventController extends Controller
 {   
 
+    /**
+      *  On creer un evenements
+      *
+     **/
     public function create()
     {   
-        $this->allow('admin');
+        //$this->allow('admin');
 
         $title   = null ;
         $event   = null ;
@@ -23,8 +27,6 @@ class EventController extends Controller
             $title = trim($_POST['title']);
             $event = trim($_POST['event']);
             $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
-
-        //var_dump($_POST);
 
              $event_manager = new EventsModel();
 
@@ -66,6 +68,10 @@ class EventController extends Controller
         $this->show('event/create' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
     }
 
+    /**
+      *  Recupère un seul évènement   
+      *
+     **/
     public function view($id)
     {   
         $event_manager = new EventsModel();  
@@ -73,6 +79,10 @@ class EventController extends Controller
         $this->show('event/view' , ['event'=> $event]);
     }
 
+    /**
+      *  Recupère tous les évènement   
+      *
+     **/
     public function index()
     {
         $event_manager = new EventsModel();

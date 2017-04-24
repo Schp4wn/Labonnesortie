@@ -2,8 +2,8 @@
 
 <?php $this->start('main_content'); ?>
 
-   <h1>Ici la vue d'un Article</h1>
-   <article >
+	<div class="container">
+		 <h1>Ici la vue d'un Article</h1>
 			<p><?php echo $event['event'] ?></p>
             <p>le <?php
 					$datetime = new DateTime($event['date_time']);
@@ -17,5 +17,7 @@
 					echo $intl->format($datetime);
 				?>
 			</p>
+	</div>
+  
 
 <?php $this->stop('main_content'); ?>
