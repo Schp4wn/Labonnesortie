@@ -15,13 +15,13 @@ class DefaultController extends Controller
 		$this->show('default/home');
 	}
 
-	/**
-	 * Page d'accueil après avoir cliqué sur la carte
-	 */
-	public function frontPage()
-	{
-		$this->show('default/frontPage');
-	}
+	// /**
+	//  * Page d'accueil après avoir cliqué sur la carte
+	//  */
+	// public function frontPage()
+	// {
+	// 	$this->show('default/frontPage');
+	// }
 
 	// /**
 	//  * Page contact

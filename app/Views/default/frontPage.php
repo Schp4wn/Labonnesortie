@@ -2,6 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
+
 <div id="frontPage">
   <h3 class="text-center">Vous cherchez les événements autour de Lille</h3>
   <div class="container">
@@ -20,18 +21,43 @@
             <p><i class="fa fa-calendar-o" aria-hidden="true"></i> Samedi 08 avril 2017</p>
           </div>
           <div class="col-lg-6">
-            <img class="img-responsive center-block" src="<?= $this->assetUrl('img/tampon_evenement.png')?>" alt="event">
+            <img class="img-responsive center-block" src="<?= $this->assetUrl('img/Fichier_000.jpeg')?>" alt="event">
           </div>
           <p class="text-center">Description de l'événement</p>
         </div>
       </div>
-      <div class="col-lg-3 col-lg-pull-6">
+      <div class="col-lg-3 col-lg-pull-7">
         <iframe name="InlineFrame1" id="InlineFrame1" style="width:860px;height:235px;" src="http://www.mathieuweb.fr/calendrier/calendrier-des-semaines.php?nb_mois=1&nb_mois_ligne=5&mois=0&an=0&langue=fr&texte_color=B9CBDD&week_color=DAE9F8&week_end_color=C7DAED&police_color=453413&sel=true" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
       </div>
-    </div>
-  </div>
 
+      <div class="col-lg-3 col-lg-pull-10 meteo">
+        <div id="cont_NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx">
+          <div id="spa_NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx">
+            <a id="a_NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx" href="http://www.meteocity.com/france/lille_v59350/" target="_blank" style="color:#333;text-decoration:none;">Météo Lille</a> ©<a href="http://www.meteocity.com">meteocity.com</a></div>
+            <script type="text/javascript" src="http://widget.meteocity.com/js/NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx"></script>
+        </div>
+      </div>
 
-</div> <!-- id="frontPage" -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+            <input type="text" class="form-control" placeholder="Search for...">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /#frontPage -->
 
 <?php $this->stop('main_content') ?>

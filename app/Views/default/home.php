@@ -2,7 +2,6 @@
 
 <?php $this->start('main_content') ?>
 
-
 		<div class="demo-header">
 				<div class="demo-header-content">
 						<div class="container">
@@ -24,59 +23,37 @@
 				</div>
 		</div>
 		<div class="container pt-2" id="previews">
-				<div class="row">
-						<div class="col-md-6">
-			 <script type="text/javascript"><!--
-						var lion_commune=new Array();
-						var lion_dpt_couleur_fond=new Array();
-						lion_image_bordure=0;
-						lion_taille_image=600;
-						lion_carte="59";
-						lion_carte="62";
-						lion_carte_couleur_fond="ffffff";
-						lion_carte_couleur="ccccff";
-						lion_carte_couleur_contour="0000FF";
-						lion_carte_epaisseur_contour="3";
-						lion_affiche_communes="oui";
-						lion_affiche_communes_couleur="666666";
-						lion_affiche_communes_contour="1";
-						lion_affiche_dpts_voisins="non";
-						lion_couleur_dpts_voisins="222222";
-						lion_communes_surbrillance="ffff00";
+			<div class="row">
+				<div class="col-md-6">
+					<script type="text/javascript" src="<?= $this->assetUrl('js/lion_carte.js') ?>"></script>
+				</div>
+			</div>
 
-						//--></script>
-						<script type="text/javascript"
-						src="http://www.lion1906.com/outils/outils.js">
-						</script>
-								</div>
-						</div>
-						<div class="container pt-2" id="previews2">
+			<div class="container pt-2" id="previews2">
 				<div class="row">
-						<div class="col-md-6">
-			 <script type="text/javascript"><!--
-						var lion_commune=new Array();
-						var lion_dpt_couleur_fond=new Array();
-						lion_image_bordure=0;
-						lion_taille_image=600;
-						lion_carte="59";
-						lion_carte_couleur_fond="ffffff";
-						lion_carte_couleur="ccccff";
-						lion_carte_couleur_contour="0000FF";
-						lion_carte_epaisseur_contour="3";
-						lion_affiche_communes="oui";
-						lion_affiche_communes_couleur="666666";
-						lion_affiche_communes_contour="1";
-						lion_affiche_dpts_voisins="non";
-						lion_couleur_dpts_voisins="222222";
-						lion_communes_surbrillance="ffff00";
-
-						//--></script>
-						<script type="text/javascript"
-						src="http://www.lion1906.com/outils/outils.js">
+					<div class="col-md-6">
+						<script type="text/javascript">
+									var lion_commune=new Array();
+									var lion_dpt_couleur_fond=new Array();
+									lion_image_bordure=0;
+									lion_taille_image=600;
+									lion_carte="59";
+									lion_carte_couleur_fond="ffffff";
+									lion_carte_couleur="ccccff";
+									lion_carte_couleur_contour="0000FF";
+									lion_carte_epaisseur_contour="3";
+									lion_affiche_communes="oui";
+									lion_affiche_communes_couleur="666666";
+									lion_affiche_communes_contour="1";
+									lion_affiche_dpts_voisins="non";
+									lion_couleur_dpts_voisins="222222";
+									lion_communes_surbrillance="ffff00";
 						</script>
-								</div>
-						</div>
-					 </div>
+						<script type="text/javascript" src="<?= $this->assetUrl('js/lion_carte.js') ?>"></script>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Core Scripts -->
 
