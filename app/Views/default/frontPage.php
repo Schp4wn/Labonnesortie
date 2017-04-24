@@ -20,7 +20,7 @@
               <p><i class="fa fa-calendar-o" aria-hidden="true"></i> Samedi 08 avril 2017</p>
             </div>
             <div class="col-lg-6">
-              <img class="img-responsive center-block" src="<?= $this->assetUrl('img/tampon_evenement.jpg')?>" alt="event">
+              <img class="img-responsive center-block" src="<?= $this->assetUrl('img/tampon_evenement.png')?>" alt="event">
             </div>
             <p class="text-center">Description de l'événement</p>
           </div>
