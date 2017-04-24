@@ -13,6 +13,7 @@
 		['GET|POST', '/login', 'Security#login', 'security_login'], //connexion
 		['GET|POST', '/register', 'Security#register', 'security_register'], //inscription
 		['GET|POST', '/logout', 'Security#logout', 'security_logout'], //deconnexion
+		['GET|POST', '/forget', 'Security#forget', 'security_forget'], //mot de passe oublié
 
 		//Dans le fichier je Crée le controller EventController
 		['GET|POST', '/event', 'Event#index', 'event_index'], //afficher un evenement
