@@ -3,6 +3,8 @@
 /******************/
 
 #frontPage {
+  width: 85%;
+  margin: auto;
   margin-top: 3%;
   padding-bottom: 5%;
   h3 {
@@ -27,5 +29,8 @@
   }
   .meteo {
     padding-top: 18%;
+  }
+  .message-from-tchat {
+    height: 500px;
   }
 }
