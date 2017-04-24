@@ -1,0 +1,28 @@
+/******************/
+/*    FRONTPAGE    */
+/******************/
+
+#frontPage {
+  margin-top: 3%;
+  padding-bottom: 5%;
+  h3 {
+    margin: 3% 0;
+  }
+  .event {
+    font-size: 1.3em;
+    padding: 1% 2%;
+    img {
+      padding-bottom: 5%;
+    }
+    h4 {
+      font-size: 1.8em;
+    }
+    background-color: rgba(219, 211, 211, 1);
+    border-bottom: 4px solid rgba(164, 200, 215, 1);
+  }
+  .adress-event {
+    background-color: rgba(45, 47, 51, 1);
+    color: white;
+    padding: 2% 0
+  }
+}
