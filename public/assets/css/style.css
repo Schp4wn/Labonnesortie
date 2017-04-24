@@ -2,6 +2,8 @@
 /*    FRONTPAGE    */
 /******************/
 #frontPage {
+  width: 85%;
+  margin: auto;
   margin-top: 3%;
   padding-bottom: 5%;
 }
@@ -33,4 +35,8 @@
 
 #frontPage .meteo {
   padding-top: 18%;
+}
+
+#frontPage .message-from-tchat {
+  height: 500px;
 }
