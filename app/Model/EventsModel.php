@@ -2,9 +2,9 @@
 
 namespace Model;
 
-use \W\Model\UsersModel;
+use \W\Model\Model;
 
-class EventModel extends UsersModel
+class EventsModel extends Model
 {
 	//on herite de tout ce qu il ya dans W
 }

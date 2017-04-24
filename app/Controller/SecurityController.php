@@ -63,7 +63,6 @@ class SecurityController extends Controller
 
                   ]);
 
-
                   $message = ["Vous etes bien inscris"];
             }else{
 

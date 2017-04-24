@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use  Model\EventModel;
+use  Model\EventsModel;
 
 
 class EventController extends Controller
@@ -12,8 +12,8 @@ class EventController extends Controller
     public function create()
     {   
         $title   = null ;
-        $event = null ;
-        $date    = null;
+        $event   = null ;
+        $date    = null ;
         $message = null ;
 
         if(!empty($_POST))
@@ -24,7 +24,7 @@ class EventController extends Controller
 
 var_dump($_POST);
 
-             $event_manager = new EventModel();
+             $event_manager = new EventsModel();
 
              $errors=[];
 
@@ -50,7 +50,7 @@ var_dump($_POST);
                     'title'     => $title,
                     'event'     => $event,
                     'date_time' => $date,
-                    //'user_id'   => null  // ici l'id de lutilisateur connecté $this->getuser()['id']
+                    'user_id'   => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
                   ]);
 
                   var_dump($result);
