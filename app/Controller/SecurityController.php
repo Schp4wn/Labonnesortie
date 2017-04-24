@@ -58,7 +58,7 @@ class SecurityController extends Controller
                       'lastname' => $lastname,
                       'username' => $username,
                       'email'    => $email ,
-                      'role'     => 'admin',
+                      'role'     => 'user',
                       'password' => $auth_manager->hashPassword($password) //$auth_manager->hashPassword() pbm avec hashage de mt d passe
 
                   ]);

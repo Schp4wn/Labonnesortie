@@ -11,6 +11,8 @@ class EventController extends Controller
 
     public function create()
     {   
+        $this->allow('admin');
+
         $title   = null ;
         $event   = null ;
         $date    = null ;
