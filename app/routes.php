@@ -1,6 +1,7 @@
 <?php
 
 	$w_routes = array(
+
 		['GET', '/', 'Default#home', 'default_home'],//page d'acceuil
 
 		//Dans le fichier je Crée le controller ContactController
@@ -22,8 +23,6 @@
 		['GET|POST', '/way/create', 'Way#create', 'way_create'], //add un trajet
 		['GET|POST', '/way/update', 'Way#update', 'way_update'], //modifie un trajet
 		['GET|POST', '/way/delete', 'Way#delete', 'way_delete'], //supprime un trajet
-
-
 
 		//Dans le fichier je Crée le controller ProfilController
 		['GET|POST', '/profil', 'Profil#index', 'profil_index'], //affiche la page profil
