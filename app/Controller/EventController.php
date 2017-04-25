@@ -20,6 +20,7 @@ class EventController extends Controller
         $title   = null ;
         $event   = null ;
         $date    = null ;
+        $image   = null ;
         $message = null ;
 
         if(!empty($_POST))
@@ -116,6 +117,7 @@ class EventController extends Controller
         $title   = null ;
         $event   = null ;
         $date    = null ;
+        $image   = null ;
         $message = null ;
         // $this->allowTo(['admin', 'user']);
 
@@ -126,6 +128,7 @@ class EventController extends Controller
           $title = trim($_POST['title']);
           $event = trim($_POST['event']);
           $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
+          $image = trim($_POST['image']);
           $event_manager = new EventsModel();
 
           $errors=[];
@@ -144,6 +147,11 @@ class EventController extends Controller
               $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
           }
 
+         if(!filter_var($image, FILTER_VALIDATE_URL) === true )
+         {
+             $errors['image'] = "Votre url doit etre valide";
+         }
+
           if( empty($error) )
           {
               $auth_manager = new \W\Security\AuthentificationModel();
@@ -151,6 +159,7 @@ class EventController extends Controller
          $result = $event_manager->update([
                  'title'     => $title,
                  'event'     => $event,
+                 'image'     => $image,
                  'date_time' => $date
                    // ici l'id de lutilisateur connecté $this->getuser()['id']
                ], $id);
