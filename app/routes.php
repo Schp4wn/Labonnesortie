@@ -20,6 +20,7 @@
 		['GET|POST', '/event/create'       , 'Event#create', 'event_create'], //add un evenement*
 		['GET|POST', '/event/update/[i:id]', 'Event#update', 'event_update'], //modifie un evenement
 		['GET|POST', '/event/delete/[i:id]', 'Event#delete', 'event_delete'], //supprime un evenement
+		['GET|POST', '/event/trajet', 'Event#trajet', 'event_trajet'], //ajoute un trajet
 		['GET|POST', '/event/[i:id]'       ,  'Event#view' , 'event_view'  ], //affiche un seule event precis (avec l'id)
 
 		//Dans le fichier je Crée le controller WayController
