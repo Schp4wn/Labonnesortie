@@ -64,6 +64,7 @@
 		<footer>
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
+			<script type="text/javascript" src="<?= $this->assetUrl('http://www.lion1906.com/outils/outils.js')?>"></script>
 			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
 		</footer>
 	</div>
