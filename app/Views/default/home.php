@@ -11,7 +11,7 @@
 								<p>Nous recensons toutes les sorties organiser dans le Nord est le Pas de Calais de la france !</p>
 								<ul class="list-inline cta-list">
 										<li class="list-inline-item">
-												<a href="#previews" class="btn btn-primary page-scroll-demo">Nos Sorties</a>
+												<a href="<?= $this->url('default_frontPage') ?>" class="btn btn-primary page-scroll-demo">Voir nos évènement !</a>
 										</li>
 										<li class="list-inline-item">
 												<a href="docs/index.html" class="btn btn-primary page-scroll-demo">Plus d'infos</a>
