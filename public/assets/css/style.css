@@ -38,9 +38,13 @@
   padding-top: 18%;
 }
 
+#conteneur{
+    padding-left: 0px;
+    padding-right: 0px;
+}
 .demo-header {
 			 text-align: center;
-			 background: url('../img/bg-portfolio.jpg') no-repeat center center scroll;
+			 background: url('../img/moto.jpg') no-repeat center center scroll;
 			 color: #fff;
 			 -webkit-background-size: cover;
 			 -moz-background-size: cover;
@@ -49,6 +53,11 @@
 			 padding: 100px 0;
 			 height: 800px;
 	 }
+   #puce{
+     border: solid 1px;
+     border-radius: 9px;
+     background-color: transparent;
+   }
 
 	 .preview-pane {
 			 text-align: center;
@@ -79,10 +88,121 @@
 			 opacity: 0.5;
 	 }
 
-	 .label-primary {
-			 background-color: #EF4035;
-	 }
+   /* Copyright 2014 Evernote Corporation. All rights reserved. */
+   .en-markup-crop-options {
+       top: 18px !important;
+       left: 50% !important;
+       margin-left: -100px !important;
+       width: 200px !important;
+       border: 2px rgba(255,255,255,.38) solid !important;
+       border-radius: 4px !important;
+   }
+   #page .contenu.article .conteneur-carte-coordonnees{
+     position:relative;
+     padding-left:10px;
+     padding-top:20px;
+     z-index:0;
+   }
 
-#frontPage .message-from-tchat {
-  height: 500px;
-}
+   #page .contenu.article .conteneur-carte-coordonnees .carte{
+     position:relative;
+     width:400px;
+     margin-left:auto;
+     margin-right:auto;
+   }
+
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte a{
+     font-family:arial;
+     font-size:14px;
+     font-style:normal;
+     font-weight:bold;
+     color:#c0c0c0;
+     text-decoration:none;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte a:hover{
+     font-family:arial;
+     font-size:14px;
+     font-style:normal;
+     font-weight:bold;
+     color:#e7e7e7;
+     text-decoration:none;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte .dunkerque{
+     position:absolute;
+     top:25px;
+     left:80px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte .lille{
+     position:absolute;
+     top:81px;
+     left:208px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte .maubeuge{
+     position:absolute;
+     top:191px;
+     left:305px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte .valenciennes{
+     position:absolute;
+     top:147px;
+     left:209px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .carte .bethune{
+     position:absolute;
+     top:131px;
+     left:123px;
+   }
+
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees{
+     width:230px;
+     position:absolute;
+     top:20px;
+     left:420px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees .ville{
+     position:relative;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees .ville .compass{
+     position:absolute;
+     right:10px;
+     top:-5px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees .ville .compass a{
+     text-decoration:none;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees .ville .nom,
+   #page .contenu.article .article.plan .titre1
+   {
+     font-family:arial;
+     font-size:16px;
+     font-style:normal;
+     font-weight:bold;
+     color:#C1002A;
+     margin-bottom:5px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees .ville .item{
+     margin-bottom:20px;
+   }
+
+   #page .contenu.article .conteneur-carte-coordonnees .coordonnees .ville .item .nom,
+   #page .contenu.article .article.plan .nom
+   {
+     font-family:arial;
+     font-size:14px;
+     font-style:normal;
+     font-weight:bold;
+     color:#7E7E7E;
+   }

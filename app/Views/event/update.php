@@ -38,6 +38,14 @@
         <div class="form-group">
             <label for="">Arrivée :</label>
             <input type="text" class="form-control" name="arrive_text">
+          <textarea type="text" class="form-control" name="event" value=""></textarea>
+          <?= (isset($message['event'])) ? '<span class="help-block">'.$message['event'].' .</span>'  : '' ?>
+        </div>
+
+        <div class="form-group <?= (isset($message['date'])) ? 'has-error' : ''?>">
+          <label for="date">Date de l'evenement :</label>
+          <input type="text" class="form-control" name="date"  placeholder="xx/xx/xxxx  Heure:Min">
+          <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' .</span>'  : '' ?>
         </div>
         <button class="btn btn-submit">Editer l'article</button>
     </form>

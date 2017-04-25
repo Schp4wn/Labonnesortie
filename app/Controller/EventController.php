@@ -15,7 +15,9 @@ class EventController extends Controller
      **/
     public function create()
     {   
-        //$this->allow(['admin' , 'user']);  //les inscrit en tant qu'admin seront les seuls a ajouter des events
+
+        //$this->allow('admin');
+
 
         $title        = null ;
         $event        = null ;
@@ -85,12 +87,13 @@ class EventController extends Controller
       *  Recupère un seul évènement
       *
      **/
+    public function view($id){
 
-    public function view($id)
-    {
         // $this->allow(['admin' , 'user']);
 
+
         $event_manager = new EventsModel();
+
         $event = $event_manager->find($id);
         $this->show('event/view' , ['event'=> $event]);
     }
@@ -119,6 +122,7 @@ class EventController extends Controller
         $depart_text  = null;
         $arrive_text  = null;
         $image   = null ;
+
         $message = null ;
         // $this->allowTo(['admin', 'user']);
 
@@ -137,17 +141,19 @@ class EventController extends Controller
 
           $errors=[];
 
+
           if( strlen($title) < 3 || empty($title) )
           {
               $errors['title'] = "Le titre doit comporter 3 caractères minimum.";
           }
 
-          if( strlen($event) < 15 || empty($event))
+
+          if( strlen($event) < 15 && !empty($title))
           {
               $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
           }
+          if(!is_numeric(strtotime($_POST['date']) )  && !empty($date))
 
-          if(!is_numeric(strtotime($_POST['date']) )  || empty($date))
           {
               $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
           }
@@ -181,7 +187,7 @@ class EventController extends Controller
           }
         }
 
-        $this->show('event/update' , ['message' => $message  ,'date_time'=> $date , 'title'=>$title , 'event' => $event , 'image' => $image ]);
+        $this->show('event/update' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
     }
 
     //on recupere l'id de l'article avec l'url pour le supprimer
