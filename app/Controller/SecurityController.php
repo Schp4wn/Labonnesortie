@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\UserModel;
+use Model\MessagesModel;
 use \W\Controller\Controller;
 
 class SecurityController extends Controller
@@ -25,7 +26,7 @@ class SecurityController extends Controller
             $password   = trim($_POST['password']);
             $cfpassword = trim($_POST['cfpassword']);
 
-            $user_manager = new UserModel();  //on dois crée User model et m'herié de W de base 
+            $user_manager = new UserModel();  //on dois crée User model et m'herié de W de base
 
 
             $errors = [];
@@ -53,7 +54,7 @@ class SecurityController extends Controller
                 $auth_manager = new \W\Security\AuthentificationModel();
                   //si il n'y a pas d'erreur on inscrit lutilisateur en bdd
                   $user_manager->insert([
-                      
+
                       'firstname'=> $firstname,
                       'lastname' => $lastname,
                       'username' => $username,
@@ -92,11 +93,34 @@ class SecurityController extends Controller
             }
         }
 
-        // var_dump($this->getUser());
+        // J'instancie la classe pour gérer mes messages en BDD
+        $message_manager = new MessagesModel();
 
-        // $this->show('security/login');
-        $this->show('default/frontPage');
+        // Je récupére tous les messages en BDD (SELECT * FROM messages)
+        $messages = $message_manager->findAll();
+
+        if (!empty($_POST)) {
+          $message = $_POST['message'];
+          // $publish_datetime = $_POST['publish_datetime'];
+
+          $error = [];
+
+          if (empty($message)) {
+            $error['message'] = 'Le message est vide';
+          }
+          var_dump($message);
+          if (empty($error)) {
+
+          $message_manager->insert(['content' => $message]);
+
+        }
+
+
+        // var_dump($this->getUser());
     }
+    // J'injecte la variable messages dans ma vue
+    $this->show('default/frontPage', ['messages' => $messages]);
+  }
 
     /**
      * Déconnexion de l'utilisateur

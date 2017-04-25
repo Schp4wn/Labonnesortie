@@ -1,8 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Accueil']) ?>
 
 <?php $this->start('main_content') ?>
-
-
+      
 <div id="frontPage">
   <h3 class="text-center">Vous cherchez les événements autour de Lille</h3>
     <div class="row">
@@ -44,6 +43,9 @@
             <h3 class="text-center">Postez votre message</h3>
             <hr>
             <ul class="message-from-tchat">
+              <?php foreach ($messages as $message): ?>
+                <?= "<li>" .$message['content']."</li>"; ?>
+              <?php endforeach; ?>
               <li>Message 1</li>
               <li>Message 2</li>
               <li>Message 3</li>
@@ -52,7 +54,7 @@
               <li>Message 6</li>
               <li>Message 7</li>
             </ul>
-            <form id="addMessage" action="addMessage.php" method="post">
+            <form id="addMessage" action="" method="post">
               <div class="input-group">
                 <span class="input-group-btn">
                   <textarea name="message" class="form-control"></textarea>
