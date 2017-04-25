@@ -29,10 +29,15 @@
       <input type="text" class="form-control" name="image"  placeholder="Url ...">
       <?= (isset($message['image'])) ? '<span class="help-block">'.$message['image'].' .</span>'  : '' ?>
     </div>
-    <!--<div>
-      <label for="">Votre fichier dans l'ordi :</label>
-      <input type="file">
-    </div>-->
+    <hr>
+    <div class="form-group">
+      <label for="">Départ :</label>
+      <input type="text" class="form-control" name="depart_text">
+    </div>
+    <div class="form-group">
+      <label for="">Arrivée :</label>
+      <input type="text" class="form-control" name="arrive_text">
+    </div>
 
     <button id="publie" type="submit" class="btn btn-default">Publier larticle</button>
 
