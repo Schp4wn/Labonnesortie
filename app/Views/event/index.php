@@ -3,6 +3,7 @@
 <?php $this->start('main_content'); ?>
 
    <h1>Tous les  Article</h1>
+   <a class="btn btn-success" href="<?= $this->url('event_create'   )?>">Ajouter un evenement</a>
    <div class="row">
         <table class="table table-striped">
           <thead>

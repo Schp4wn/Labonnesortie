@@ -13,10 +13,10 @@ class EventController extends Controller
       *  On creer un evenements
       *
      **/
-    public function create()
+    public function create(){
 
-    {
-        //$this->allow('admin');
+        // $this->allow(['admin' , 'user']);  //les inscrit en tant qu'admin seront les seuls a ajouter des events
+
 
 
 
@@ -75,9 +75,12 @@ class EventController extends Controller
       *  Recupère un seul évènement
       *
      **/
-    public function view($id)
-    {
+    public function view($id){
+
+        // $this->allow(['admin' , 'user']);
+
         $event_manager = new EventsModel();
+
         $event = $event_manager->find($id);
         $this->show('event/view' , ['event'=> $event]);
     }
@@ -88,6 +91,8 @@ class EventController extends Controller
      **/
     public function index()
     {
+        // $this->allow(['admin' , 'user']);
+
         $event_manager = new EventsModel();
         $events =  $event_manager->findAll();
         $this->show('event/index' , ['events' => $events]);
