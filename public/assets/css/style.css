@@ -1,3 +1,7 @@
+.navbar {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
 /******************/
 /*    FRONTPAGE    */
 /******************/
@@ -8,15 +12,19 @@
   padding-bottom: 5%;
 }
 
-#frontPage h3 {
-  margin: 3% 0;
+#frontPage .title {
+  padding-left: 30%;
 }
 
 #frontPage .event {
   font-size: 1.3em;
   padding: 1% 2%;
+  margin: 2% 0;
   background-color: #dbd3d3;
-  border-bottom: 4px solid #a4c8d7;
+  border-bottom: 6px solid #a4c8d7;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 12px #aaa;
+  box-shadow: 1px 1px 12px #aaa;
 }
 
 #frontPage .event img {
@@ -31,12 +39,13 @@
   background-color: #2d2f33;
   color: white;
   padding: 2% 0;
+  border-radius: 5px;
 }
 
-
-#frontPage .meteo {
-  padding-top: 18%;
+#frontPage .tchat {
+  margin-top: -4%;
 }
+
 
 #conteneur{
     padding-left: 0px;
@@ -206,3 +215,19 @@
      font-weight:bold;
      color:#7E7E7E;
    }
+
+#frontPage .tchat button {
+  margin-top: 2%;
+}
+
+#frontPage .tchat .thumbnail {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#frontPage .message-from-tchat {
+  height: 350px;
+}
+
+#frontPage .calendar img {
+  width: 100%;
+}
