@@ -2,10 +2,6 @@
 
 <?php $this->start('main_content') ?>
 
-    <?php 
-       // foreach($message as $mess){   echo '<div>' . $mess . '</div>';  }
-    ?>
-
   <h1>Ajouter un evenement</h1>
 
   <form class="col-lg-7" method="POST">
@@ -28,11 +24,21 @@
       <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' .</span>'  : '' ?>
     </div>
 
+    <div class="form-group <?= (isset($message['image'])) ? 'has-error' : ''?>">
+      <label for="image">Image  :</label>
+      <input type="text" class="form-control" name="image"  placeholder="Url ...">
+      <?= (isset($message['image'])) ? '<span class="help-block">'.$message['image'].' .</span>'  : '' ?>
+    </div>
+    <!--<div>
+      <label for="">Votre fichier dans l'ordi :</label>
+      <input type="file">
+    </div>-->
+
     <button id="publie" type="submit" class="btn btn-default">Publier larticle</button>
 
   </form>
   <?php
-       if (!empty($message)) {
+       if ( $message ){
             foreach ($message as $mess) {
                 echo '<h1 class="text-success">' . $mess . '</h1>';
             }

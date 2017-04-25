@@ -15,7 +15,7 @@ class EventController extends Controller
      **/
     public function create()
     {   
-        $this->allow(['admin' , 'user']);  //les inscrit en tant qu'admin seront les seuls a ajouter des events
+        //$this->allow(['admin' , 'user']);  //les inscrit en tant qu'admin seront les seuls a ajouter des events
 
         $title   = null ;
         $event   = null ;
@@ -26,38 +26,47 @@ class EventController extends Controller
         {
             $title = trim($_POST['title']);
             $event = trim($_POST['event']);
+            $image = trim($_POST['image']);
             $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
 
              $event_manager = new EventsModel();
 
              $errors=[];
 
-             if( strlen($title) < 3 && !empty($title) )
+             if( strlen( $title ) < 3 || empty($title) )
              {
                  $errors['title'] = "Le titre doit comporter 3 caractères minimum.";
              }
 
-             if( strlen($event) < 15 && !empty($title))
+             if( strlen( $event ) < 15 || empty($event))
              {
                  $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
              }
-             if(!is_numeric(strtotime($_POST['date']) )  && !empty($date))
+
+             if(!filter_var($image, FILTER_VALIDATE_URL) === true )
+             {
+                 $errors['image'] = "Votre url doit etre valide";
+             }
+
+             if(  empty( $date ) )
              {
                  $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
              }
 
-             if( empty($error) )
+
+             if( empty($errors) )
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
 
             $result = $event_manager->insert([
                     'title'     => $title,
                     'event'     => $event,
+                    'image'     => $image,
                     'date_time' => $date,
                     'user_id'   => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
                   ]);
 
-                 // var_dump($result);
+                 var_dump($result);
 
                   $message = ["L'evenement a bien etait enregistré"];
              }
