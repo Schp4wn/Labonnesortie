@@ -14,6 +14,7 @@ class EventController extends Controller
      **/
     public function create()
     {
+
         //$this->allow('admin');
 
         $title        = null ;
@@ -21,6 +22,7 @@ class EventController extends Controller
         $date         = null ;
         $hour         = null ;
         $image        = null ;
+
         $depart_text  = null ;
         $arrive_text  = null ;
         $message      = null ;
