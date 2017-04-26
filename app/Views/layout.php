@@ -27,7 +27,7 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<?php if ($w_user): ?>
-
+								<li <?= ($w_current_route == 'profil_index') ? 'class="active"' : '' ; ?>><a href="<?php echo $this->url('profil_index'); ?>"> Profil</a></li>
 							<?php else: ?>
 								<ul class="nav navbar-nav navbar-right">
 									<form class="" method="post">
