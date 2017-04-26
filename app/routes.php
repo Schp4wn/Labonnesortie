@@ -29,6 +29,9 @@
 		['GET|POST', '/way/update', 'Way#update', 'way_update'], //modifie un trajet
 		['GET|POST', '/way/delete', 'Way#delete', 'way_delete'], //supprime un trajet
 
+
 		//Dans le fichier je Crée le controller ProfilController
 		['GET|POST', '/profil/?[i:id]?'    , 'Profil#index', 'profil_index'], //affiche la page profil
+		['GET|POST', '/profile/changeInfos', 'security#changeInfos', 'security_changeInfos'], //affiche la page profil
+
 	);
