@@ -100,8 +100,7 @@ class EventController extends Controller
       *  Recupère tous les évènement
       *
      **/
-    public function index()
-    {
+    public function index(){
         // $this->allow(['admin' , 'user']);
 
         $event_manager = new EventsModel();
@@ -112,8 +111,7 @@ class EventController extends Controller
     /**
      * Edition d'un article
     */
-    public function update($id)
-    {
+    public function update($id){
         $title   = null ;
         $event   = null ;
         $date    = null ;
@@ -214,7 +212,7 @@ class EventController extends Controller
     $resp = json_decode($resp_json, true);
 
     // response status will be 'OK', if able to geocode given address
-    if($resp['status']=='OK'){
+    if ($resp['status'] === 'OK') {
 
         // get the important data
         $lati = $resp['results'][0]['geometry']['location']['lat'];
@@ -222,31 +220,52 @@ class EventController extends Controller
         $formatted_address = $resp['results'][0]['formatted_address'];
 
         // verify if data is complete
-        if($lati && $longi && $formatted_address){
+        if ($lati && $longi && $formatted_address) {
 
             // put the data in the array
             $data_arr = array();
-
-            array_push(
-                $data_arr,
-                    $lati,
-                    $longi,
-                    $formatted_address
-                );
+            array_push($data_arr, $lati, $longi, $formatted_address);
 
             return $data_arr;
-
-        }else{
-            return false;
         }
-
-    }else{
-        return false;
     }
-}
 
-public function trajet()
-{
+    return false;
+  }
+
+  public function trajet()
+  {
+      if(!empty($_POST)){
+
+          // get latitude, longitude and formatted address
+          $data_arr = $this->geocode($_POST['depart']);
+
+          // if able to geocode the address
+          if($data_arr){
+              $latitude = $data_arr[0];
+              $longitude = $data_arr[1];
+              $formatted_address = $data_arr[2];
+
+      }
+      var_dump($data_arr);
+      }
+
+      if(!empty($_POST)){
+
+          // get latitude, longitude and formatted address
+          $data_arr = $this->geocode($_POST['arrivee']);
+
+          // if able to geocode the address
+          if($data_arr){
+
+              $latitude = $data_arr[0];
+              $longitude = $data_arr[1];
+              $formatted_address = $data_arr[2];
+      }
+      var_dump($data_arr);
+      }
   $this->show('event/trajet');
-}
+  }
+
+
 }
