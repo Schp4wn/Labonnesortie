@@ -23,43 +23,38 @@
 						</button>
 						<a class="navbar-brand" href="<?php echo $this->url('default_frontPage'); ?>">La bonne sortie</a>
 					</div>
-
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<?php if ($w_user): ?>
-
-						<?php else: ?>
-							<ul class="nav navbar-nav form">
-								<form class="" method="post">
-									<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group">
-												<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
-											</div><!-- /input-group -->
-										</div><!-- /.col-lg-6 -->
-										<div class="col-lg-4">
-											<div class="form-group">
-												<input type="password" class="form-control" name="password" placeholder="Mot de passe">
-											</div><!-- /input-group -->
-										</div><!-- /.col-lg-6 -->
-										<div class="col-lg-4">
-											<div class="input-group">
-												<button class="btn" type="submit" name="button">Se connecter</button>
-											</div><!-- /input-group -->
-										</div><!-- /.col-lg-6 -->
-									</div><!-- /.row -->
-								</form>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="<?php echo $this->url('security_register'); ?>">Pas encore de compte ?</a></li>
-								<li><a href="<?php echo $this->url('security_forget'); ?>">Mot de passe oublié</a></li>
-							</ul>
-						<?php endif; ?>
-					</div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
-			</nav>
-		</header>
-	<?php endif; ?>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<?php if ($w_user): ?>
+								<li <?= ($w_current_route == 'profil_index') ? 'class="active"' : '' ; ?>><a href="<?php echo $this->url('profil_index'); ?>"> Profil</a></li>
+							<?php else: ?>
+								<ul class="nav navbar-nav navbar-right">
+									<form class="" method="post">
+										<div class="row">
+											<div class="col-lg-4">
+												<div class="form-group">
+													<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
+												</div><!-- /input-group -->
+											</div><!-- /.col-lg-6 -->
+											<div class="col-lg-4">
+												<div class="form-group">
+													<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+												</div><!-- /input-group -->
+											</div><!-- /.col-lg-6 -->
+											<div class="col-lg-4">
+												<div class="input-group">
+													<button class="btn" type="submit" name="button">Se connecter</button><p><a href="<?php echo $this->url('security_forget'); ?>">mot de passe oublié?</a></p>
+												</div><!-- /input-group -->
+											</div><!-- /.col-lg-6 -->
+										</div><!-- /.row -->
+									</form>
+								</ul>
+							<?php endif; ?>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
+			</header>
+		<?php endif; ?>
 
 		<section>
 			<?= $this->section('main_content') ?>

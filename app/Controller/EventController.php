@@ -8,18 +8,18 @@ use  Model\EventsModel;
 
 class EventController extends Controller
 {
-
     /**
       *  On creer un evenements
       *
      **/
-    public function create(){
+    public function create()
+    {
         //$this->allow('admin');
-
 
         $title        = null ;
         $event        = null ;
         $date         = null ;
+        $hour         = null ;
         $image        = null ;
         $depart_text  = null ;
         $arrive_text  = null ;
@@ -27,13 +27,14 @@ class EventController extends Controller
 
         if(!empty($_POST))
         {
-            $title = trim($_POST['title']);
-            $event = trim($_POST['event']);
-            $image = trim($_POST['image']);
-            $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
+            $title        = trim($_POST['title']);
+            $event        = trim($_POST['event']);
+            $image        = trim($_POST['image']);
+            $date         = date('Y-m-d' , strtotime( $_POST['date'] ));
+            $hour         = date('H:i' , strtotime( $_POST['hour'] ));
             $depart_text  = trim($_POST['depart_text']);
             $arrive_text  = trim($_POST['arrive_text']);
-
+//var_dump($date); die();
              $event_manager = new EventsModel();
 
              $errors=[];
@@ -47,8 +48,7 @@ class EventController extends Controller
              {
                  $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
              }
-
-             if(!filter_var($image, FILTER_VALIDATE_URL) === true )
+             if(!filter_var($image, FILTER_VALIDATE_URL) === true  )
              {
                  $errors['image'] = "Votre url doit etre valide";
              }
@@ -62,15 +62,18 @@ class EventController extends Controller
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
 
-            $result = $event_manager->insert([
-                    'title'     => $title,
-                    'event'     => $event,
-                    'image'     => $image,
-                    'date_time' => date('Y-m-d H:i:s' , strtotime( $_POST['date'] )),
-                    'user_id'    => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
-                  ]);
+                $result = $event_manager->insert([
+                        'title'      => $title,
+                        'event'      => $event,
+                        'depart_text'=> $depart_text ,
+                        'arrive_text'=> $arrive_text ,
+                        'image'      => $image,
+                        'date_time'  => date('Y-m-d ' , strtotime( $_POST['date'] )),
+                        'hour'       => date('H:i:s' , strtotime( $_POST['hour'] )),
+                        'user_id'    => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
+                    ]);
 
-                 //var_dump($result);
+                 var_dump($result);
 
                   $message = ["L'evenement a bien etait enregistré"];
              }
@@ -85,11 +88,9 @@ class EventController extends Controller
       *  Recupère un seul évènement
       *
      **/
-    public function view($id){
-
+    public function view($id)
+    {
         // $this->allow(['admin' , 'user']);
-
-
         $event_manager = new EventsModel();
 
         $event = $event_manager->find($id);
@@ -114,26 +115,34 @@ class EventController extends Controller
     */
     public function update($id)
     {
-        $title   = null ;
-        $event   = null ;
-        $date    = null ;
-        $depart_text  = null;
-        $arrive_text  = null;
-        $image   = null ;
+        $allowed = ['admin'];
+        //$this->allowTo('admin');
 
-        $message = null ;
-        // $this->allowTo(['admin', 'user']);
+        $title        = null ;
+        $event        = null ;
+        $date         = null ;
+        $hour         = null ;
+        $depart_text  = null ;
+        $arrive_text  = null ;
+        $image        = null ;
+        $message      = null ;
 
         $event_manager = new EventsModel();
         $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
 
+        if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
+            $allowed[] = 'user';
+        }
+        $this->allowTo($allowed);
+
         if (!empty($_POST)) {
-          $title = trim($_POST['title']);
-          $event = trim($_POST['event']);
-          $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
-          $image = trim($_POST['image']);
-          $depart_text  = trim($_POST['depart_text']);
-          $arrive_text  = trim($_POST['arrive_text']);
+          $title       = trim($_POST['title']);
+          $description = trim($_POST['event']);
+          $date        =   date('Y-m-d' , strtotime( $_POST['date'] ));
+          $hour        =   date('H:i:s' , strtotime( $_POST['hour'] ));
+          $image       =   trim($_POST['image']);
+          $depart_text = trim($_POST['depart_text']);
+          $arrive_text = trim($_POST['arrive_text']);
 
           $event_manager = new EventsModel();
 
@@ -146,7 +155,7 @@ class EventController extends Controller
           }
 
 
-          if( strlen($event) < 15 && !empty($title))
+          if( strlen($description) < 15 && !empty($description))
           {
               $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
           }
@@ -166,18 +175,32 @@ class EventController extends Controller
               $auth_manager = new \W\Security\AuthentificationModel();
 
          $result = $event_manager->update([
-                 'title'     => $title,
-                 'event'     => $event,
+                 'title'      => $title,
+                 'event'      => $description,
                  'depart_text'=> $depart_text,
                  'arrive_text'=> $arrive_text,
-                 'image'     => $image,
-                 'date_time' => date('Y-m-d H:i:s' , strtotime( $_POST['date'] ))
+                 'image'      => $image,
+                 'date_time'  => date('Y-m-d' , strtotime( $_POST['date'] )),
+                 'hour'       => date('H:i:s' , strtotime( $_POST['hour'] ))
                    // ici l'id de lutilisateur connecté $this->getuser()['id']
                ], $id);
 
               // var_dump($result);
 
                $message = ["L'evenement a bien etait enregistré"];
+
+              // var_dump($this->getUser()); die();
+
+                //si c'est un bien un user
+                if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
+                    $this->redirectToRoute('profil_index');
+                }
+                
+                //si cest un admin et quilest sur profil on le renvoi a profil
+                if (isset($_GET['redirect']) && $_GET['redirect'] == 'profil_index') {
+                    $this->redirectToRoute('profil_index');
+                }
+
                $this->redirectToRoute('event_index');
           }
           else{
@@ -194,6 +217,17 @@ class EventController extends Controller
     $event_manager = new EventsModel();
     $event_manager->delete($id); // ici on supprime l'article de la bdd
 
+    //si c'est un bien un user 
+    if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
+        $this->redirectToRoute('profil_index');
+    }
+    
+    //si cest un admin et quilest sur profil on le renvoi a profil
+    if (isset($_GET['redirect']) && $_GET['redirect'] == 'profil_index') {
+        $this->redirectToRoute('profil_index');
+    }
+
+
     $this->redirectToRoute('event_index');
     //var_dump($id);
   }
@@ -201,52 +235,52 @@ class EventController extends Controller
   // function to geocode address, it will return false if unable to geocode address
   public function geocode($address){
 
-    // url encode the address
-    $address = urlencode($address);
+        // url encode the address
+        $address = urlencode($address);
 
-    // google map geocode api url
-    $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+        // google map geocode api url
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
 
-    // get the json response
-    $resp_json = file_get_contents($url);
+        // get the json response
+        $resp_json = file_get_contents($url);
 
-    // decode the json
-    $resp = json_decode($resp_json, true);
+        // decode the json
+        $resp = json_decode($resp_json, true);
 
-    // response status will be 'OK', if able to geocode given address
-    if($resp['status']=='OK'){
+        // response status will be 'OK', if able to geocode given address
+        if($resp['status']=='OK'){
 
-        // get the important data
-        $lati = $resp['results'][0]['geometry']['location']['lat'];
-        $longi = $resp['results'][0]['geometry']['location']['lng'];
-        $formatted_address = $resp['results'][0]['formatted_address'];
+            // get the important data
+            $lati = $resp['results'][0]['geometry']['location']['lat'];
+            $longi = $resp['results'][0]['geometry']['location']['lng'];
+            $formatted_address = $resp['results'][0]['formatted_address'];
 
-        // verify if data is complete
-        if($lati && $longi && $formatted_address){
+            // verify if data is complete
+            if($lati && $longi && $formatted_address){
 
-            // put the data in the array
-            $data_arr = array();
+                // put the data in the array
+                $data_arr = array();
 
-            array_push(
-                $data_arr,
-                    $lati,
-                    $longi,
-                    $formatted_address
-                );
+                array_push(
+                    $data_arr,
+                        $lati,
+                        $longi,
+                        $formatted_address
+                    );
 
-            return $data_arr;
+                return $data_arr;
+
+            }else{
+                return false;
+            }
 
         }else{
             return false;
         }
-
-    }else{
-        return false;
     }
-}
 
-public function trajet()
-{
-  $this->show('event/trajet');
-}
+    public function trajet()
+    {
+    $this->show('event/trajet');
+    }
 }
