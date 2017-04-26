@@ -30,23 +30,23 @@ function changeTokenLogin($user_id) {
     return $token_login;
 }
 
-function checkUserByEmail($user_email) {
+  function checkUserByEmail($user_email) {
 
-    $query = $this->dbh->prepare('SELECT id FROM user WHERE email = :email');
-    $query->bindValue(':email', $user_email, PDO::PARAM_STR);
-    $query->execute();
-    return $query->fetchColumn();
-}
+      $query = $this->dbh->prepare('SELECT id FROM user WHERE email = :email');
+      $query->bindValue(':email', $user_email, PDO::PARAM_STR);
+      $query->execute();
+      return $query->fetchColumn();
+  }
 
-     public function getAllEventsByUser($id_user)
-    {
-                                    //lutilisateur          //l'évènement
-	  $sql = 'SELECT * FROM events WHERE user_id = ' . $id_user;
-      $sth = $this->dbh->prepare($sql);
-      $sth->execute();
+   public function getAllEventsByUser($id_user)
+  {
+                                  //lutilisateur          //l'évènement
+    $sql = ('SELECT * FROM events WHERE user_id = ' . $id_user);
+    $sth = $this->dbh->prepare($sql);
+    $sth->execute();
 
-      //die($sql);
+    //die($sql);
 
-      return $sth->fetchAll();
-    }
+    return $sth->fetchAll();
+  }
 }

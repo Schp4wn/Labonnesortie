@@ -27,7 +27,7 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<?php if ($w_user): ?>
 							<ul class="nav navbar-nav navbar-right to-profile">
-								<li><a href="<?php echo $this->url('default_profile'); ?>">Profil</a></li>
+								<li><a href="<?php echo $this->url('profil_index'); ?>">Profil</a></li>
 							</ul>
 						<?php else: ?>
 							<ul class="nav navbar-nav form">
