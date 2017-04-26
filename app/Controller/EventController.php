@@ -17,13 +17,19 @@ class EventController extends Controller
         //$this->allow('admin');
 
 
-        $title        = null ;
-        $event        = null ;
-        $date         = null ;
-        $image        = null ;
-        $depart_text  = null ;
-        $arrive_text  = null ;
-        $message      = null ;
+        $title           = null;
+        $event           = null;
+        $date            = null;
+        $image           = null;
+        $message         = null;
+        $depart          = null;
+        $depart_lat      = null;
+        $depart_long     = null;
+        $arrivee         = null;
+        $arrivee_lat     = null;
+        $arrivee_long    = null;
+        $arrivee_address = null;
+        $depart_address  = null;
 
         if(!empty($_POST))
         {
@@ -31,10 +37,14 @@ class EventController extends Controller
             $event = trim($_POST['event']);
             $image = trim($_POST['image']);
             $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
-            $depart_text  = trim($_POST['depart_text']);
-            $arrive_text  = trim($_POST['arrive_text']);
+            $depart  = trim($_POST['depart']);
+            $arrivee  = trim($_POST['arrivee']);
 
-             $event_manager = new EventsModel();
+            $event_manager = new EventsModel();
+            $coords = $this->setTrajet($depart, $arrivee);
+            var_dump($coords);
+            var_dump($coords['depart']);
+
 
              $errors=[];
 
@@ -58,6 +68,16 @@ class EventController extends Controller
                  $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
              }
 
+             if( strlen( $depart ) <= 3 || empty($depart) )
+             {
+                 $errors['depart'] = "L'addresse de départ doit comporter 3 caractères minimum.";
+             }
+
+             if( strlen( $arrivee ) <= 3 || empty($arrivee) )
+             {
+               $errors['arrivee'] = "L'addresse d'arrivée doit comporter 3 caractères minimum.";
+             }
+
              if( empty($errors) )
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
@@ -67,12 +87,24 @@ class EventController extends Controller
                     'event'     => $event,
                     'image'     => $image,
                     'date_time' => date('Y-m-d H:i:s' , strtotime( $_POST['date'] )),
-                    'user_id'    => $this->getUser()['id']  // ici l'id de lutilisateur connecté $this->getuser()['id']
-                  ]);
+                    'user_id'    => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
+                    'depart'     => $depart,
+                    'depart_lat'     => $coords['depart']['depart_lat'],
+                    'depart_long'     => $coords['depart']['depart_long'],
+                    'depart_address'     => $coords['depart']['depart_address'],
+                    'arrivee'     => $arrivee,
+                    'arrivee_lat'     => $coords['arrivee']['arrivee_lat'],
+                    'arrivee_long'     => $coords['arrivee']['arrivee_long'],
+                    'arrivee_address'     => $coords['arrivee']['arrivee_address']
 
+                  ]);
+                  var_dump($coords);
+                  var_dump($coords['depart']);
+                  var_dump($coords['depart']['depart_lat']);
                  //var_dump($result);
 
                   $message = ["L'evenement a bien etait enregistré"];
+
              }
              else{
                  $message = $errors ;
@@ -112,78 +144,105 @@ class EventController extends Controller
      * Edition d'un article
     */
     public function update($id){
-        $title   = null ;
-        $event   = null ;
-        $date    = null ;
-        $depart_text  = null;
-        $arrive_text  = null;
-        $image   = null ;
+      //$this->allow('admin');
 
-        $message = null ;
-        // $this->allowTo(['admin', 'user']);
 
-        $event_manager = new EventsModel();
-        $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
+      $title           = null;
+      $event           = null;
+      $date            = null;
+      $image           = null;
+      $message         = null;
+      $depart          = null;
+      $depart_lat      = null;
+      $depart_long     = null;
+      $arrivee         = null;
+      $arrivee_lat     = null;
+      $arrivee_long    = null;
+      $arrivee_address = null;
+      $depart_address  = null;
 
-        if (!empty($_POST)) {
+      if(!empty($_POST))
+      {
           $title = trim($_POST['title']);
           $event = trim($_POST['event']);
-          $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
           $image = trim($_POST['image']);
-          $depart_text  = trim($_POST['depart_text']);
-          $arrive_text  = trim($_POST['arrive_text']);
+          $date  = date('Y-m-d H:i:s' , strtotime( $_POST['date'] ));
+          $depart  = trim($_POST['depart']);
+          $arrivee  = trim($_POST['arrivee']);
+
 
           $event_manager = new EventsModel();
-
-          $errors=[];
-
-
-          if( strlen($title) < 3 || empty($title) )
-          {
-              $errors['title'] = "Le titre doit comporter 3 caractères minimum.";
-          }
+          $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
+          $coords = $this->setTrajet($depart, $arrivee);
+          var_dump($coords);
+          var_dump($coords['depart']);
 
 
-          if( strlen($event) < 15 && !empty($title))
-          {
-              $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
-          }
-          if(!is_numeric(strtotime($_POST['date']) )  && !empty($date))
+           $errors=[];
 
-          {
-              $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
-          }
+           if( strlen( $title ) < 3 || empty($title) )
+           {
+               $errors['title'] = "Le titre doit comporter 3 caractères minimum.";
+           }
 
-         if(!filter_var($image, FILTER_VALIDATE_URL) === true )
-         {
-             $errors['image'] = "Votre url doit etre valide";
-         }
+           if( strlen( $event ) < 15 || empty($event))
+           {
+               $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
+           }
 
-          if( empty($error) )
-          {
-              $auth_manager = new \W\Security\AuthentificationModel();
+           if(!filter_var($image, FILTER_VALIDATE_URL) === true )
+           {
+               $errors['image'] = "Votre url doit etre valide";
+           }
 
-         $result = $event_manager->update([
-                 'title'     => $title,
-                 'event'     => $event,
-                 'depart_text'=> $depart_text,
-                 'arrive_text'=> $arrive_text,
-                 'image'     => $image,
-                 'date_time' => date('Y-m-d H:i:s' , strtotime( $_POST['date'] ))
-                   // ici l'id de lutilisateur connecté $this->getuser()['id']
-               ], $id);
+           if(  empty( $date ) )
+           {
+               $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
+           }
 
-              // var_dump($result);
+           if( strlen( $depart ) <= 3 || empty($depart) )
+           {
+               $errors['depart'] = "L'addresse de départ doit comporter 3 caractères minimum.";
+           }
 
-               $message = ["L'evenement a bien etait enregistré"];
-               $this->redirectToRoute('event_index');
-          }
-          else{
-              $message = $errors ;
-          }
-        }
+           if( strlen( $arrivee ) <= 3 || empty($arrivee) )
+           {
+             $errors['arrivee'] = "L'addresse d'arrivée doit comporter 3 caractères minimum.";
+           }
 
-        $this->show('event/update' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
+           if( empty($errors) )
+           {
+               $auth_manager = new \W\Security\AuthentificationModel();
+
+          $result = $event_manager->update([
+                  'title'     => $title,
+                  'event'     => $event,
+                  'image'     => $image,
+                  'date_time' => date('Y-m-d H:i:s' , strtotime( $_POST['date'] )),
+                  'user_id'    => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
+                  'depart'     => $depart,
+                  'depart_lat'     => $coords['depart']['depart_lat'],
+                  'depart_long'     => $coords['depart']['depart_long'],
+                  'depart_address'     => $coords['depart']['depart_address'],
+                  'arrivee'     => $arrivee,
+                  'arrivee_lat'     => $coords['arrivee']['arrivee_lat'],
+                  'arrivee_long'     => $coords['arrivee']['arrivee_long'],
+                  'arrivee_address'     => $coords['arrivee']['arrivee_address']
+
+                ], $id);
+                var_dump($coords);
+                var_dump($coords['depart']);
+                var_dump($coords['depart']['depart_lat']);
+               //var_dump($result);
+
+                $message = ["L'evenement a bien etait enregistré"];
+
+           }
+           else{
+               $message = $errors ;
+           }
+      }
+      $this->show('event/update' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
     }
 
     //on recupere l'id de l'article avec l'url pour le supprimer
@@ -233,39 +292,99 @@ class EventController extends Controller
     return false;
   }
 
-  public function trajet()
-  {
-      if(!empty($_POST)){
 
-          // get latitude, longitude and formatted address
-          $data_arr = $this->geocode($_POST['depart']);
+  public function setTrajet($depart = null, $arrivee = null) {
+    $arrivee_coord = $this->geocode($_POST['arrivee']);
+    $depart_coord = $this->geocode($_POST['depart']);
+    $tableau = [
+      'depart' => [
+        'depart_lat'     => $depart_coord[0],
+        'depart_long'     => $depart_coord[1],
+        'depart_address' => $depart_coord[2]
 
-          // if able to geocode the address
-          if($data_arr){
-              $latitude = $data_arr[0];
-              $longitude = $data_arr[1];
-              $formatted_address = $data_arr[2];
+      ],
+      'arrivee' => [
+        'arrivee_lat' => $arrivee_coord[0],
+        'arrivee_long'  => $arrivee_coord[1],
+        'arrivee_address' => $arrivee_coord[2]
 
-      }
-      var_dump($data_arr);
-      }
+      ]
+    ];
+    return $tableau;
 
-      if(!empty($_POST)){
-
-          // get latitude, longitude and formatted address
-          $data_arr = $this->geocode($_POST['arrivee']);
-
-          // if able to geocode the address
-          if($data_arr){
-
-              $latitude = $data_arr[0];
-              $longitude = $data_arr[1];
-              $formatted_address = $data_arr[2];
-      }
-      var_dump($data_arr);
-      }
-  $this->show('event/trajet');
   }
+
+  // public function trajet(){
+  //
+  //   $depart = null;
+  //   $depart_lat = null;
+  //   $depart_long = null;
+  //   $arrivee = null;
+  //   $arrivee_lat = null;
+  //   $arrivee_long = null;
+  //
+  //   $event_manager = new EventsModel();
+  //    $errors=[];
+  //     if(!empty($_POST)){
+  //       // get latitude, longitude and formatted address
+  //       $depart_coord = $this->geocode($_POST['depart']);
+  //       $depart = trim($_POST['depart']);
+  //       $arrivee_coord = $this->geocode($_POST['arrivee']);
+  //       $arrivee = trim($_POST['arrivee']);
+  //
+  //       // if able to geocode the address
+  //         if($depart_coord){
+  //         $depart_lat = $depart_coord[0];
+  //         $depart_long = $depart_coord[1];
+  //         $depart_address = $depart_coord[2];
+  //
+  //           var_dump($depart_coord);
+  //         }
+  //
+  //         // if able to geocode the address
+  //         if($arrivee_coord){
+  //
+  //           $arrivee_lat = $arrivee_coord[0];
+  //           $arrivee_long  = $arrivee_coord[1];
+  //           $arrive_address = $arrivee_coord[2];
+  //
+  //           var_dump($arrivee_coord);
+  //         }
+  //         if( strlen( $depart ) <= 3 || empty($depart) )
+  //         {
+  //             $errors['depart'] = "L'addresse de départ doit comporter 3 caractères minimum.";
+  //         }
+  //         if( strlen( $arrivee ) <= 3 || empty($arrivee) )
+  //         {
+  //           $errors['arrivee'] = "L'addresse d'arrivée doit comporter 3 caractères minimum.";
+  //         }
+  //         if( empty($errors) )
+  //         {
+  //             $auth_manager = new \W\Security\AuthentificationModel();
+  //
+  //             $result = $event_manager->insert([
+  //                'depart'     => $depart,
+  //                'depart_lat'     => $depart_lat,
+  //                'depart_long'     => $depart_long,
+  //                'arrivee'     => $arrivee,
+  //                'arrivee_lat'     => $arrivee_lat,
+  //                'arrivee_long'     => $arrivee_long
+  //              ]);
+  //
+  //             //var_dump($result);
+  //
+  //              $message = ["L'evenement a bien etait enregistré"];
+  //         }
+  //         else{
+  //             $message = $errors ;
+  //         }
+  //
+  //
+  //
+  //   }
+  //
+  // $this->show('event/trajet');
+  // }
 
 
 }

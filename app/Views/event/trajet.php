@@ -4,13 +4,13 @@
 
 <form action="" method="post">
 
-    <input type='text' name='depart' placeholder='Enter any address here' />
-    <input type='text' name='arrivee' placeholder='Enter any address here' />
+    <input type='text' name='depart' placeholder="Entrez une addresse de départ" />
+    <input type='text' name='arrivee' placeholder="Entrez une addresse de d\'arrive" />
     <input type='submit' value='Geocode!' />
 
 </form>
-<?php
 
-var_dump($_POST);
- ?>
+
+
+
 <?php $this->stop('main_content'); ?>

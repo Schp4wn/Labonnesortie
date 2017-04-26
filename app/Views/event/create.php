@@ -31,12 +31,12 @@
     </div>
     <hr>
     <div class="form-group">
-      <label for="">Départ :</label>
-      <input type="text" class="form-control" name="depart_text">
+      <label for="depart">Départ :</label>
+      <input type='text' name='depart' class="form-control" placeholder="Entrez une addresse de départ" />
     </div>
     <div class="form-group">
-      <label for="">Arrivée :</label>
-      <input type="text" class="form-control" name="arrive_text">
+      <label for="arrivee">Arrivée :</label>
+      <input type='text' name='arrivee' class="form-control" placeholder="Entrez une addresse de d\'arrive" />
     </div>
 
     <button id="publie" type="submit" class="btn btn-default">Publier larticle</button>
