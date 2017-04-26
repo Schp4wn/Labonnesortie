@@ -181,4 +181,30 @@ class SecurityController extends Controller
         }
         $this->show('security/forget');
       }
-}
+
+  public function changeInfos()
+  {
+
+    // $user_manager = new UserModel();
+    //
+    // $user = $user_manager->find($id);
+
+    // $this->show('security/changeInfos', ['user' => $user]);
+
+    $this->show('security/changeInfos');
+
+  }
+
+  // public function view($id)
+  // {
+  //
+  //   // J'instancie la classe pour gérer mes articles en BDD
+  //   $article_manager = new ArticleModel();
+  //
+  //   // Va chercher l'article grâce à son ID
+  //   $article = $article_manager->find($id);
+  //
+  //   $this->show('article/view', ['article' => $article]);
+  // }
+
+} //class SecurityController
