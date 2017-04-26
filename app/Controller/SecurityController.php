@@ -79,6 +79,7 @@ class SecurityController extends Controller
     */
     public function login()
     {
+
         if (!empty($_POST)) {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -93,33 +94,33 @@ class SecurityController extends Controller
             }
         }
 
-        // J'instancie la classe pour gérer mes messages en BDD
-        $message_manager = new MessagesModel();
-
-        // Je récupére tous les messages en BDD (SELECT * FROM messages)
-        $messages = $message_manager->findAll();
-
-        if (!empty($_POST)) {
-          $message = $_POST['message'];
-          // $publish_datetime = $_POST['publish_datetime'];
-
-          $error = [];
-
-          if (empty($message)) {
-            $error['message'] = 'Le message est vide';
-          }
-          var_dump($message);
-          if (empty($error)) {
-
-          $message_manager->insert(['content' => $message]);
-
-        }
+        // // J'instancie la classe pour gérer mes messages en BDD
+        // $message_manager = new MessagesModel();
+        //
+        // // Je récupére tous les messages en BDD (SELECT * FROM messages)
+        // $messages = $message_manager->findAll();
+        //
+        // if (!empty($_POST)) {
+        //   $message = $_POST['message'];
+        //   // $publish_datetime = $_POST['publish_datetime'];
+        //
+        //   $error = [];
+        //
+        //   if (empty($message)) {
+        //     $error['message'] = 'Le message est vide';
+        //   }
+        //   var_dump($message);
+        //   if (empty($error)) {
+        //
+        //   $message_manager->insert(['content' => $message]);
+        //
+        // }
 
 
         // var_dump($this->getUser());
-    }
+    // }
     // J'injecte la variable messages dans ma vue
-    $this->show('default/frontPage', ['messages' => $messages]);
+    $this->show('default/frontPage');
   }
 
     /**
