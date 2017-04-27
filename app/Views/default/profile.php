@@ -25,7 +25,7 @@
         );
         echo $intl->format($datetime);
         ?> </p>
-        <a class="btn btn-primary" href="<?= $this->url('event_update' , ['id' => $event['id'] ] ) ?>?redirect=profil_index">Modifier</a>
+        <a class="btn btn-primary" href="<?= $this->url('event_update' , ['id' => $event['id'] ] ) ?>?redirect=default_profile">Modifier</a>
         <a class="btn btn-danger"  href="<?= $this->url('event_delete', ['id' => $event['id'] ] )?>">Suprimer</a>
         <?php } ?>
 

@@ -178,7 +178,7 @@ class EventController extends Controller
           $description    = trim($_POST['event']);
           $image    = trim($_POST['image']);
           $date     = date('Y-m-d' , strtotime( $_POST['date'] ));
-          $hour     =   date('H:i:s' , strtotime( $_POST['hour'] ));
+          $hour     = date('H:i:s' , strtotime( $_POST['hour'] ));
           $depart   = trim($_POST['depart']);
           $arrivee  = trim($_POST['arrivee']);
 
@@ -249,12 +249,12 @@ class EventController extends Controller
 
                 //si c'est un bien un user
                 if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
-                  $this->redirectToRoute('profil_index');
+                  $this->redirectToRoute('default_profile');
                 }
 
                 //si cest un admin et quilest sur profil on le renvoi a profil
-                if (isset($_GET['redirect']) && $_GET['redirect'] == 'profil_index') {
-                  $this->redirectToRoute('profil_index');
+                if (isset($_GET['redirect']) && $_GET['redirect'] == 'default_profile') {
+                  $this->redirectToRoute('default_profile');
                 }
            }
            else{

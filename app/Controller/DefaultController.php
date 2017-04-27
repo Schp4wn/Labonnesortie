@@ -23,7 +23,7 @@ class DefaultController extends Controller
 	public function profile()
 	{
 
-   //ici on doit afficher les evenement lié a un utilisateur ici celui qui est connecté
+   //ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
 		//si lutilisateur n'a pas d'evenement message de empty evenement
 
 		$user_manager = new UserModel();

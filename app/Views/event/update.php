@@ -38,7 +38,7 @@
               <div class="form-group <?= (isset($message['hour'])) ? 'has-error' : ''?>">
                 <label for="hour">Heure :</label>
                 <input type="time"  class="form-control" value="<?= $event['hour']; ?>" name="hour" placeholder="Heure:Min">
-            <?= (isset($message['date_time'])) ? '<span class="help-block">'.$message['hour'].' .</span>'  : '' ?>
+            <?= (isset($message['hour'])) ? '<span class="help-block">'.$message['hour'].' .</span>'  : '' ?>
             </div>
 
             <div class="form-group <?= (isset($message['image'])) ? 'has-error' : ''?>">
@@ -68,8 +68,8 @@
         ?>
 
         <?php
-            if (isset($message['success']) {
-                    echo '<h1 class="text-success">' . $mess . '</h1>';      
+            if (isset($message['success'])) {
+                    echo '<h1 class="text-success">' . $mess . '</h1>';
             }
         ?>
     </div>

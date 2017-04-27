@@ -80,7 +80,7 @@ class SecurityController extends Controller
     public function login()
     {
 
-        if (!empty($_POST)) {
+        if (isset($_POST['button-login'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
             $auth_manager = new \W\Security\AuthentificationModel();
@@ -94,33 +94,33 @@ class SecurityController extends Controller
             }
         }
 
-        // // J'instancie la classe pour gérer mes messages en BDD
-        // $message_manager = new MessagesModel();
-        //
-        // // Je récupére tous les messages en BDD (SELECT * FROM messages)
-        // $messages = $message_manager->findAll();
-        //
-        // if (!empty($_POST)) {
-        //   $message = $_POST['message'];
-        //   // $publish_datetime = $_POST['publish_datetime'];
-        //
-        //   $error = [];
-        //
-        //   if (empty($message)) {
-        //     $error['message'] = 'Le message est vide';
-        //   }
-        //   var_dump($message);
-        //   if (empty($error)) {
-        //
-        //   $message_manager->insert(['content' => $message]);
-        //
-        // }
+        // TCHAT //
+
+        // J'instancie la classe pour gérer mes messages en BDD
+        $message_manager = new MessagesModel();
+
+        // Je récupére tous les messages en BDD (SELECT * FROM messages)
+        $messages = $message_manager->findAll();
+
+        if (isset($_POST['button-tchat'])) {
+          $message = $_POST['message'];
+
+          $errors = [];
+
+          if (empty($message)) {
+            $errors['message'] = 'Le message est vide';
+          }
+
+          if (empty($errors)) {
+
+          $message_manager->insert(['content' => $message]);
+        }
 
 
         // var_dump($this->getUser());
-    // }
+    }
     // J'injecte la variable messages dans ma vue
-    $this->show('default/frontPage');
+    $this->show('default/frontPage', ['messages' => $messages]);
   }
 
     /**
@@ -175,7 +175,7 @@ class SecurityController extends Controller
               $user_manager->changeUserPassword( $this->getUser()['id'], $password);   // a la base $user_id['id']
               // Renvoyer un mail
             }
-            var_dump($user_manager);
+            // var_dump($user_manager);
           } else {
             echo "Le token a expiré ou n'existe pas.";
           }
@@ -183,29 +183,84 @@ class SecurityController extends Controller
         $this->show('security/forget');
       }
 
-  public function changeInfos()
+  public function changeInfos($id = '')
   {
 
-    // $user_manager = new UserModel();
-    //
-    // $user = $user_manager->find($id);
+    // Changer l'email
 
-    // $this->show('security/changeInfos', ['user' => $user]);
+    $user_manager = new UserModel();
 
-    $this->show('security/changeInfos');
+		$profil = $user_manager->find($this->getUser()['id']);
+
+    $errors = [];
+    $message = null;
+
+    // Traitement du formulaire pour changer l'email; $_POST['button-email'] vient du name dans l'HTML pour différencier les deux formulaires
+    if (isset($_POST['button-email'])) {
+      $id = $profil['id'];
+      $email = trim($_POST['email']);
+
+      // Vérification du champ email
+      if ( $user_manager->emailExists($email) ) {
+          $errors['email'] = "Lemail existe deja";
+      }
+      if (empty($email)) {
+          $errors['email'] = "L'email est vide";
+      }
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL) ){
+          $errors['email'] = "L'email est invalide";
+      }
+
+      if(empty($errors)){
+
+        //si il n'y a pas d'erreur j'utilise la méthode update créée par le framework et je définis que la variable $profil vaut l'update
+        $profil = $user_manager->update(['email' => $email], $id);
+
+        $message = ["Votre email a été mis à jour"];
+      }
+      else {
+        $message = $errors;
+      }
+    }
+
+
+    // Changer le mot de passe
+
+    // J'instancie la classe pour gérer mes users en BDD
+    $user_manager = new UserModel();
+
+    $profil = $user_manager->find($this->getUser()['id']);
+
+    $errors = [];
+    $password  = null;
+    $message   = null;
+
+    // Traitement du formulaire pour changer le mot de passe; $_POST['button-password'] vient du name dans l'HTML pour différencier les deux formulaires
+    if (isset($_POST['button-password'])) {
+      $id = $profil['id'];
+      $password   = trim($_POST['password']);
+      $cfpassword = trim($_POST['cfpassword']);
+
+      if ( $password != $cfpassword ) {
+        $errors['password'] = "Les mots de passe ne correspondent pas";
+      }
+
+      // S'il n'y a pas d'erreurs on change le mot de passe de l'utilisateur
+      if(empty($errors)) {
+        $auth_manager = new \W\Security\AuthentificationModel();
+        $user_manager->update(['password' => $auth_manager->hashPassword($password)], $id);
+
+        $message = ["Vous etes bien inscris"];
+      }
+      else {
+        $message = $errors;
+      }
+
+    }
+
+    // var_dump($_POST['email']);
+		$this->show('security/changeInfos', ['profil' => $profil, 'message' => $message]);
 
   }
-
-  // public function view($id)
-  // {
-  //
-  //   // J'instancie la classe pour gérer mes articles en BDD
-  //   $article_manager = new ArticleModel();
-  //
-  //   // Va chercher l'article grâce à son ID
-  //   $article = $article_manager->find($id);
-  //
-  //   $this->show('article/view', ['article' => $article]);
-  // }
 
 } //class SecurityController

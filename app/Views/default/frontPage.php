@@ -43,6 +43,23 @@
     </div>
 
     </div><!-- /.row -->
+
+    <div class="col-lg-4">
+      <h3 class="text-center">Postez votre message</h3>
+      <hr>
+      <ul class="message-from-tchat">
+        <?php foreach ($messages as $message): ?>
+          <?= "<li>" .$message['content']."</li>"; ?>
+        <?php endforeach; ?>
+      </ul>
+      <form id="addMessage" action="" method="post">
+        <div class="input-group">
+          <span class="input-group-btn">
+          <textarea name="message" class="form-control"></textarea>
+          <button type="submit" name="button-tchat" class="btn btn-success">Envoyer le message</button>
+       </div>
+      <form>
+    </div><!-- /.col-lg-4 -->
   </div><!-- /.container-fluid -->
 </div><!-- /#frontPage -->
     <div class="sidebar-panel" style="min-height: 1181px;">
