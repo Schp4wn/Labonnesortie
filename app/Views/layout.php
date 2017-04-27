@@ -64,7 +64,6 @@
 			</nav>
 		</header>
 	<?php endif; ?>
->>>>>>> Changement du mail et du mot de passe
 
 		<section>
 			<?= $this->section('main_content') ?>

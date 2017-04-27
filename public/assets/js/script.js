@@ -17,7 +17,7 @@ window.onload = function () {
       // on change les paramètres de la carte
       $('.carte').addClass('liste');
 
-      $('.ville.'  nom).show();
+      $('.ville.' + nom).show();
 
       ville = nom;
     }
