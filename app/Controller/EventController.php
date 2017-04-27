@@ -120,7 +120,7 @@ class EventController extends Controller
      **/
     public function view($id)
     {
-        // $this->allow(['admin' , 'user']);
+        //$this->allow(['admin' , 'user']);
         $event_manager = new EventsModel();
         $event = $event_manager->find($id);
         $this->show('event/view' , ['event'=> $event]);
@@ -132,10 +132,11 @@ class EventController extends Controller
      **/
     public function index()
     {
-        // $this->allow(['admin' , 'user']);
-
+        $this->allowTo('admin');
+        //redirection a une pages d'erreur si on on n'est pas admin
+       
         $event_manager = new EventsModel();
-        $events =  $event_manager->findAll();
+        $events        =  $event_manager->findAll();
         $this->show('event/index' , ['events' => $events]);
     }
 
@@ -172,7 +173,7 @@ class EventController extends Controller
 
       $this->allowTo($allowed);
 
-      if(!empty($_POST))
+      if( !empty($_POST) )
       {
 
 
@@ -241,15 +242,15 @@ class EventController extends Controller
                   'arrivee_lat'    => $coords['arrivee']['arrivee_lat'],
                   'arrivee_long'   => $coords['arrivee']['arrivee_long'],
                   'arrivee_address'=> $coords['arrivee']['arrivee_address']
-
+ 
                 ], $id);
 
-                var_dump($coords);
-                var_dump($coords['depart']);
-                var_dump($coords['depart']['depart_lat']);
+                //var_dump($coords);
+                //var_dump($coords['depart']);
+                //var_dump($coords['depart']['depart_lat']);
                //var_dump($result);
 
-                $message = ["success" => "L'evenement a bien etait enregistré"];
+                $message = ["success" => "L'evenement a bien etait modifié"];
 
                 //si c'est un bien un user
                 if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']

@@ -3,8 +3,9 @@
 <?php $this->start('main_content') ?>
   <div class="container-fluid">
     <h1>Profil : <?= $w_user['firstname'];?>  <?= $w_user['lastname']; ?></h1>
-
+ <?php //var_dump($w_user['role']); ?>
     <div class="row">
+    
       <div class="col-md-6 col-md-push-3">
         <?php if(isset($profil_event)) {  ?>
         <?php foreach( $profil_event as $event) { ?>
@@ -27,6 +28,7 @@
         ?> </p>
         <a class="btn btn-primary" href="<?= $this->url('event_update' , ['id' => $event['id'] ] ) ?>?redirect=default_profile">Modifier</a>
         <a class="btn btn-danger"  href="<?= $this->url('event_delete', ['id' => $event['id'] ] )?>">Suprimer</a>
+        <a class="btn btn-success"  href="<?= $this->url('event_view', ['id' => $event['id'] ] )?>">lire l'article</a>
         <?php } ?>
 
         <?php }
@@ -37,17 +39,18 @@
 
       <div class="col-md-3  col-md-push-3">
         <div class="list-group">
-          <a href="<?= $this->url('default_profile'); ?>" class="list-group-item">Mes événements</a>
-          <a href="#" class="list-group-item">Mes trajets</a>
-          <a href="<?= $this->url('security_changeInfos'); ?>" class="list-group-item">Changer mes informations</a>
-          <a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Déconnexion</a>
+            <a href="<?= $this->url('event_create'); ?>" class="list-group-item">Ajouter un évènement</a>
+            <a href="#" class="list-group-item">Mes trajets</a>
+            <a href="<?= $this->url('security_changeInfos'); ?>" class="list-group-item">Changer mes informations</a>
+            <a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Déconnexion</a>
         </div>
       </div>
+
     </div>  <!-- row -->
   </div> <!-- container-fluid -->
 
 
-  <?php var_dump($w_user['role']); ?>
-  <?php var_dump( $profil_event );?>
+ 
+  <?php// var_dump( $profil_event );?>
 
 <?php $this->stop('main_content'); ?>

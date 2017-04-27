@@ -20,18 +20,12 @@
 		['GET|POST', '/event/create'       , 'Event#create', 'event_create'], //add un evenement*
 		['GET|POST', '/event/update/[i:id]', 'Event#update', 'event_update'], //modifie un evenement
 		['GET|POST', '/event/delete/[i:id]', 'Event#delete', 'event_delete'], //supprime un evenement
-		['GET|POST', '/event/trajet', 'Event#trajet', 'event_trajet'], //ajoute un trajet
+		['GET|POST', '/event/trajet'       , 'Event#trajet', 'event_trajet'], //ajoute un trajet
 		['GET|POST', '/event/[i:id]'       ,  'Event#view' , 'event_view'  ], //affiche un seule event precis (avec l'id)
 
-		//Dans le fichier je Crée le controller WayController
-		['GET|POST', '/way'       , 'Way#index' , 'way_index' ], //afficher un trajet
-		['GET|POST', '/way/create', 'Way#create', 'way_create'], //add un trajet
-		['GET|POST', '/way/update', 'Way#update', 'way_update'], //modifie un trajet
-		['GET|POST', '/way/delete', 'Way#delete', 'way_delete'], //supprime un trajet
-
-
 		//Dans le fichier je Crée le controller ProfilController
-		['GET|POST', '/profile/?[i:id]?'    , 'Default#profile', 'default_profile'], //affiche la page profil
-		['GET|POST', '/profile/changeInfos', 'security#changeInfos', 'security_changeInfos'], //affiche la page profil
+		['GET|POST', '/profile/?[i:id]?'   , 'Default#profile'     , 'default_profile'], //affiche la page profil
+		['GET|POST', '/profile/changeInfos', 'Security#changeInfos', 'security_changeInfos'], //affiche la page profil
+
 
 	);

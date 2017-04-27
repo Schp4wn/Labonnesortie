@@ -30,7 +30,12 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<?php if ($w_user): ?>
 							<ul class="nav navbar-nav navbar-right to-profile">
-								<li><a href="<?php echo $this->url('default_profile'); ?>">Profil</a></li>
+								<?php if($w_user['role'] === 'user') : ?>
+									<li><a href="<?php echo $this->url('default_profile'); ?>">Profil</a></li>
+								<?php elseif($w_user['role'] === 'admin'): ?>
+									<li><a href="<?php echo $this->url('security_logout'); ?>">Deconnecxion</a></li>
+									<li><a href="<?php echo $this->url('event_index'); ?>"><p class="text-warning">Profil (admin)</p></a></li>
+								 <?php  endif; ?>
 							</ul>
 						<?php else: ?>
 							<ul class="nav navbar-nav form">
@@ -69,10 +74,17 @@
 			<?= $this->section('main_content') ?>
 		</section>
 
+		<div class="footer">
+				<div class="container">
+				</div><!-- /.container-fluid -->
+		</div>
+
 		<footer>
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY&callback=initMap" type="text/javascript"></script>
+			<?= $this->section('javascript') ?> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY-->
 		</footer>
 	</div>
 </body>

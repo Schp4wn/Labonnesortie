@@ -2,18 +2,19 @@
 
 <?php $this->start('main_content'); ?>
 
-    <h1>Modifier un evenement</h1>
+   
 
     <div class="container">
+     <h1>Modifier un evenement</h1>
         <div>
             <?php if($w_user) : ?>
-                <a href="<?php echo $this->url('event_index') ?>">< Revenir à la liste des articles</a>
+                <!--<a href="<?php //echo $this->url('event_index') ?>">< Revenir à la liste des articles</a>-->
             <?php else : ?>
 
             <?php endif; ?>
 
         </div>
-<?php var_dump($w_user);?>
+    <?php // var_dump($w_user);?>
         <form method="POST" action="">
 
             <div class="form-group <?= (isset($message['title'])) ? 'has-error' : ''?>">
@@ -64,12 +65,12 @@
         </form>
 
         <?php
-            var_dump($event);
+           // var_dump($event);
         ?>
 
         <?php
             if (isset($message['success'])) {
-                    echo '<h1 class="text-success">' . $mess . '</h1>';
+                    echo '<h1 class="text-success">' . $message['success'] . '</h1>';
             }
         ?>
     </div>

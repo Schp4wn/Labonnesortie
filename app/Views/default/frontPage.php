@@ -19,6 +19,7 @@
               <img data-u="image" src="<?= $this->assetUrl('img/slider/create-event.jpg') ?>" />
               <div style="position:absolute;top:30px;left:30px;width:480px;height:120px;z-index:0;font-size:50px;color:#ffffff;line-height:60px;">CREEZ VOS EVENEMENTS</div>
               <div style="position:absolute;top:300px;right:30px;width:480px;height:120px;z-index:0;font-size:30px;color:#ffffff;line-height:38px;">Vous avez la possibilité de créez vos événements ainsi que de retrouver tous ceux auxquels vous participez</div>
+
             </div>
               <div>
                 <!-- Second slider -->

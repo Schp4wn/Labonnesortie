@@ -50,7 +50,7 @@ class SecurityController extends Controller
                     $errors['password'] = "Les mots de passe ne correspondent pas";
                 }
 
-            if(empty($errors)){
+            if( empty($errors) ){
                 $auth_manager = new \W\Security\AuthentificationModel();
                   //si il n'y a pas d'erreur on inscrit lutilisateur en bdd
                   $user_manager->insert([
@@ -64,7 +64,7 @@ class SecurityController extends Controller
 
                   ]);
 
-                  $message = ["Vous etes bien inscris"];
+                  $message['success'] = "Vous etes bien inscris.";
             }else{
 
                 $message = $errors;
