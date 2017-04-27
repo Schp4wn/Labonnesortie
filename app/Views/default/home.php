@@ -9,10 +9,10 @@
 								<p>Nous recensons toutes les sorties organiser dans le Nord est le Pas de Calais de la france !</p>
 								<ul class="list-inline cta-list">
 										<li class="list-inline-item">
-												<a href="<?= $this->url('default_frontPage')?>" class="btn btn-primary page-scroll-demo">Voir nos évènement !</a>
-										</li>
-										<li class="list-inline-item">
-												<a href="#previews" class="btn btn-primary page-scroll-demo"  id="puce">Plus d'infos</a>
+												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">
+											  <span class="hover-bg reset">
+											    <span class="hover-text reset"><img src="<?= $this->assetUrl('img/moto.gif')?>" alt="" id="moto"></span>
+											  </span>Voir Tous Nos Evénements</a>
 										</li>
 									</ul>
 								<div class="container pt-2 col-md-12" id="previews">
@@ -23,11 +23,11 @@
 													      <div class="contenu article">
 													        <div class="conteneur-carte-coordonnees">
 													          <div class="carte"><img src="<?= $this->assetUrl('img/carte-npdc.png')?>" width="400" height="258" border="0">
-													            <p class="dunkerque"><a href="javascript:showVille('dunkerque')" title="centre de Dunkerque">Dunkerque</a></p>
-													            <p class="lille"><a href="javascript:showVille('lille')" title="centres de Lille">Lille</a></p>
-													            <p class="maubeuge"><a href="javascript:showVille('maubeuge')" title="centre de Maubeuge">Maubeuge</a></p>
-													            <p class="valenciennes"><a href="javascript:showVille('valenciennes')" title="centre de Valenciennes">Valenciennes</a></p>
-													            <p class="bethune"><a href="javascript:showVille('bethune')" title="centre de Béthune">Béthune</a></p>
+													            <p class="dunkerque"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Dunkerque">Dunkerque</a></p>
+													            <p class="lille"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Lille">Lille</a></p>
+													            <p class="maubeuge"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Maubeuge">Maubeuge</a></p>
+													            <p class="valenciennes"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Valenciennes">Valenciennes</a></p>
+													            <p class="bethune"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Béthune">Béthune</a></p>
 													          </div>
 													        </div>
 													      </div><br/><br/>
