@@ -141,9 +141,8 @@ class EventController extends Controller
      **/
     public function index()
     {
-        //$this->allowTo('admin');
+        $this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
-
 
         $event_manager = new EventsModel();
         $user_manager = new UserModel();
@@ -185,11 +184,8 @@ class EventController extends Controller
       }
 
       $this->allowTo($allowed);
-
-      if( !empty($_POST) )
+      if(!empty($_POST))
       {
-
-
           $title       = trim($_POST['title']);
           $description = trim($_POST['event']);
           $image       = trim($_POST['image']);
@@ -197,7 +193,6 @@ class EventController extends Controller
           $hour        =   date('H:i:s' , strtotime( $_POST['hour'] ));
           $depart      = trim($_POST['depart']);
           $arrivee     = trim($_POST['arrivee']);
-
 
           if (!empty($_POST['depart']) && !empty($_POST['arrivee'])) {
             $coords = $this->setTrajet($depart, $arrivee);
@@ -265,7 +260,6 @@ class EventController extends Controller
                 //si c'est un bien un user
                 if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
                   $this->redirectToRoute('default_profile');
-
                 }
 
                 //si cest un admin et quilest sur profil on le renvoi a profil
@@ -408,8 +402,5 @@ class EventController extends Controller
         var_dump($temps_dist);
     }
   }
-
-
-
 
 }
