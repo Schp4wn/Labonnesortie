@@ -139,8 +139,10 @@ class EventController extends Controller
      **/
     public function index()
     {
+
         $this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
+
 
         $event_manager = new EventsModel();
         $user_manager = new UserModel();
@@ -178,10 +180,12 @@ class EventController extends Controller
 
       $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
       if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user
+
         $allowed[] = 'user';
       }
 
       $this->allowTo($allowed);
+
       if(!empty($_POST))
       {
 
@@ -252,13 +256,14 @@ class EventController extends Controller
 
                 ], $id);
 
-
                 $message = ["success" => "L'evenement a bien etait modifié"];
 
                 //si c'est un bien un user
+
                 if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
                   $this->redirectToRoute('default_profile');
-                }
+
+                  }
 
                 //si cest un admin et quilest sur profil on le renvoi a profil
                 if (isset($_GET['redirect']) && $_GET['redirect'] == 'default_profile') {
@@ -292,7 +297,9 @@ class EventController extends Controller
     $this->redirectToRoute('event_index');
   }
 
+
   // Fonction pour géocoder l'adresse, il renverra false s'il est impossible de géocoder l'adresse
+
   public function geocode($address)
   {
         $lati = null;
@@ -353,7 +360,6 @@ class EventController extends Controller
     return $tableau;
   }
 
-
   // function to geocode address, it will return false if unable to geocode address
   public function getdistance($depart, $arrivee)
   {
@@ -400,5 +406,6 @@ class EventController extends Controller
         var_dump($temps_dist);
     }
   }
+
 
 }
