@@ -6,6 +6,19 @@
 .jssorb05 .av:hover     (active mouseover)
 .jssorb05 .dn           (mousedown)
 */
+
+#jssor_1 {
+  position: relative;
+  margin: 0 !important;
+  top: 0px;
+  left: 0px;
+  width: 900px;
+  height: 500px;
+  overflow: visible !important;
+  visibility: visible !important;
+}
+
+
 .jssorb05 {
     position: absolute;
 }
