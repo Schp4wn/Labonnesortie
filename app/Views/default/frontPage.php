@@ -50,7 +50,7 @@
                         <h4>Les dix dernier Messages ->nb message <span class="badge badge-info pull-right">16</span></h4>
                         <div class="feed-element">
                             <a href="#" class="pull-left">
-                                <img alt="image" class="img-circle" src="img/course.gif">
+                                <img alt="image" class="img-circle" src="<?= $this->assetUrl('img/course.gif') ?>">
                             </a>
                             <div class="media-body">
                                 message poste
