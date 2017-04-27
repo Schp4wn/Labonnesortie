@@ -31,7 +31,7 @@
 
 
 		//Dans le fichier je Crée le controller ProfilController
-		['GET|POST', '/profil/?[i:id]?'    , 'Profil#index', 'profil_index'], //affiche la page profil
+		['GET|POST', '/profile/?[i:id]?'    , 'Default#profile', 'default_profile'], //affiche la page profil
 		['GET|POST', '/profile/changeInfos', 'security#changeInfos', 'security_changeInfos'], //affiche la page profil
 
 	);

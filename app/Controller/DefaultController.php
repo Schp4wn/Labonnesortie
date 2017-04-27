@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\UserModel;
+use Model\EventsModel;
 use \W\Controller\Controller;
 
 class DefaultController extends Controller
@@ -22,13 +23,16 @@ class DefaultController extends Controller
 	public function profile()
 	{
 
-		// $user_manager = new UserModel();
-		//
-		// $user = $user_manager->find($id);
+   //ici on doit afficher les evenement lié a un utilisateur ici celui qui est connecté
+		//si lutilisateur n'a pas d'evenement message de empty evenement
 
-		// $this->show('default/profile/', ['user' => $user]);
+		$user_manager = new UserModel();
 
-		$this->show('default/profile');
+		$profil = $user_manager->find($this->getUser()['id']);
+
+		$profil_event = $user_manager->getAllEventsByUser($this->getUser()['id']);
+
+		$this->show('default/profile', ['profil' => $profil , 'profil_event' => $profil_event]);
 
 	}
 
