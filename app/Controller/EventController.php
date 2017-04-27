@@ -14,10 +14,7 @@ class EventController extends Controller
      **/
     public function create()
     {
-
         //$this->allow('admin');
-
-
         $title           = null;
         $event           = null;
         $date            = null;
@@ -31,19 +28,20 @@ class EventController extends Controller
         $arrivee_long    = null;
         $arrivee_address = null;
         $depart_address  = null;
-        $hour         = null ;
+        $hour            = null ;
 
         if(!empty($_POST))
         {
-            $title = trim($_POST['title']);
-            $event = trim($_POST['event']);
-            $image = trim($_POST['image']);
-            $date  = date('Y-m-d' , strtotime( $_POST['date'] ));
-            $hour         = date('H:i' , strtotime( $_POST['hour'] ));
+            $title   = trim($_POST['title']);
+            $event   = trim($_POST['event']);
+            $image   = trim($_POST['image']);
+            $date    = date('Y-m-d' , strtotime( $_POST['date'] ));
+            $hour    = date('H:i' , strtotime( $_POST['hour'] ));
             $depart  = trim($_POST['depart']);
-            $arrivee  = trim($_POST['arrivee']);
+            $arrivee = trim($_POST['arrivee']);
 
             $event_manager = new EventsModel();
+
             if (!empty($_POST['depart']) && !empty($_POST['arrivee'])) {
               $coords = $this->setTrajet($depart, $arrivee);
             }
@@ -85,20 +83,20 @@ class EventController extends Controller
 
 
             $result = $event_manager->insert([
-                    'title'     => $title,
-                    'event'     => $event,
-                    'image'     => $image,
-                    'date_time' => date('Y-m-d' , strtotime( $_POST['date'] )),
-                    'hour'       => date('H:i' , strtotime( $_POST['hour'] )),
-                    'user_id'    => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
-                    'depart'     => $depart,
-                    'depart_lat'     => $coords['depart']['depart_lat'],
+                    'title'           => $title,
+                    'event'           => $event,
+                    'image'           => $image,
+                    'date_time'       => date('Y-m-d' , strtotime( $_POST['date'] )),
+                    'hour'            => date('H:i' , strtotime( $_POST['hour'] )),
+                    'user_id'         => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
+                    'depart'          => $depart,
+                    'depart_lat'      => $coords['depart']['depart_lat'],
                     'depart_long'     => $coords['depart']['depart_long'],
-                    'depart_address'     => $coords['depart']['depart_address'],
-                    'arrivee'     => $arrivee,
+                    'depart_address'  => $coords['depart']['depart_address'],
+                    'arrivee'         => $arrivee,
                     'arrivee_lat'     => $coords['arrivee']['arrivee_lat'],
-                    'arrivee_long'     => $coords['arrivee']['arrivee_long'],
-                    'arrivee_address'     => $coords['arrivee']['arrivee_address']
+                    'arrivee_long'    => $coords['arrivee']['arrivee_long'],
+                    'arrivee_address' => $coords['arrivee']['arrivee_address']
 
                   ]);
                   var_dump($coords);
@@ -124,7 +122,6 @@ class EventController extends Controller
     {
         // $this->allow(['admin' , 'user']);
         $event_manager = new EventsModel();
-
         $event = $event_manager->find($id);
         $this->show('event/view' , ['event'=> $event]);
     }
@@ -133,7 +130,8 @@ class EventController extends Controller
       *  Recupère tous les évènement
       *
      **/
-    public function index(){
+    public function index()
+    {
         // $this->allow(['admin' , 'user']);
 
         $event_manager = new EventsModel();
@@ -145,10 +143,9 @@ class EventController extends Controller
      * Edition d'un article
     */
 
-    public function update($id){
+    public function update($id)
+    {
       //$this->allow('admin');
-
-
       $title           = null;
       $description     = null;
       $date            = null;
@@ -165,22 +162,26 @@ class EventController extends Controller
       $hour            = null ;
 
       $allowed = ['admin'];
+
       $event_manager = new EventsModel();
+
       $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
-      if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
+      if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user 
         $allowed[] = 'user';
       }
+
       $this->allowTo($allowed);
+
       if(!empty($_POST))
       {
 
-          $title    = trim($_POST['title']);
-          $description    = trim($_POST['event']);
-          $image    = trim($_POST['image']);
-          $date     = date('Y-m-d' , strtotime( $_POST['date'] ));
-          $hour     =   date('H:i:s' , strtotime( $_POST['hour'] ));
-          $depart   = trim($_POST['depart']);
-          $arrivee  = trim($_POST['arrivee']);
+          $title       = trim($_POST['title']);
+          $description = trim($_POST['event']);
+          $image       = trim($_POST['image']);
+          $date        = date('Y-m-d' , strtotime( $_POST['date'] ));
+          $hour        =   date('H:i:s' , strtotime( $_POST['hour'] ));
+          $depart      = trim($_POST['depart']);
+          $arrivee     = trim($_POST['arrivee']);
 
           if (!empty($_POST['depart']) && !empty($_POST['arrivee'])) {
             $coords = $this->setTrajet($depart, $arrivee);
@@ -224,22 +225,23 @@ class EventController extends Controller
                $auth_manager = new \W\Security\AuthentificationModel();
 
           $result = $event_manager->update([
-                  'title'     => $title,
-                  'event'     => $description,
-                  'image'     => $image,
-                  'date_time' => date('Y-m-d' , strtotime( $_POST['date'] )),
-                  'hour'       => date('H:i:s' , strtotime( $_POST['hour'] )),
-                  'user_id'    => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
-                  'depart'     => $depart,
+                  'title'          => $title,
+                  'event'          => $description,
+                  'image'          => $image,
+                  'date_time'      => date('Y-m-d' , strtotime( $_POST['date'] )),
+                  'hour'           => date('H:i:s' , strtotime( $_POST['hour'] )),
+                  'user_id'        => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
+                  'depart'         => $depart,
                   'depart_lat'     => $coords['depart']['depart_lat'],
-                  'depart_long'     => $coords['depart']['depart_long'],
-                  'depart_address'     => $coords['depart']['depart_address'],
-                  'arrivee'     => $arrivee,
-                  'arrivee_lat'     => $coords['arrivee']['arrivee_lat'],
-                  'arrivee_long'     => $coords['arrivee']['arrivee_long'],
-                  'arrivee_address'     => $coords['arrivee']['arrivee_address']
+                  'depart_long'    => $coords['depart']['depart_long'],
+                  'depart_address' => $coords['depart']['depart_address'],
+                  'arrivee'        => $arrivee,
+                  'arrivee_lat'    => $coords['arrivee']['arrivee_lat'],
+                  'arrivee_long'   => $coords['arrivee']['arrivee_long'],
+                  'arrivee_address'=> $coords['arrivee']['arrivee_address']
 
                 ], $id);
+
                 var_dump($coords);
                 var_dump($coords['depart']);
                 var_dump($coords['depart']['depart_lat']);
@@ -248,7 +250,7 @@ class EventController extends Controller
                 $message = ["success" => "L'evenement a bien etait enregistré"];
 
                 //si c'est un bien un user
-                if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
+                if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user 
                   $this->redirectToRoute('profil_index');
                 }
 
@@ -286,7 +288,8 @@ class EventController extends Controller
   }
 
   // function to geocode address, it will return false if unable to geocode address
-  public function geocode($address){
+  public function geocode($address)
+  {
         $lati = null;
         $longi = null;
         // url encode the address
@@ -324,28 +327,23 @@ class EventController extends Controller
   }
 
 
-  public function setTrajet($depart = null, $arrivee = null) {
+  public function setTrajet($depart = null, $arrivee = null) 
+  {
     $arrivee_coord = $this->geocode($_POST['arrivee']);
     $depart_coord = $this->geocode($_POST['depart']);
     $tableau = [
-      'depart' => [
-        'depart_lat'     => $depart_coord[0],
-        'depart_long'     => $depart_coord[1],
-        'depart_address' => $depart_coord[2]
-
-      ],
-      'arrivee' => [
-        'arrivee_lat' => $arrivee_coord[0],
-        'arrivee_long'  => $arrivee_coord[1],
-        'arrivee_address' => $arrivee_coord[2]
-
-      ]
-    ];
+        'depart'  => [
+            'depart_lat'    => $depart_coord[0],
+            'depart_long'   => $depart_coord[1],
+            'depart_address'=> $depart_coord[2]
+                ],
+        'arrivee' => [
+            'arrivee_lat' => $arrivee_coord[0],
+            'arrivee_long'  => $arrivee_coord[1],
+            'arrivee_address' => $arrivee_coord[2]
+                ]
+            ];
     return $tableau;
-
   }
-
-
-
 
 }
