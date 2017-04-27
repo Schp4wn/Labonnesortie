@@ -186,6 +186,7 @@ class EventController extends Controller
       $this->allowTo($allowed);
       if(!empty($_POST))
       {
+
           $title       = trim($_POST['title']);
           $description = trim($_POST['event']);
           $image       = trim($_POST['image']);
@@ -252,7 +253,6 @@ class EventController extends Controller
                   'arrivee_address'=> $coords['arrivee']['arrivee_address']
 
                 ], $id);
-
 
 
                 $message = ["success" => "L'evenement a bien etait modifié"];
@@ -336,7 +336,7 @@ class EventController extends Controller
   }
 
 
-  public function setTrajet($depart = null, $arrivee = null)
+  public function setTrajet($depart = null, $arrivee = null) 
   {
     $arrivee_coord = $this->geocode($_POST['arrivee']);
     $depart_coord = $this->geocode($_POST['depart']);
