@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Profil']) ?>
+<?php $this->layout('layout', ['title' => 'Profil de l\'administrateur']) ?>
 
 <?php $this->start('main_content') ?>
   <div class="container-fluid">
@@ -7,7 +7,7 @@
         <h2> Statistiques </h2>
         <div class="list-group">
           <a href="<?= $this->url('default_profile_admin'); ?>" class="list-group-item">Evénements<span class="badge"><?= $count_events['events']; ?></span></a>
-          <a href="#" class="list-group-item">Utilisateurs<span class="badge"><?= $count_users['users']; ?></span></a>
+          <a href="<?= $this->url('default_userslist'); ?>" class="list-group-item">Utilisateurs<span class="badge"><?= $count_users['users']; ?></span></a>
         </div>
         <hr>
         <div class="list-group">
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="col-md-9">
-        <h1>Evenement</h1>
+        <h1>Evénements</h1>
         <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a>
         <table class="table table-striped">
           <thead>
@@ -36,7 +36,7 @@
               <td>
                 <a href="<?= $this->url('event_update' , ['id' => $event['id'] ] )?>"><i class="fa fa-scissors" aria-hidden="true"></i> Modifier</a>
                 <a href="<?= $this->url('event_delete' , ['id' => $event['id'] ] )?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Suprimer</a>
-                <a href="<?= $this->url('event_view'   , ['id' => $event['id'] ] )?>"><i class="fa fa-book" aria-hidden="true"></i> Lire article</a>
+                <a href="<?= $this->url('event_view'   , ['id' => $event['id'] ] )?>"><i class="fa fa-book" aria-hidden="true"></i> Lire</a>
               </td>
             </tr>
             <?php endforeach; ?>

@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Profil']) ?>
+<?php $this->layout('layout', ['title' => 'Mon profil']) ?>
 
 <?php $this->start('main_content') ?>
   <div class="container-fluid">

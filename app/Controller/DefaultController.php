@@ -26,12 +26,30 @@ class DefaultController extends Controller
 		//redirection a une page d'erreur si on on n'est pas admin
 		$this->allowTo('admin');
 
-		$event_manager = new EventsModel();
-		$user_manager = new UserModel();
-		$events        = $event_manager->findAll();
-		$count_events = $event_manager->countEvents();
-		$count_users = $user_manager->countUsers();
+		$event_manager 	= new EventsModel();
+		$user_manager		= new UserModel();
+		$events       	= $event_manager->findAll();
+		$count_events 	= $event_manager->countEvents();
+		$count_users 		= $user_manager->countUsers();
 		$this->show('default/profileAdmin' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+
+	}
+
+	/**
+	* Page pour afficher tous les utilisateurs
+	*/
+	public function userslist()
+	{
+
+		//redirection a une page d'erreur si on on n'est pas admin
+		$this->allowTo('admin');
+
+		$user_manager = new UserModel();
+		$event_manager 	= new EventsModel();
+		$users       	= $user_manager->findAll();
+		$count_events = $event_manager->countEvents();
+		$count_users 	= $user_manager->countUsers();
+		$this->show('default/userslist' , ['users' => $users, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}
 
