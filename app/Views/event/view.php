@@ -40,10 +40,11 @@
 
 <?php $this->start('javascript'); ?>
 
-  <script type="text/javascript">
-        function initMap() {
+  <script type="text/javascript"> 
+
+    function initMap() {
   	var pointA = new google.maps.LatLng(<?= $event['depart_lat'];?>,<?= $event['depart_long'] ;?>),
-    pointB = new google.maps.LatLng(<?=  $event['arrivee_lat'];?>, <?=  $event['arrivee_long']; ?>),
+    		pointB = new google.maps.LatLng(<?=  $event['arrivee_lat'];?>, <?=  $event['arrivee_long']; ?>),
     myOptions = {
       zoom: 25,
       center: pointA
@@ -84,8 +85,8 @@
 		directionsDisplay.setDirections(response);
 		} else {
 		window.alert('Directions request failed due to ' + status);
-		}
-	});
+			}
+		});
 	}
     </script>
 

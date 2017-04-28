@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row">
 
-        <div class="col-md-8 ">
+        <div class="col-md-10">
           <h1>Evenement</h1>
           <a class="btn btn-success" href="<?= $this->url('event_create'   )?>">Ajouter un evenement</a>
                 <table class="table table-striped">
@@ -27,9 +27,9 @@
                             <td><?php echo $event['image'];    ?></td>
                             <td><?php echo $event['date_time'];?></td>
                             <td>
-                                <a class="btn btn-primary" href="<?= $this->url('event_update' , ['id' => $event['id'] ] )?>">Modifier</a>
-                                <a class="btn btn-danger"  href="<?= $this->url('event_delete' , ['id' => $event['id'] ] )?>">Suprimer</a>
-                                <a class="btn btn-success" href="<?= $this->url('event_view'   , ['id' => $event['id'] ] )?>">Lire article</a>
+                                <a href="<?= $this->url('event_update' , ['id' => $event['id'] ] )?>"><i class="fa fa-scissors" aria-hidden="true"></i> Modifier</a>
+                                <a href="<?= $this->url('event_delete' , ['id' => $event['id'] ] )?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Suprimer</a>
+                                <a href="<?= $this->url('event_view'   , ['id' => $event['id'] ] )?>"><i class="fa fa-book" aria-hidden="true"></i> Lire article</a>
                             </td>
                           </tr>
                     <?php  } ?>
@@ -38,7 +38,7 @@
           </div>
       
 
-        <div class="col-md-4">
+        <div class="col-md-2">
           <div class="list-group">
           <br />
             <?php if (($w_user['role'] === 'user')): ?>
@@ -63,5 +63,6 @@
           </div>
         </div>
       </div>
+    </div>
       
 <?php $this->stop('main_content'); ?>
