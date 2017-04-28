@@ -18,11 +18,30 @@ class DefaultController extends Controller
 	}
 
 	/**
+	* Page de profil admin
+	*/
+	public function profileAdmin()
+	{
+
+		//redirection a une page d'erreur si on on n'est pas admin
+		$this->allowTo('admin');
+
+		$event_manager = new EventsModel();
+		$user_manager = new UserModel();
+		$events        = $event_manager->findAll();
+		$count_events = $event_manager->countEvents();
+		$count_users = $user_manager->countUsers();
+		$this->show('default/profileAdmin' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+
+	}
+
+	/**
 	 * Page de profil
 	 */
 	public function profile()
 	{
 
+		$this->allowTo('user');
    //ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
 		//si lutilisateur n'a pas d'evenement message de empty evenement
 

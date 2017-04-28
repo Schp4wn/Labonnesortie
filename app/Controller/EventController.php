@@ -4,6 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use  Model\EventsModel;
+use  Model\UserModel;
 
 
 class EventController extends Controller
@@ -132,12 +133,15 @@ class EventController extends Controller
      **/
     public function index()
     {
-        $this->allowTo('admin');
+        //$this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
-       
+
         $event_manager = new EventsModel();
-        $events        =  $event_manager->findAll();
-        $this->show('event/index' , ['events' => $events]);
+        $user_manager = new UserModel();
+        $events        = $event_manager->findAll();
+        $count_events = $event_manager->countEvents();
+        $count_users = $user_manager->countUsers();
+        $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
     }
 
     /**
@@ -167,7 +171,7 @@ class EventController extends Controller
       $event_manager = new EventsModel();
 
       $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
-      if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user 
+      if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user
         $allowed[] = 'user';
       }
 
@@ -242,7 +246,7 @@ class EventController extends Controller
                   'arrivee_lat'    => $coords['arrivee']['arrivee_lat'],
                   'arrivee_long'   => $coords['arrivee']['arrivee_long'],
                   'arrivee_address'=> $coords['arrivee']['arrivee_address']
- 
+
                 ], $id);
 
                 //var_dump($coords);
@@ -331,7 +335,7 @@ class EventController extends Controller
   }
 
 
-  public function setTrajet($depart = null, $arrivee = null) 
+  public function setTrajet($depart = null, $arrivee = null)
   {
     $arrivee_coord = $this->geocode($_POST['arrivee']);
     $depart_coord = $this->geocode($_POST['depart']);
