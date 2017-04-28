@@ -38,7 +38,7 @@ class DefaultController extends Controller
 	/**
 	* Page pour afficher tous les utilisateurs
 	*/
-	public function userslist($id)
+	public function userslist()
 	{
 
 		//redirection a une page d'erreur si on on n'est pas admin
@@ -50,19 +50,22 @@ class DefaultController extends Controller
 		$count_events = $event_manager->countEvents();
 		$count_users 	= $user_manager->countUsers();
 
-		$getId = $user_manager->find($id);
-		var_dump($getId);
+		 foreach ($users as $user) {
+			//  var_dump($user['id']);
+			//  var_dump($_POST['button-'.$user['id']]);
+		 }
 
-		// var_dump($users);
 		// Traitement du formulaire pour changer l'email; $_POST['button-email'] vient du name dans l'HTML pour différencier les deux formulaires
-		// if (isset($_POST['button-1'])) {
-		// 	$role = $_POST['role'];
-		// 	// $id = $users['id'];
-		//
-		//
-		//
-		// }
+		foreach ($users as $user) {
 
+			if (isset($_POST['button-'.$user['id']])) {
+				$role = $_POST['role'];
+				$id = $user['id'];
+				$users = $user_manager->update(['role' => $role], $id);
+			}
+		}
+
+		$users       	= $user_manager->findAll();
 		$this->show('default/userslist' , ['users' => $users, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}

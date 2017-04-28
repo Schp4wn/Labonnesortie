@@ -183,7 +183,7 @@ class SecurityController extends Controller
         $this->show('security/forget');
       }
 
-  public function changeInfos($id = '')
+  public function changeInfos()
   {
 
     // Changer l'email

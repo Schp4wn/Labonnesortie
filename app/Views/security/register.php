@@ -44,13 +44,11 @@
   </form>
 </div>
 
-<?php //var_dump($message); ?>
-
-  <?php
-       if ( $message['success'] ) 
+  <!-- <?php
+       if ( $message['success'] )
        {
-          echo '<h1 class="text-success">' . $mess . '</h1>'; 
+          echo '<h1 class="text-success">' . $message['success'] . '</h1>';
        }
-   ?>
+   ?> -->
 
 <?php $this->stop('main_content') ?>

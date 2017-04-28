@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($users as $user) : ?><!--ici on a recuperer $articles grace a $this->show('article/index' , ['articles' => $articles]); -->
+            <?php foreach ($users as $user) : ?>
             <tr>
               <td><?= $user['id']; ?></td>
               <td><?= $user['lastname']; ?></td>
@@ -48,9 +48,9 @@
             </tr>
             <?php endforeach; ?>
             <?php
-            if (isset($_POST['button-1'])) {
-              var_dump($_POST['role']);
-            } ?>
+            // if (isset($_POST['button-1'])) {
+            //   var_dump($_POST['role']);
+            // } ?>
           </tbody>
         </table>
       </div>
