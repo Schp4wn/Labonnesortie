@@ -8,10 +8,20 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
+
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/test.css') ?>">
 
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
+
+		<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
+	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
+
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
+	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
+
+
 </head>
 <body>
 	<?php if ($w_current_route != 'default_home'): ?>
@@ -80,44 +90,8 @@
 				<div class="container">
 				</div><!-- /.container-fluid -->
 		</div>
-		<footer id="footer" class="clearfix">
-        <div class="container">
-        <div id="footer-wrapper">
-          <div class="row">
-            <div class="col-sm-6 col-md-2">
-              <div id="meta-3" class="widget widgetFooter widget_meta">
-              <h4 class="widgettitle">l'Essentiels :</h4>
-              <ul>
-			    		  <li><a href="#"><i class="fa fa-home fa-fw"></i> Accueil</a></li>
-							  <li><a href="#"><i class="fa fa-link"></i> Evenement</a></li>
-							  <li><a href="#"><i class="fa fa-envelope fa-fw"></i> Contact </a></li>
-             </ul>
-					 	</div>
-				 	</div>
-          <div class="col-sm-6 col-md-2">
-              		<div id="recent-posts-3" class="widget widgetFooter widget_recent_entries">
-                    <h4 class="widgettitle">Aussi sur  :</h4>
-                    <ul>
-											<li><a href="#" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
-											<li><a href="#" target="_blank"><i class="fa fa-youtube"></i> Youtube</a></li>
-										</ul>
-									</div>
-				</div>
-      </div>
-    </div> <!--  #footer -->
-      <div id="sub-floor">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 copyright">
-             Copy right LaBonneSortie © 2017
-            </div>
-            <div class="col-md-4 col-md-offset-4 attribution">
-             Developer by  <a target="_blank" href="#">LaBonneSortieteam</a> .
-            </div>
-          </div> <!-- end .row -->
-        </div>
-      </div>
+
+		<footer>
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
