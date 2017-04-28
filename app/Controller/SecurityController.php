@@ -81,9 +81,6 @@ class SecurityController extends Controller
     public function login()
     {
 
-      $event_manager = new EventsModel();
-      // $event = $event_manager->find($id);
-
         if (isset($_POST['button-login'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -122,7 +119,7 @@ class SecurityController extends Controller
 
     }
     // J'injecte la variable messages dans ma vue
-    $this->show('default/frontPage', ['messages' => $messages, 'event'=> $event]);
+    $this->show('default/frontPage', ['messages' => $messages]);
   }
 
     /**

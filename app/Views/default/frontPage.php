@@ -83,7 +83,7 @@
               <tbody>
               <tr>
                 <td class="strong">Distance</td>
-                <td><i class="icon-road"></i> <b><?php echo $event['distance'] ?></b> km</td>
+                <td><i class="icon-road"></i> <b>87.92</b> km</td>
               </tr>
               <tr>
                 <td colspan="2">
