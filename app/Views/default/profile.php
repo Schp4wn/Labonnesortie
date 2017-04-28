@@ -30,6 +30,7 @@
         <?php endforeach; ?>
         <?php else: ?>
           <h2>Vous n'avez pas ajouté d'événement.</h2>
+          <p>Cliquez <a href="<?= $this->url('event_create')?>">ici</a> pour rajouter votre premier événement.</p>
         <?php endif; ?>
       </div>
 

@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\UserModel;
 use Model\MessagesModel;
+use  Model\EventsModel;
 use \W\Controller\Controller;
 
 class SecurityController extends Controller
@@ -80,6 +81,9 @@ class SecurityController extends Controller
     public function login()
     {
 
+      $event_manager = new EventsModel();
+      // $event = $event_manager->find($id);
+
         if (isset($_POST['button-login'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -116,11 +120,9 @@ class SecurityController extends Controller
           $message_manager->insert(['content' => $message]);
         }
 
-
-        // var_dump($this->getUser());
     }
     // J'injecte la variable messages dans ma vue
-    $this->show('default/frontPage', ['messages' => $messages]);
+    $this->show('default/frontPage', ['messages' => $messages, 'event'=> $event]);
   }
 
     /**

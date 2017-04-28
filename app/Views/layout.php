@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/default.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
 
@@ -45,7 +46,6 @@
 								<?php if($w_user['role'] === 'user') : ?>
 									<li><a href="<?php echo $this->url('default_profile'); ?>">Profil</a></li>
 								<?php elseif($w_user['role'] === 'admin'): ?>
-									<li><a href="<?php echo $this->url('security_logout'); ?>">Deconnexion</a></li>
 									<li><a href="<?php echo $this->url('default_profile_admin'); ?>"><p class="text-warning">Profil (admin)</p></a></li>
 								 <?php  endif; ?>
 							</ul>

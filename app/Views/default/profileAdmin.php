@@ -1,21 +1,29 @@
 <?php $this->layout('layout', ['title' => 'Profil de l\'administrateur']) ?>
 
 <?php $this->start('main_content') ?>
+<div id="profileAdmin">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3">
-        <h2> Statistiques </h2>
+      <div class="col-md-2 col-sm-3 panel-admin">
+        <img src="<?= $this->assetUrl('img/casque-panel.jpg')?>" class="img-responsive center-block" alt="Casque">
+        <h3 class="text-center">Bonjour <?= $user['firstname']; ?></h3 >
         <div class="list-group">
-          <a href="<?= $this->url('default_profile_admin'); ?>" class="list-group-item">Evénements<span class="badge"><?= $count_events['events']; ?></span></a>
-          <a href="<?= $this->url('default_userslist'); ?>" class="list-group-item">Utilisateurs<span class="badge"><?= $count_users['users']; ?></span></a>
+          <ul class="list-unstyled">
+            <li>
+              <a href="<?= $this->url('default_profile_admin'); ?> " class="list-group-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Evénements<span class="badge"><?= $count_events['events']; ?></span></a>
+            </li>
+            <li>
+              <a href="<?= $this->url('default_userslist'); ?>" class="list-group-item"><i class="fa fa-user-circle" aria-hidden="true"></i> Utilisateurs<span class="badge"><?= $count_users['users']; ?></span></a>
+            </li>
+          </ul>
         </div>
         <hr>
         <div class="list-group">
-          <a href="" class="list-group-item">Deconnexion</a>
+          <a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Deconnexion</a>
         </div>
       </div>
-      <div class="col-md-9">
-        <h1>Evénements</h1>
+      <div class="col-md-10 col-sm-9">
+        <h2 class="text-center">Evénements</h2>
         <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a>
         <table class="table table-striped">
           <thead>
@@ -24,6 +32,7 @@
               <th>Titre</th>
               <th>Evenement</th>
               <th>Date</th>
+              <th>Modifications</th>
             </tr>
           </thead>
           <tbody>
@@ -43,9 +52,9 @@
           </tbody>
         </table>
       </div>
-    </div>  <!-- row -->
-  </div> <!-- container-fluid -->
-
+    </div>  <!-- .row -->
+  </div> <!-- .container-fluid -->
+</div>  <!-- #profileAdmin -->
 
 
 <?php $this->stop('main_content'); ?>

@@ -1,21 +1,23 @@
 <?php $this->layout('layout', ['title' => 'Liste des utilisateurs']) ?>
 
 <?php $this->start('main_content') ?>
+<div id="userslist">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3">
-        <h2> Statistiques </h2>
+      <div class="col-md-2 col-sm-3 panel-admin">
+        <img src="<?= $this->assetUrl('img/casque-panel.jpg')?>" class="img-responsive center-block" alt="Casque">
+        <h3 class="text-center">Bonjour <?= $user['firstname']; ?></h3 >
         <div class="list-group">
           <a href="<?= $this->url('default_profile_admin'); ?>" class="list-group-item">Evénements<span class="badge"><?= $count_events['events']; ?></span></a>
           <a href="<?= $this->url('default_userslist'); ?>" class="list-group-item">Utilisateurs<span class="badge"><?= $count_users['users']; ?></span></a>
         </div>
         <hr>
         <div class="list-group">
-          <a href="" class="list-group-item">Deconnexion</a>
+          <a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Deconnexion</a>
         </div>
       </div>
-      <div class="col-md-9">
-        <h1>Utilisateurs</h1>
+      <div class="col-md-10 col-sm-9">
+        <h2 class="text-center">Utilisateurs</h2>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -25,6 +27,7 @@
               <th>Nom d'utilisateur</th>
               <th>Email</th>
               <th>Role</th>
+              <th>Modifications</th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +57,8 @@
           </tbody>
         </table>
       </div>
-    </div>  <!-- row -->
-  </div> <!-- container-fluid -->
+    </div>  <!-- .row -->
+  </div> <!-- .container-fluid -->
+</div> <!-- #userslist -->
 
 <?php $this->stop('main_content'); ?>

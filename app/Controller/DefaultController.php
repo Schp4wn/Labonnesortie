@@ -28,10 +28,11 @@ class DefaultController extends Controller
 
 		$event_manager 	= new EventsModel();
 		$user_manager		= new UserModel();
+		$user = $user_manager->find($this->getUser()['id']);
 		$events       	= $event_manager->findAll();
 		$count_events 	= $event_manager->countEvents();
 		$count_users 		= $user_manager->countUsers();
-		$this->show('default/profileAdmin' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+		$this->show('default/profileAdmin' , ['events' => $events, 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}
 
@@ -46,14 +47,10 @@ class DefaultController extends Controller
 
 		$user_manager = new UserModel();
 		$event_manager 	= new EventsModel();
+		$user = $user_manager->find($this->getUser()['id']);
 		$users       	= $user_manager->findAll();
 		$count_events = $event_manager->countEvents();
 		$count_users 	= $user_manager->countUsers();
-
-		 foreach ($users as $user) {
-			//  var_dump($user['id']);
-			//  var_dump($_POST['button-'.$user['id']]);
-		 }
 
 		// Traitement du formulaire pour changer l'email; $_POST['button-email'] vient du name dans l'HTML pour différencier les deux formulaires
 		foreach ($users as $user) {
@@ -66,7 +63,7 @@ class DefaultController extends Controller
 		}
 
 		$users       	= $user_manager->findAll();
-		$this->show('default/userslist' , ['users' => $users, 'count_events' => $count_events, 'count_users' => $count_users]);
+		$this->show('default/userslist' , ['users' => $users, 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}
 
