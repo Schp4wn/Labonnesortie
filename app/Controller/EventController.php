@@ -4,6 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use  Model\EventsModel;
+use  Model\UserModel;
 
 
 class EventController extends Controller
@@ -28,7 +29,9 @@ class EventController extends Controller
         $arrivee_long    = null;
         $arrivee_address = null;
         $depart_address  = null;
-        $hour            = null ;
+        $hour            = null;
+        $distance        = null;
+        $temps           = null;
 
         if(!empty($_POST))
         {
@@ -44,7 +47,9 @@ class EventController extends Controller
 
             if (!empty($_POST['depart']) && !empty($_POST['arrivee'])) {
               $coords = $this->setTrajet($depart, $arrivee);
+              $dist   = $this->getdistance($depart, $arrivee);
             }
+
 
              $errors=[];
 
@@ -96,13 +101,13 @@ class EventController extends Controller
                     'arrivee'         => $arrivee,
                     'arrivee_lat'     => $coords['arrivee']['arrivee_lat'],
                     'arrivee_long'    => $coords['arrivee']['arrivee_long'],
-                    'arrivee_address' => $coords['arrivee']['arrivee_address']
+                    'arrivee_address' => $coords['arrivee']['arrivee_address'],
+                    'distance'        => $dist[0],
+                    'temps_dist'      => $dist[1]
+
 
                   ]);
-                  var_dump($coords);
-                  var_dump($coords['depart']);
-                  var_dump($coords['depart']['depart_lat']);
-                 //var_dump($result);
+
 
                   $message = ["L'evenement a bien etait enregistré"];
 
@@ -123,7 +128,9 @@ class EventController extends Controller
         //$this->allow(['admin' , 'user']);
         $event_manager = new EventsModel();
         $event = $event_manager->find($id);
+
         $this->show('event/view' , ['event'=> $event]);
+
     }
 
     /**
@@ -132,12 +139,15 @@ class EventController extends Controller
      **/
     public function index()
     {
-        $this->allowTo('admin');
+        //$this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
-       
+
         $event_manager = new EventsModel();
-        $events        =  $event_manager->findAll();
-        $this->show('event/index' , ['events' => $events]);
+        $user_manager = new UserModel();
+        $events        = $event_manager->findAll();
+        $count_events = $event_manager->countEvents();
+        $count_users = $user_manager->countUsers();
+        $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
     }
 
     /**
@@ -167,7 +177,7 @@ class EventController extends Controller
       $event_manager = new EventsModel();
 
       $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
-      if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user 
+      if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user
         $allowed[] = 'user';
       }
 
@@ -242,13 +252,10 @@ class EventController extends Controller
                   'arrivee_lat'    => $coords['arrivee']['arrivee_lat'],
                   'arrivee_long'   => $coords['arrivee']['arrivee_long'],
                   'arrivee_address'=> $coords['arrivee']['arrivee_address']
- 
+
                 ], $id);
 
-                //var_dump($coords);
-                //var_dump($coords['depart']);
-                //var_dump($coords['depart']['depart_lat']);
-               //var_dump($result);
+
 
                 $message = ["success" => "L'evenement a bien etait modifié"];
 
@@ -288,10 +295,9 @@ class EventController extends Controller
 
 
     $this->redirectToRoute('event_index');
-    //var_dump($id);
   }
 
-  // function to geocode address, it will return false if unable to geocode address
+  // Fonction pour géocoder l'adresse, il renverra false s'il est impossible de géocoder l'adresse
   public function geocode($address)
   {
         $lati = null;
@@ -316,6 +322,8 @@ class EventController extends Controller
             $longi = $resp['results'][0]['geometry']['location']['lng'];
             $formatted_address = $resp['results'][0]['formatted_address'];
 
+
+
         // verify if data is complete
         if ($lati && $longi && $formatted_address) {
 
@@ -331,7 +339,7 @@ class EventController extends Controller
   }
 
 
-  public function setTrajet($depart = null, $arrivee = null) 
+  public function setTrajet($depart = null, $arrivee = null)
   {
     $arrivee_coord = $this->geocode($_POST['arrivee']);
     $depart_coord = $this->geocode($_POST['depart']);
@@ -350,4 +358,51 @@ class EventController extends Controller
     return $tableau;
   }
 
+
+  // function to geocode address, it will return false if unable to geocode address
+  public function getdistance($depart, $arrivee)
+  {
+        $distance = null;
+        $temps_dist = null;
+        // url encode the address
+        $depart = urlencode($depart);
+        $arrivee = urlencode($arrivee);
+
+        // google map geocode api url
+        $url = "https://maps.googleapis.com/maps/api/directions/json?origin={$depart}&destination={$arrivee}&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY";
+        https://maps.googleapis.com/maps/api/directions/json?origin={$depart}&destination={$arrivee}&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY
+
+        // get the json response
+        $resp_json = file_get_contents($url);
+
+        // decode the json
+        $resp = json_decode($resp_json, true);
+
+        // response status will be 'OK', if able to geocode given address
+        if($resp['status']=='OK'){
+
+            // get the important data
+            $distance = $resp['routes'][0]['legs'][0]['distance']['text'];
+            $temps_dist = $resp['routes'][0]['legs'][0]['duration']['text'];
+            //
+            // var_dump($distance);
+            // var_dump($temps_dist);
+
+
+
+
+
+        // verify if data is complete
+        if ($distance && $temps_dist) {
+
+            // put the data in the array
+            $data_arr = array();
+            array_push($data_arr, $distance, $temps_dist);
+
+            return $data_arr;
+        }
+        var_dump($data_arr);
+        var_dump($temps_dist);
+    }
+}
 }

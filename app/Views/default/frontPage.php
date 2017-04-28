@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Accueil']) ?>
 
 <?php $this->start('main_content') ?>
-		<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
+	
 		  <div class="container-fluid">
     <div id="frontPage">
   <div class="container-fluid">

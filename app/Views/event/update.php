@@ -64,9 +64,7 @@
             <button class="btn btn-submit">Editer l'article</button>
         </form>
 
-        <?php
-           // var_dump($event);
-        ?>
+        <?php // var_dump($event);?>
 
         <?php
             if (isset($message['success'])) {

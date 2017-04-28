@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Model;
 
@@ -6,5 +6,11 @@ use \W\Model\Model;
 
 class EventsModel extends Model
 {
-	//on herite de tout ce qu il ya dans W
+  
+  public function countEvents()
+  {
+    $query = $this->dbh->query('SELECT COUNT(*) as events FROM events');
+    return $query->fetch();
+  }
+
 }

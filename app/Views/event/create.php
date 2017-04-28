@@ -55,6 +55,6 @@
       ?>
 
 
-      <?php //var_dump($_POST); ?>
+      <?php  ?>
     </div>
 <?php $this->stop('main_content') ?>

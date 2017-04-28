@@ -49,4 +49,11 @@ function changeTokenLogin($user_id) {
 
     return $sth->fetchAll();
   }
+
+  public function countUsers()
+  {
+    $query = $this->dbh->query('SELECT COUNT(*) as users FROM users');
+    return $query->fetch();
+  }
+
 }

@@ -7,9 +7,8 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
-		<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
-
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
 </head>
 <body>
 	<?php if ($w_current_route != 'default_home'): ?>
@@ -33,8 +32,8 @@
 								<?php if($w_user['role'] === 'user') : ?>
 									<li><a href="<?php echo $this->url('default_profile'); ?>">Profil</a></li>
 								<?php elseif($w_user['role'] === 'admin'): ?>
-									<li><a href="<?php echo $this->url('security_logout'); ?>">Deconnecxion</a></li>
-									<li><a href="<?php echo $this->url('event_index'); ?>"><p class="text-warning">Profil (admin)</p></a></li>
+									<li><a href="<?php echo $this->url('security_logout'); ?>">Deconnexion</a></li>
+									<li><a href="<?php echo $this->url('default_profile_admin'); ?>"><p class="text-warning">Profil (admin)</p></a></li>
 								 <?php  endif; ?>
 							</ul>
 						<?php else: ?>
