@@ -49,7 +49,4 @@ use \W\Controller\Controller;
     </div>
   </div>
 
-  <!-- <?= var_dump($_POST['email']); ?> -->
-
-
 <?php $this->stop('main_content') ?>

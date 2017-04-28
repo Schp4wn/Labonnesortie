@@ -4,58 +4,29 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-10">
-        <h1>Evenement</h1>
-        <a class="btn btn-success" href="<?= $this->url('event_create'   )?>">Ajouter un evenement</a>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Titre</th>
-              <th>Evenement</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($events as $event) : ?>
-            <tr>
-              <td><?php echo $event['id'];       ?></td>
-              <td><?php echo $event['title'];    ?></td>
-              <td><?php echo $event['event'];    ?></td>
-              <td><?php echo $event['date_time'];?></td>
-              <td>
-                <a href="<?= $this->url('event_update' , ['id' => $event['id'] ] )?>"><i class="fa fa-scissors" aria-hidden="true"></i> Modifier</a>
-                <a href="<?= $this->url('event_delete' , ['id' => $event['id'] ] )?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Suprimer</a>
-                <a href="<?= $this->url('event_view'   , ['id' => $event['id'] ] )?>"><i class="fa fa-book" aria-hidden="true"></i> Lire article</a>
-              </td>
-            </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div><!-- /.col-md-10 -->
+      <div class="col-md-12 description-event">
+        <div class="col-lg-6">
+          <h4>Evenement à venir</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
 
-      <div class="col-md-2">
-        <div class="list-group">
-          <br />
-          <?php if (($w_user['role'] === 'user')): ?>
-          <a href="<?= $this->url('default_profile'); ?>" class="list-group-item">Evénements</a>
-          <a href="#" class="list-group-item">Trajets</a>
-          <a href="<?= $this->url('security_changeInfos'); ?>" class="list-group-item">Information</a>
-          <a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Déconnexion</a>
-          <?php elseif ($w_user['role'] === 'admin'):?>
+      <div class="col-lg-6 adress-event">
+        <div class="col-lg-6">
+          <h4>Moto show</h4>
+          <ul class="list-unstyled">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <li>104 avenue de la République</li>
+            <li>59110</li>
+            <li>La Madeleine</li>
+          </ul>
+          <p><i class="fa fa-calendar-o" aria-hidden="true"></i> Samedi 08 avril 2017</p>
         </div>
-        <h2> Statistiques </h2>
-        <div class="list-group">
-          <a href="<?= $this->url('event_index'); ?>" class="list-group-item">Evénements<span class="badge"><?= $count_events['events']; ?></span></a>
-          <a href="#" class="list-group-item">Utilisateurs<span class="badge"><?= $count_users['users']; ?></span></a>
+        <div class="col-lg-6">
+          <img class="img-responsive" src="<?= $this->assetUrl('img/tampon_evenement.png') ?>" alt="event">
         </div>
-        <hr>
-        <div class="list-group">
-          <a href="" class="list-group-item">Deconnexion</a>
-        </div>
-      <?php endif; ?>
-    </div><!-- /.col-md-2 -->
-    </div><!-- /.row -->
-  </div><!-- /.container-fluid -->
+      </div>
+    </div>
+  </div><!-- /.row -->
+</div><!-- /.container-fluid -->
 
 <?php $this->stop('main_content'); ?>

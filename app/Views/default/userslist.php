@@ -24,24 +24,33 @@
               <th>Prénom</th>
               <th>Nom d'utilisateur</th>
               <th>Email</th>
+              <th>Role</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($users as $user) : ?><!--ici on a recuperer $articles grace a $this->show('article/index' , ['articles' => $articles]); -->
             <tr>
-              <td><?php echo $user['id'];       ?></td>
-              <td><?php echo $user['lastname'];    ?></td>
-              <td><?php echo $user['firstname'];    ?></td>
-              <td><?php echo $user['username'];?></td>
-              <td><?php echo $user['email'];?></td>
+              <td><?= $user['id']; ?></td>
+              <td><?= $user['lastname']; ?></td>
+              <td><?= $user['firstname']; ?></td>
+              <td><?= $user['username']; ?></td>
+              <td><?= $user['email']; ?></td>
+              <td><?= $user['role']; ?></td>
               <td>
-                <select class="" name="">
-                  <option class="" value="Administrateur">Administrateur</option>
-                  <option class="" value="Utilisateur">Utilisateur</option>
+              <form class="" action="" method="post">
+                <select class="" name="role">
+                  <option class="" value="admin">Administrateur</option>
+                  <option class="" value="user">Utilisateur</option>
                 </select>
+                <button type="submit" name="button-<?= $user['id']; ?>">Changer le role</button>
+              </form>
               </td>
             </tr>
             <?php endforeach; ?>
+            <?php
+            if (isset($_POST['button-1'])) {
+              var_dump($_POST['role']);
+            } ?>
           </tbody>
         </table>
       </div>
