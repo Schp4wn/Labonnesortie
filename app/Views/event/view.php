@@ -15,12 +15,12 @@
 		<h1 class="text-center">Parcours</h1>
 		<div id="gmap_canvas" style="height:400px">.</div>
         <div id='map-label'></div>
-  
+
 			<?php //$event['depart_lat']; ?>
 			<?php //$event['depart_long']; ?>
 			<?php //$event['arrivee_lat']; ?>
 			<?php //$event['arrivee_long']; ?>
-			
+
             <p>Evenement posté le  <?php
 					$datetime = new DateTime($event['date_time']);
 					// La class IntlDateFormatter est disponible dans l'extension php_intl. Il faut donc vérifier qu'elle soit bien installée dans le php.ini (extension=php_intl.dll)
@@ -33,14 +33,16 @@
 					echo $intl->format($datetime);
 				?>
 			</p>
+			<p>il y a <?php echo $event['distance'] ?> entre <?php echo $event['depart'] ?> et <?php echo $event['arrivee'] ?> et cela prendra <?php echo $event['temps_dist'] ?> </p>
+			
 	</div>
-  
+
 
 <?php $this->stop('main_content'); ?>
 
 <?php $this->start('javascript'); ?>
 
-  <script type="text/javascript"> 
+  <script type="text/javascript">
 
     function initMap() {
   	var pointA = new google.maps.LatLng(<?= $event['depart_lat'];?>,<?= $event['depart_long'] ;?>),
