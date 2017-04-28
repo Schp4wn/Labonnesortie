@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 		<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
-	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
+	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 
 </head>
 <body>
