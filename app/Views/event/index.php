@@ -51,6 +51,7 @@
         </div>
         <div class="col-lg-6">
           <img class="img-responsive" src="<?= $this->assetUrl('img/tampon_evenement.png') ?>" alt="event">
+
         </div>
 
       </div>

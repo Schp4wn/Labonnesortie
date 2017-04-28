@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/main.css') ?>">
 
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/default.css') ?>">
+	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
 
 </head>
 <body>

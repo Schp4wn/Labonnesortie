@@ -109,8 +109,6 @@ class EventController extends Controller
 
 
                   ]);
-
-
                   $message = ["L'evenement a bien etait enregistré"];
 
              }
@@ -147,7 +145,7 @@ class EventController extends Controller
         $event_manager = new EventsModel();
         $user_manager = new UserModel();
         $events        = $event_manager->findAll();
-        $count_events = $event_manager->countEvents();
+        $count_events = $event_manager->countEventsForUser();
         $count_users = $user_manager->countUsers();
         $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
     }

@@ -5,6 +5,10 @@
 <div id="sd-entete-map">
 		<div class="container well">
 			<div class="col-md-6 col-md-push-6">
+
+	<div id="eventMap" class="container-fluid">
+		<div class="sd-entete-map">
+			<div class="col-md-6">
 				<h1><?= $event['title']; ?></h1>
 				<p><?php echo $event['event'] ?></p>
 				<p>Date de l'evenement : <?php echo date('d-m-Y' ,strtotime($event['date_time'])) ?></p>
@@ -43,6 +47,7 @@
       <div id='map-label'></div>
 
 	</div>
+
 
 
 <?php $this->stop('main_content'); ?>
