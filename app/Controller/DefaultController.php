@@ -74,16 +74,19 @@ class DefaultController extends Controller
 	{
 
 		$this->allowTo('user');
-   //ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
+   		//ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
 		//si lutilisateur n'a pas d'evenement message de empty evenement
 
 		$user_manager = new UserModel();
+		$event_manager = new EventsModel();
 
 		$profil = $user_manager->find($this->getUser()['id']);
 
 		$profil_event = $user_manager->getAllEventsByUser($this->getUser()['id']);
 
-		$this->show('default/profile', ['profil' => $profil , 'profil_event' => $profil_event]);
+		$count_events 	= $event_manager->countEvents($this->getUser()['id']);
+
+		$this->show('default/profile', ['count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
 
 	}
 

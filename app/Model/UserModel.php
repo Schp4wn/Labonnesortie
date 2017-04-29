@@ -45,8 +45,6 @@ function changeTokenLogin($user_id) {
     $sth = $this->dbh->prepare($sql);
     $sth->execute();
 
-    //die($sql);
-
     return $sth->fetchAll();
   }
 

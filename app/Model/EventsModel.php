@@ -7,9 +7,9 @@ use \W\Model\Model;
 class EventsModel extends Model
 {
   
-  public function countEvents()
+  public function countEvents($id)
   {
-    $query = $this->dbh->query('SELECT COUNT(*) as events FROM events');
+    $query = $this->dbh->query('SELECT COUNT(*) as events FROM events WHERE  user_id = '. $id);
     return $query->fetch();
   }
 

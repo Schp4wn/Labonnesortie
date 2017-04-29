@@ -1,7 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Tous les évènement']); ?>
 
 <?php $this->start('main_content'); ?>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 description-event">

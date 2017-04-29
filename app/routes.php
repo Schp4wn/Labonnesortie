@@ -24,10 +24,10 @@
 		['GET|POST', '/event/[i:id]'       , 'Event#view' , 'event_view'  ], //affiche un seule event precis (avec l'id)
 
 		//Dans le fichier je Crée le controller ProfilController
-		['GET|POST', '/profile/?[i:id]?'   , 'Default#profile'     , 'default_profile'], //affiche la page profil
-		['GET|POST', '/profile/changeInfos', 'Security#changeInfos', 'security_changeInfos'], //permet à l'utilisateur de changer ses infos
-		['GET|POST', '/profile/admin'   , 'Default#profileAdmin'     , 'default_profile_admin'], //affiche la page profil admin
-		['GET|POST', '/profile/admin/userslist'   , 'Default#userslist'     , 'default_userslist'], //affiche la liste des utilisateurs depuis le panel admin
+		['GET|POST', '/profile/?[i:id]?'        , 'Default#profile'      , 'default_profile'], //affiche la page profil
+		['GET|POST', '/profile/changeInfos'     , 'Security#changeInfos' , 'security_changeInfos'], //permet à l'utilisateur de changer ses infos
+		['GET|POST', '/profile/admin'           , 'Default#profileAdmin' , 'default_profile_admin'], //affiche la page profil admin
+		['GET|POST', '/profile/admin/userslist' , 'Default#userslist'    , 'default_userslist'], //affiche la liste des utilisateurs depuis le panel admin
 
 
 	);

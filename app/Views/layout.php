@@ -9,13 +9,15 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/default.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/profil_index.css') ?>">
+
 
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/test.css') ?>">
 
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
 
-		<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
