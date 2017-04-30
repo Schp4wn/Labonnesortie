@@ -178,7 +178,7 @@
    text-align: center;
    color: white;
  }
- .btn {
+ #page .btn {
    height: 51px;
    min-width: 218px;
    color: #d5402b ;

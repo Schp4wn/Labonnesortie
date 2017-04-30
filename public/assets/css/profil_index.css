@@ -1,5 +1,5 @@
 /********************************/
-/*    article profil user       */
+/*    article profil user(said) */
 /********************************/
 
 body .profil_index
@@ -14,7 +14,10 @@ body .profil_index
 {
     width:25%;
 }
-
+.well
+{
+	box-shadow: 1px 1px 1px #504a4a;
+}
 hr
 {
 	border-top : 1px solid #333;

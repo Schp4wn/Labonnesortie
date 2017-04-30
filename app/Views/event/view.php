@@ -1,40 +1,47 @@
 <?php $this->layout('layout', ['title' => 'Un évènement']); ?>
 
 <?php $this->start('main_content'); ?>
-
-	<div class="container">
-		<div class="sd-entete-map">
-			<div class="col-md-6">
+<?php //var_dump($event) ?>
+<div id="sd-entete-map">
+		<div class="container well">
+			<div class="col-md-6 col-md-push-6">
 				<h1><?= $event['title']; ?></h1>
 				<p><?php echo $event['event'] ?></p>
+				<p>Date de l'evenement : <?php echo date('d-m-Y' ,strtotime($event['date_time'])) ?></p>
+				<p>Heure de l'evenement : <?php echo $event['hour'] ?></p>
+				<br />
+				<p>Evenement posté le  <?php
+				$datetime = new DateTime($event['date_time']);
+				// La class IntlDateFormatter est disponible dans l'extension php_intl. Il faut donc vérifier qu'elle soit bien installée dans le php.ini (extension=php_intl.dll)
+				// http://benjamin.leveque.me/formater-une-date-avec-php-5-3-l10n-partie-2.html
+				$intl = new IntlDateFormatter(
+						'fr_FR',
+						IntlDateFormatter::FULL,
+						IntlDateFormatter::MEDIUM
+				);
+				echo $intl->format($datetime);?></p>
 			</div>
-			<div>
-				<img src="<?= $event['image']; ?>" alt="">
+			<div class="col-md-6 col-md-pull-6">
+				<div class="profil-img">
+					<img class="img-responsive" src="<?= $event['image']; ?>" alt="">
+				</div>
 			</div>
 		</div>
-		<h1 class="text-center">Parcours</h1>
-		<div id="gmap_canvas" style="height:400px">.</div>
-        <div id='map-label'></div>
-
-			<?php //$event['depart_lat']; ?>
-			<?php //$event['depart_long']; ?>
-			<?php //$event['arrivee_lat']; ?>
-			<?php //$event['arrivee_long']; ?>
-
-            <p>Evenement posté le  <?php
-					$datetime = new DateTime($event['date_time']);
-					// La class IntlDateFormatter est disponible dans l'extension php_intl. Il faut donc vérifier qu'elle soit bien installée dans le php.ini (extension=php_intl.dll)
-					// http://benjamin.leveque.me/formater-une-date-avec-php-5-3-l10n-partie-2.html
-					$intl = new IntlDateFormatter(
-							'fr_FR',
-							IntlDateFormatter::FULL,
-							IntlDateFormatter::MEDIUM
-					);
-					echo $intl->format($datetime);
-				?>
-			</p>
-			<p>il y a <?php echo $event['distance'] ?> entre <?php echo $event['depart'] ?> et <?php echo $event['arrivee'] ?> et cela prendra <?php echo $event['temps_dist'] ?> </p>
-			
+		<div class="parcours">
+			<div class="container">
+				<h1 class="text-center">Parcours :</h1>
+				<ul class="list-unstyled text-center">
+					<li><h4>Départ : <span><?php echo $event['depart'] ?></span></h4></li>
+					<li><h4>Arrivé : <span><?php echo $event['arrivee'] ?></span></h4></li>
+					<li><h4>Distance : <span><?php echo $event['distance'] ?></span></h4></li>
+					<li><h4>Temp estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
+				</ul>
+			</div>
+		</div>
+	
+		  <div id="gmap_canvas" style="height:400px">.</div>
+      <div id='map-label'></div>
+				
 	</div>
 
 
@@ -74,9 +81,6 @@
   calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
 
 	}
-
-
-
 	function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
 	directionsService.route({
 		origin: pointA,

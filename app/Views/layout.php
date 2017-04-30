@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/profil_index.css') ?>">
-
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/view.css') ?>">
 
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/test.css') ?>">
 

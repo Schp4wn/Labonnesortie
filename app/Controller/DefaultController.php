@@ -30,7 +30,7 @@ class DefaultController extends Controller
 		$user_manager		= new UserModel();
 		$user = $user_manager->find($this->getUser()['id']);
 		$events       	= $event_manager->findAll();
-		$count_events 	= $event_manager->countEvents();
+		$count_events 	= $event_manager->countEvents($this->getUser()['id']);
 		$count_users 		= $user_manager->countUsers();
 		$this->show('default/profileAdmin' , ['events' => $events, 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
 
@@ -84,7 +84,7 @@ class DefaultController extends Controller
 
 		$profil_event = $user_manager->getAllEventsByUser($this->getUser()['id']);
 
-		$count_events 	= $event_manager->countEvents($this->getUser()['id']);
+		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']);
 
 		$this->show('default/profile', ['count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
 
