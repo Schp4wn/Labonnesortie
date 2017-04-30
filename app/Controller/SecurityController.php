@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\UserModel;
 use Model\MessagesModel;
+use  Model\EventsModel;
 use \W\Controller\Controller;
 
 class SecurityController extends Controller
@@ -116,8 +117,6 @@ class SecurityController extends Controller
           $message_manager->insert(['content' => $message]);
         }
 
-
-        // var_dump($this->getUser());
     }
     // J'injecte la variable messages dans ma vue
     $this->show('default/frontPage', ['messages' => $messages]);
@@ -183,7 +182,7 @@ class SecurityController extends Controller
         $this->show('security/forget');
       }
 
-  public function changeInfos($id = '')
+  public function changeInfos()
   {
 
     // Changer l'email

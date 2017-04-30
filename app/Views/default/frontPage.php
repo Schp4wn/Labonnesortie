@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-	
+
     <div id="frontPage">
   <div class="container-fluid">
     <div class="">

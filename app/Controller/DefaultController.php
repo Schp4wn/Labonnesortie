@@ -28,17 +28,18 @@ class DefaultController extends Controller
 
 		$event_manager 	= new EventsModel();
 		$user_manager		= new UserModel();
+		$user = $user_manager->find($this->getUser()['id']);
 		$events       	= $event_manager->findAll();
 		$count_events 	= $event_manager->countEvents();
 		$count_users 		= $user_manager->countUsers();
-		$this->show('default/profileAdmin' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+		$this->show('default/profileAdmin' , ['events' => $events, 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}
 
 	/**
 	* Page pour afficher tous les utilisateurs
 	*/
-	public function userslist($id)
+	public function userslist()
 	{
 
 		//redirection a une page d'erreur si on on n'est pas admin
@@ -46,24 +47,23 @@ class DefaultController extends Controller
 
 		$user_manager = new UserModel();
 		$event_manager 	= new EventsModel();
+		$user = $user_manager->find($this->getUser()['id']);
 		$users       	= $user_manager->findAll();
 		$count_events = $event_manager->countEvents();
 		$count_users 	= $user_manager->countUsers();
 
-		$getId = $user_manager->find($id);
-		var_dump($getId);
-
-		// var_dump($users);
 		// Traitement du formulaire pour changer l'email; $_POST['button-email'] vient du name dans l'HTML pour différencier les deux formulaires
-		// if (isset($_POST['button-1'])) {
-		// 	$role = $_POST['role'];
-		// 	// $id = $users['id'];
-		//
-		//
-		//
-		// }
+		foreach ($users as $user) {
 
-		$this->show('default/userslist' , ['users' => $users, 'count_events' => $count_events, 'count_users' => $count_users]);
+			if (isset($_POST['button-'.$user['id']])) {
+				$role = $_POST['role'];
+				$id = $user['id'];
+				$users = $user_manager->update(['role' => $role], $id);
+			}
+		}
+
+		$users       	= $user_manager->findAll();
+		$this->show('default/userslist' , ['users' => $users, 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}
 
