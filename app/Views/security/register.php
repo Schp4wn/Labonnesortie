@@ -44,11 +44,10 @@
   </form>
 </div>
 
-  <!-- <?php
-       if ( $message['success'] )
-       {
-          echo '<h1 class="text-success">' . $message['success'] . '</h1>';
-       }
-   ?> -->
+<?php
+    if (isset($message['success'])) {
+            echo '<h1 class="text-success">' . $message['success'] . '</h1>';
+    }
+?>
 
 <?php $this->stop('main_content') ?>

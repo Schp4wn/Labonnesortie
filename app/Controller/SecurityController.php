@@ -40,11 +40,11 @@ class SecurityController extends Controller
                 if ( $user_manager->emailExists($email) || $user_manager->usernameExists($username) ) {
                     $errors['exists'] = "Lemail ou l'username existe deja";
                 }
-                if ( empty($email)) {
-                    $errors['email'] = "L'email est vide";
+                if ( empty($username)) {
+                    $errors['username'] = "l'username est vide";
                 }
                 if ( empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) ){
-                    $errors['username'] = "L'email ou l'username sont vide ou invalide";
+                    $errors['email'] = "L'email est vide ou invalide";
                 }
 
                 if ( $password != $cfpassword ){
@@ -66,6 +66,14 @@ class SecurityController extends Controller
                   ]);
 
                   $message['success'] = "Vous etes bien inscris.";
+                  $user_id = $auth_manager->isValidLoginInfo($username, $password);
+                  if ($user_id) { // Si le couple username/password est valid
+                      $user_manager = new UserModel();
+                      $user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
+                      $auth_manager->logUserIn($user); // La connexion se fait
+                      $this->redirectToRoute('default_frontPage');
+                  }
+
             }else{
 
                 $message = $errors;
