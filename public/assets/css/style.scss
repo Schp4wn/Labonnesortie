@@ -1,3 +1,8 @@
+.navbar {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
 /******************/
 /*    FRONTPAGE    */
 /******************/
@@ -7,30 +12,54 @@
   margin: auto;
   margin-top: 3%;
   padding-bottom: 5%;
+  .title {
+    padding-left: 30%;
+  }
   h3 {
-    margin: 3% 0;
+    // margin: 3% 0;
   }
   .event {
     font-size: 1.3em;
     padding: 1% 2%;
+    margin: 2% 0;
+    background-color: #dbd3d3;
+    border-bottom: 6px solid #a4c8d7;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 12px #aaa;
+    box-shadow: 1px 1px 12px #aaa;
+    // box-shadow: 8px 8px 12px #aaa;
     img {
       padding-bottom: 5%;
     }
     h4 {
       font-size: 1.8em;
     }
-    background-color: rgba(219, 211, 211, 1);
-    border-bottom: 4px solid rgba(164, 200, 215, 1);
   }
   .adress-event {
     background-color: rgba(45, 47, 51, 1);
     color: white;
-    padding: 2% 0
+    padding: 2% 0;
+    border-radius: 5px;
   }
   .meteo {
-    padding-top: 18%;
+    // padding-top: 18%;
+  }
+  .tchat {
+    margin-top: -4%;
+    button {
+      margin-top: 2%;
+    }
+    .thumbnail {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
   }
   .message-from-tchat {
-    height: 500px;
+    height: 350px;
+  }
+
+  .calendar {
+    img {
+      width: 100%;
+    }
   }
 }

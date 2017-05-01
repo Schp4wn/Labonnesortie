@@ -1,35 +1,37 @@
 <?php $this->layout('layout', ['title' => 'Accueil']) ?>
 
 <?php $this->start('main_content') ?>
-
-
 		<div class="demo-header">
 				<div class="demo-header-content">
 						<div class="container">
-								<h1>Bienvenu sur LaBonneSortie !</h1>
+								<h1>Bienvenue sur LaBonneSortie !</h1>
 								<hr class="colored">
 								<p>Nous recensons toutes les sorties organiser dans le Nord est le Pas de Calais de la france !</p>
 								<ul class="list-inline cta-list">
 										<li class="list-inline-item">
-												<a href="<?= $this->url('default_frontPage') ?>" class="btn btn-primary page-scroll-demo">Voir nos évènement !</a>
+
+												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">
+											  <span class="hover-bg reset">
+											    <span class="hover-text reset"><img src="<?= $this->assetUrl('img/moto.gif')?>" alt="" id="moto"></span>
+											  </span>Voir Tous Nos Evénements</a>
 										</li>
-										<li class="list-inline-item">
-												<a href="#previews" class="btn btn-primary page-scroll-demo">Plus d'infos</a>
-										</li>
-								</ul>
-								<ul>
-								<li class="list-inline-item">
-										<a href="#previews" class="btn btn-primary page-scroll-demo">je ne sais plus !</a>
-								</li>
-							</ul>
+									</ul>
 								<div class="container pt-2 col-md-12" id="previews">
 										<div class="row">
 						            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-						              <tbody><tr>
-						                <td align="center">
-						                  <img name="" src="<?= $this->assetUrl('img/carte.png')?>" width="545" height="353" border="0" usemap="#m_reg17">
-														</td>
-						              </tr>
+						              <tbody><br/>
+														<div id="page">
+													      <div class="contenu article">
+													        <div class="conteneur-carte-coordonnees">
+													          <div class="carte"><img src="<?= $this->assetUrl('img/carte-npdc.png')?>" width="400" height="258" border="0">
+													            <p class="dunkerque"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Dunkerque">Dunkerque</a></p>
+													            <p class="lille"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Lille">Lille</a></p>
+													            <p class="maubeuge"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Maubeuge">Maubeuge</a></p>
+													            <p class="valenciennes"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Valenciennes">Valenciennes</a></p>
+													            <p class="bethune"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Béthune">Béthune</a></p>
+													          </div>
+													        </div>
+													      </div><br/><br/>
 													<tr>
 													<td> Cliquez sur une des villes pour rechercher une sortie</td>
 												</tr>

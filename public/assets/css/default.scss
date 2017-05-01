@@ -1,0 +1,58 @@
+.panel-admin {
+  background-color: rgb(71, 91, 106);
+  height: 800px;
+  img {
+    padding-top: 2%;
+    border-radius: 50px;
+  }
+  h3 {
+    color: white;
+  }
+  .list-group-item {
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 0px;
+    background-color: rgb(71, 91, 106);
+  }
+  a {
+    color: white;
+  }
+  a:hover {
+    color: black;
+  }
+}
+
+#profileAdmin {
+  .btn {
+    border: none;
+    color: white;
+    font-size: 1.1em;
+  }
+  table {
+    margin-top: 2%;
+  }
+  th {
+    background-color: rgba(71, 91, 106, 0.2);
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+  }
+  td {
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+  }
+}
+
+#userslist {
+  table {
+    margin-top: 2%;
+  }
+  th {
+    background-color: rgba(71, 91, 106, 0.2);
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+  }
+  td {
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+  }
+}

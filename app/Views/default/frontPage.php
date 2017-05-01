@@ -1,71 +1,299 @@
 <?php $this->layout('layout', ['title' => 'Accueil']) ?>
 
 <?php $this->start('main_content') ?>
-      
-<div id="frontPage">
-  <h3 class="text-center">Vous cherchez les événements autour de Lille</h3>
+
+
+    <div id="frontPage">
+  <div class="container-fluid">
+    <div class="">
+      <div class="sidebar-panel" style="min-height: 550px;position: fixed;">
+        <div>
+            <h4>Les dix dernier Messages ->nb message <span class="badge badge-info pull-right">16</span></h4>
+            <div class="feed-element">
+                <a href="#" class="pull-left">
+                    <img alt="image" class="img-circle" src="<?= $this->assetUrl('img/course.gif') ?>">
+                </a>
+                <div class="media-body">
+                    message poste
+                    <br>
+                    <small class="text-muted">heure h:m.s</small>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-lg-3 col-lg-push-4 event">
-        <h4 class="text-center">Evénement à venir</h4>
-        <div class="col-lg-12 adress-event">
-          <div class="col-lg-6">
-            <h4>Moto show</h4>
-            <ul class="list-unstyled">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <li>104 avenue de la République</li>
-              <li>59110</li>
-              <li>La Madeleine</li>
-            </ul>
-            <p><i class="fa fa-calendar-o" aria-hidden="true"></i> Samedi 08 avril 2017</p>
-          </div>
-          <div class="col-lg-6">
-            <img class="img-responsive center-block" src="<?= $this->assetUrl('img/Fichier_000.jpeg')?>" alt="event">
-          </div>
-          <p class="text-center">Description de l'événement</p>
-        </div>
+      <div class="col-md-10">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="<?= $this->assetUrl('img/moto.jpg')?>" alt="Los Angeles">
       </div>
 
-      <div class="col-lg-3 col-lg-pull-2">
-        <iframe name="InlineFrame1" id="InlineFrame1" style="width:860px;height:235px;" src="http://www.mathieuweb.fr/calendrier/calendrier-des-semaines.php?nb_mois=1&nb_mois_ligne=5&mois=0&an=0&langue=fr&texte_color=B9CBDD&week_color=DAE9F8&week_end_color=C7DAED&police_color=453413&sel=true" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+      <div class="item">
+        <img src="<?= $this->assetUrl('img/plan.jpg')?>" alt="Chicago">
       </div>
 
-      <div class="col-lg-3 col-lg-pull-5 meteo">
-        <div id="cont_NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx">
-          <div id="spa_NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx">
-            <a id="a_NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx" href="http://www.meteocity.com/france/lille_v59350/" target="_blank" style="color:#333;text-decoration:none;">Météo Lille</a> ©<a href="http://www.meteocity.com">meteocity.com</a></div>
-            <script type="text/javascript" src="http://widget.meteocity.com/js/NTkzNTB8NXwxfDJ8MXxCQkUwRkZ8M3xGRkZGRkZ8Y3wx"></script>
-        </div>
+      <div class="item">
+        <img src="<?= $this->assetUrl('img/course.gif')?>" alt="New York">
       </div>
+      <div class="item">
+        <img src="<?= $this->assetUrl('img/carousel/trajet.png')?>" alt="New York">
+      </div>
+      <div class="item">
+        <img src="<?= $this->assetUrl('img/carousel/create-event.jpg')?>" alt="New York">
+      </div>
+    </div>
 
-      <div class="col-sm-6 col-lg-3 col-md-pull-1 tchat">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3 class="text-center">Postez votre message</h3>
-            <hr>
-            <ul class="message-from-tchat">
-              <?php foreach ($messages as $message): ?>
-                <?= "<li>" .$message['content']."</li>"; ?>
-              <?php endforeach; ?>
-              <li>Message 1</li>
-              <li>Message 2</li>
-              <li>Message 3</li>
-              <li>Message 4</li>
-              <li>Message 5</li>
-              <li>Message 6</li>
-              <li>Message 7</li>
-            </ul>
-            <form id="addMessage" action="" method="post">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <textarea name="message" class="form-control"></textarea>
-                  <button class="btn btn-primary form-control" type="submit">Envoyer</button>
-                </span>
-              </div><!-- /input-group -->
-            </form>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+    </div>
+  </div><!-- /.row -->
+
+		<div class="row">
+      <div class="col-md-3">
+        <h2>Balade du jour</h2>
+          <div class="well">
+            <div class="center">
+              <img src="<?= $this->assetUrl('img/trip-3357.png')?>" alt="">
+            </div>
+            <h3>
+              <a href="#" title="">Ballade</a>
+            </h3>
+            <table class="table table-bordered table-condensed">
+              <tbody>
+              <tr>
+                <td class="strong">Distance</td>
+                <td><i class="icon-road"></i> <b>87.92</b> km</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                <i class="icon-heart"></i> <b>0</b> vote			</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                <i class="icon-eye-open"></i> <b>706</b> vues			</td>
+              </tr>
+             <tr>
+                <td class="strong">Créée par</td>
+                <td>
+                    <a href="/profil/dom94">dom94</a>
+                </td>
+             </tr>
+            </tbody></table>
           </div>
-        </div>
+        <div class="clear"></div>
       </div>
-    </div><!-- /.row -->
+      <div class="col-md-3">
+        <h2>Balade du jour</h2>
+          <div class="well">
+            <div class="center">
+              <img src="<?= $this->assetUrl('img/trip-3357.png')?>" alt="">
+            </div>
+            <h3>
+              <a href="#" title="">Ballade</a>
+            </h3>
+            <table class="table table-bordered table-condensed">
+              <tbody>
+              <tr>
+                <td class="strong">Distance</td>
+                <td><i class="icon-road"></i> <b>87.92</b> km</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                <i class="icon-heart"></i> <b>0</b> vote			</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                <i class="icon-eye-open"></i> <b>706</b> vues			</td>
+              </tr>
+             <tr>
+                <td class="strong">Créée par</td>
+                <td>
+                    <a href="">dom94</a>
+                </td>
+             </tr>
+            </tbody></table>
+          </div>
+        <div class="clear"></div>
+      </div>
+      <div class="col-md-3">
+        <h2>Balade du jour</h2>
+          <div class="well">
+            <div class="center">
+              <img src="<?= $this->assetUrl('img/trip-3357.png')?>" alt="">
+            </div>
+            <h3>
+              <a href="#" title="Ballade du 13 juin 2015 ( week end normandie 3 )">Ballade</a>
+            </h3>
+            <table class="table table-bordered table-condensed">
+              <tbody>
+              <tr>
+                <td class="strong">Distance</td>
+                <td><i class="icon-road"></i> <b>87.92</b> km</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                <i class="icon-heart"></i> <b>0</b> vote			</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                <i class="icon-eye-open"></i> <b>706</b> vues			</td>
+              </tr>
+             <tr>
+                <td class="strong">Créée par</td>
+                <td>
+                    <a href="/profil/dom94">dom94</a>
+                </td>
+             </tr>
+            </tbody></table>
+          </div>
+        <div class="clear"></div>
+      </div>
+			<div id="wrapper">
+  <div id="info">
+    <div id="info-content">
+      <h1>Multi level <strong>CSS-only push menu</strong></h1>
+      <p>&lt;noscript&gt;No javascript required&lt;/noscript&gt;</p>
+    </div>
+  </div>
+
+  <input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+  <div class="menu">
+    <label class="menu-toggle" for="menu"><span>Toggle</span></label>
+    <ul>
+      <li>
+        <a href="#">Menu-1</a>
+      </li>
+      <li>
+        <a href="#">Menu-2</a>
+      </li>
+      <li>
+        <label for="menu-3">Menu-3</label>
+        <input type="checkbox" id="menu-3" name="menu-3" class="menu-checkbox">
+        <div class="menu">
+          <label class="menu-toggle" for="menu-3"><span>Toggle</span></label>
+          <ul>
+            <li>
+              <a href="#">Menu-3-1</a>
+            </li>
+            <li>
+              <label for="menu-3-2">Menu-3-2</label>
+              <input type="checkbox" id="menu-3-2" name="menu-3-2" class="menu-checkbox">
+              <div class="menu">
+                <label class="menu-toggle" for="menu-3-2"><span>Toggle</span></label>
+                <ul>
+                  <li>
+                    <a href="#">Menu-3-2-1</a>
+                  </li>
+                  <li>
+                    <a href="#">Menu-3-2-2</a>
+                  </li>
+                  <li>
+                    <label for="menu-3-2-3">Menu-3-2-3</label>
+                    <input type="checkbox" id="menu-3-2-3" name="menu-3-2-3" class="menu-checkbox">
+                    <div class="menu">
+                      <label class="menu-toggle" for="menu-3-2-3"><span>Toggle</span></label>
+                      <ul>
+                        <li>
+                          <a href="#">Menu-3-2-3-1</a>
+                        </li>
+                        <li>
+                          <a href="#">Menu-3-2-3-2</a>
+                        </li>
+                        <li>
+                          <a href="#">Menu-3-2-3-3</a>
+                        </li>
+                        <li>
+                          <a href="#">Menu-3-2-3-4</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#">Menu-3-2-4</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#">Menu-3-3</a>
+            </li>
+            <li>
+              <a href="#">Menu-3-4</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <label for="menu-4">Menu-4</label>
+        <input type="checkbox" id="menu-4" name="menu-4" class="menu-checkbox">
+        <div class="menu">
+          <label class="menu-toggle" for="menu-4"><span>Toggle</span></label>
+          <ul>
+            <li>
+              <a href="#">Menu-4-1</a>
+            </li>
+            <li>
+              <a href="#">Menu-4-2</a>
+            </li>
+            <li>
+              <a href="#">Menu-4-3</a>
+            </li>
+            <li>
+              <a href="#">Menu-4-4</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <label for="menu-5">Menu-5</label>
+        <input type="checkbox" id="menu-5" name="menu-5" class="menu-checkbox">
+        <div class="menu">
+          <label class="menu-toggle" for="menu-5"><span>Toggle</span></label>
+          <ul>
+            <li>
+              <a href="#">Menu-5-1</a>
+            </li>
+            <li>
+              <a href="#">Menu-5-2</a>
+            </li>
+            <li>
+              <a href="#">Menu-5-3</a>
+            </li>
+            <li>
+              <a href="#">Menu-5-4</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">Menu-6</a>
+      </li>
+    </ul>
+  </div>
+</div><!-- #wrapper -->
+
+  </div><!-- /.container-fluid -->
 </div><!-- /#frontPage -->
 
 <?php $this->stop('main_content') ?>
