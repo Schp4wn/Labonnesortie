@@ -6,7 +6,7 @@ use \W\Model\Model;
 
 class EventsModel extends Model
 {
-  
+
   public function countEvents()
   {
     $query = $this->dbh->query('SELECT COUNT(*) as events FROM events');
@@ -18,4 +18,10 @@ class EventsModel extends Model
     $query = $this->dbh->query('SELECT COUNT(*) as events FROM events WHERE  user_id = '. $id);
     return $query->fetch();
   }
+
+  // public function getsearch($search)
+  // {
+  //   $query = $this->dbh->query('SELECT * as events FROM events WHERE  depart_address = '. $search);
+  //   return $query->fetch();
+  // }
 }
