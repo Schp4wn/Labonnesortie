@@ -13,7 +13,7 @@
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/main.css') ?>">
-	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
+
 
 </head>
 <body>
@@ -79,8 +79,9 @@
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>
-
+			<?php if ($w_current_route != 'default_home'): ?>
 				<footer id="footer" class="clearfix">
+
          <div class="container">
          <div id="footer-wrapper">
            <div class="row">
@@ -117,13 +118,14 @@
              </div>
            </div> <!-- end .row -->
          </div>
-
+				 <?php endif; ?>
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY&callback=initMap" type="text/javascript"></script>
 			<?= $this->section('javascript') ?> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY-->
 		</footer>
+
 	</div>
 </body>
 </html>

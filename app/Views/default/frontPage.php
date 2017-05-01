@@ -52,16 +52,24 @@
 		<div class="row" id="lastevent">
       <?php foreach ($lastevent as  $value) :?>
       <div class="col-md-4">
-        <h2>Balade du jour</h2>
+        <br/>
           <div class="well">
             <div class="center">
               <img style="" src="<?= $value['image']; ?>" alt="Event img">
             </div>
             <h3>
-              <a href="#" title="">Balade</a>
+              <a href="#" title=""><?= $value['title']; ?></a>
             </h3>
             <table class="table table-bordered table-condensed">
               <tbody>
+                <tr>
+                  <td class="strong">Départ</td>
+                  <td><i class="icon-road"></i> <b><?= $value['depart']; ?></b></td>
+                </tr>
+                <tr>
+                  <td class="strong">Arrivé</td>
+                  <td><i class="icon-road"></i> <b><?= $value['arrivee']; ?></b></td>
+                </tr>
               <tr>
                 <td class="strong">Distance</td>
                 <td><i class="icon-road"></i><b><?= $value['distance']; ?></b></td>
@@ -69,10 +77,6 @@
               <tr>
                 <td class="strong">Temps</td>
                 <td><i class="icon-road"></i> <b><?= $value['temps_dist']; ?></b></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                <i class="icon-eye-open"></i> <b>706</b> vues			</td>
               </tr>
              <tr>
                 <td class="strong">Créée par</td>

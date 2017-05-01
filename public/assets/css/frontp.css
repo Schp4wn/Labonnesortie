@@ -6,11 +6,10 @@
 #myCarousel img{
   height: 450px;
   position: center center;
-  width: 1024px;
+  width: 100%;
 }
 #myCarousel{
-  max-width: 1124px;
-  width: 1024px;
+  width: 100%;
 
 }
 .container-fluid{
@@ -23,5 +22,5 @@
 }
 
 #lastevent img{
-  width: 100%;
+   width: 100%;
 }

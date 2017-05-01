@@ -7,7 +7,7 @@
 								<h1>Bienvenue sur LaBonneSortie !</h1>
 								<hr class="colored">
 								<p>Nous recensons toutes les sorties organiser dans le Nord est le Pas de Calais de la france !</p>
-								<ul class="list-inline cta-list">
+								<ul class="list-inline cta-list" >
 										<li class="list-inline-item">
 												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">
 											  <span class="hover-bg reset">
