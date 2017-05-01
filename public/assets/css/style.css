@@ -122,7 +122,16 @@
       top:131px;
       left:123px;
     }
-
+    #page .contenu.article .conteneur-carte-coordonnees .carte .arras{
+      position:absolute;
+      top:189px;
+      left:166px;
+    }
+    #page .contenu.article .conteneur-carte-coordonnees .carte .boulogne{
+      position:absolute;
+      top:104px;
+      left:-49px;
+    }
 
     #page .contenu.article .conteneur-carte-coordonnees .coordonnees{
       width:230px;

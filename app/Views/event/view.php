@@ -38,10 +38,10 @@
 				</ul>
 			</div>
 		</div>
-	
+
 		  <div id="gmap_canvas" style="height:400px">.</div>
       <div id='map-label'></div>
-				
+
 	</div>
 
 

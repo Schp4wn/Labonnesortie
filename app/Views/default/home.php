@@ -23,12 +23,14 @@
 														<div id="page">
 													      <div class="contenu article">
 													        <div class="conteneur-carte-coordonnees">
-													          <div class="carte"><img src="<?= $this->assetUrl('img/carte-npdc.png')?>" width="400" height="258" border="0">
+													          <div class="carte"><img src="<?= $this->assetUrl('img/carte-npdc-Recovered.png')?>" width="400" height="258" border="0">
 													            <p class="dunkerque"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Dunkerque">Dunkerque</a></p>
 													            <p class="lille"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Lille">Lille</a></p>
 													            <p class="maubeuge"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Maubeuge">Maubeuge</a></p>
 													            <p class="valenciennes"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Valenciennes">Valenciennes</a></p>
-													            <p class="bethune"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Béthune">Béthune</a></p>
+																			<p class="bethune"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Béthune">Béthune</a></p>
+																			<p class="arras"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Arras">Arras</a></p>
+													            <p class="boulogne"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Boulogne sur mer">Boulogne sur mer</a></p>
 													          </div>
 													        </div>
 													      </div><br/><br/>
