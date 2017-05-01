@@ -27,12 +27,14 @@ class DefaultController extends Controller
 		$this->allowTo('admin');
 
 		$event_manager 	= new EventsModel();
-		$user_manager		= new UserModel();
-		$user = $user_manager->find($this->getUser()['id']);
+		$user_manager	= new UserModel();
+		$user 		    = $user_manager->find($this->getUser()['id']);
 		$events       	= $event_manager->findAll();
 		$count_events 	= $event_manager->countEvents($this->getUser()['id']);
-		$count_users 		= $user_manager->countUsers();
-		$this->show('default/profileAdmin' , ['events' => $events, 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
+		$count_users    = $user_manager->countUsers();
+		
+		
+		$this->show('default/profileAdmin' , [ 'events' => $events , 'user' => $user, 'count_events' => $count_events, 'count_users' => $count_users]);
 
 	}
 
@@ -72,7 +74,7 @@ class DefaultController extends Controller
 	 */
 	public function profile()
 	{
-
+ 
 		$this->allowTo('user');
    		//ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
 		//si lutilisateur n'a pas d'evenement message de empty evenement
@@ -86,7 +88,9 @@ class DefaultController extends Controller
 
 		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']);
 
-		$this->show('default/profile', ['count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
+		$countKmUser   	= $event_manager->countKmUser($this->getUser()['id']);
+
+		$this->show('default/profile', ['KmOfUser' => $countKmUser,'count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
 
 	}
 

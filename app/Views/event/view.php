@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Un évènement']); ?>
 
 <?php $this->start('main_content'); ?>
-<?php //var_dump($event) ?>
+<?php //var_dump($count_km) ?>
 <div id="sd-entete-map">
 		<div class="container well">
 			<div class="col-md-6 col-md-push-4">
@@ -38,12 +38,9 @@
 				</ul>
 			</div>
 		</div>
-	
 		  <div id="gmap_canvas" style="height:400px">.</div>
       <div id='map-label'></div>
-				
 	</div>
-
 
 <?php $this->stop('main_content'); ?>
 

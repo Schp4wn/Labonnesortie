@@ -16,7 +16,7 @@
             <br/>
           </div><!--list-group-->
       </div><!--col-md-3-->
-
+<?php var_dump($countKmUser['KmOfUser']); ?>
       <div class="col-md-6 ">
         <h1>Profil : <?= $w_user['firstname'];?>  <?= $w_user['lastname']; ?></h1>
           <?php if(!empty($profil_event)) : ?>
