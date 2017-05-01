@@ -4,7 +4,7 @@
 <?php //var_dump($event) ?>
 <div id="sd-entete-map">
 		<div class="container well">
-			<div class="col-md-6 col-md-push-6">
+			<div class="col-md-6 col-md-push-4">
 				<h1><?= $event['title']; ?></h1>
 				<p><?php echo $event['event'] ?></p>
 				<p>Date de l'evenement : <?php echo date('d-m-Y' ,strtotime($event['date_time'])) ?></p>
