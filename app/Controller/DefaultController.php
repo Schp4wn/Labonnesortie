@@ -97,4 +97,13 @@ class DefaultController extends Controller
 	 {
 	 	$this->show('default/contact');
 	 }
+
+	 public function lastevent(){
+
+		 		$user_manager = new UserModel();
+				$event_manager 	= new EventsModel();
+				$lastevent = $event_manager->lastevent();
+	      $this->show('default/frontpage' , ['lastevent'=> $lastevent]);
+	     }
+
 }

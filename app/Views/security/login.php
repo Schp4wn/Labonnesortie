@@ -3,7 +3,7 @@
 <?php $this->start('main_content'); ?>
 
     <form action="" method="POST">
-    
+
         <div class="form-group">
             <label>Votre pseudo ou votre email :</label>
             <input id="username" name="username" class="form-control" type="text">
@@ -18,4 +18,3 @@
     </form>
 
 <?php $this->stop('main_content'); ?>
-

@@ -8,22 +8,12 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/default.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
-
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/profil_index.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/view.css') ?>">
-
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/test.css') ?>">
-
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
-
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/main.css') ?>">
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
-
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/slider.css') ?>">
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
-	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
-
 
 </head>
 <body>
@@ -81,7 +71,9 @@
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 			</nav>
+
 		</header>
+
 	<?php endif; ?>
 
 		<section>
