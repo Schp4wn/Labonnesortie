@@ -9,6 +9,7 @@
 								<p>Nous recensons toutes les sorties organiser dans le Nord est le Pas de Calais de la france !</p>
 								<ul class="list-inline cta-list" >
 										<li class="list-inline-item">
+
 												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">
 											  <span class="hover-bg reset">
 											    <span class="hover-text reset"><img src="<?= $this->assetUrl('img/moto.gif')?>" alt="" id="moto"></span>

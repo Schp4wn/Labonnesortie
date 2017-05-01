@@ -30,6 +30,7 @@ function changeTokenLogin($user_id) {
     return $token_login;
 }
 
+
   function checkUserByEmail($user_email) {
 
       $query = $this->dbh->prepare('SELECT id FROM user WHERE email = :email');

@@ -25,4 +25,10 @@ class EventsModel extends Model
     return $query->fetchAll();
 
   }
+
+  // public function getsearch($search)
+  // {
+  //   $query = $this->dbh->query('SELECT * as events FROM events WHERE  depart_address = '. $search);
+  //   return $query->fetch();
+  // }
 }

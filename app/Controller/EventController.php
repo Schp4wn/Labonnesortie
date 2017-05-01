@@ -9,6 +9,7 @@ use  Model\UserModel;
 
 class EventController extends Controller
 {
+
     /**
       *  On creer un evenements
       *
@@ -32,6 +33,7 @@ class EventController extends Controller
         $hour            = null;
         $distance        = null;
         $temps           = null;
+
 
         if(!empty($_POST))
         {
@@ -142,10 +144,11 @@ class EventController extends Controller
         //$this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
 
+
         $event_manager = new EventsModel();
         $user_manager = new UserModel();
         $events        = $event_manager->findAll();
-        //$count_events = $event_manager->countEvents();
+        $count_events = $event_manager->countEvents();
         $count_users = $user_manager->countUsers();
         $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
     }
@@ -404,5 +407,9 @@ class EventController extends Controller
         var_dump($data_arr);
         var_dump($temps_dist);
     }
-}
+  }
+
+
+
+
 }

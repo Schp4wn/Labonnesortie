@@ -2,7 +2,8 @@
 
 <?php $this->start('main_content'); ?>
 
-   
+
+
 
     <div class="container">
      <h1>Modifier un evenement</h1>
@@ -72,4 +73,5 @@
             }
         ?>
     </div>
+
 <?php $this->stop('main_content'); ?>
