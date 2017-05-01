@@ -18,7 +18,7 @@ class EventsModel extends Model
   {
     $query = $this->dbh->query('SELECT COUNT(*) as events FROM events WHERE  user_id = '. $id);
     return $query->fetch();
-
+}
   public function lastevent()
   {
     $query = $this->dbh->query('SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id ORDER BY `post` DESC LIMIT 3');
