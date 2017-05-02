@@ -45,7 +45,7 @@
         </div>
 
 
-        <button id="publie" type="submit" class="btn btn-default">Publier larticle</button>
+        <button id="publie" type="submit" class="btn btn-default">Publier l'évènement</button>
 
       </form>
       <?php
@@ -53,9 +53,6 @@
                 echo '<h1 class="text-success">' . $mess . '</h1>';
             }
       ?>
-
-
-      <?php  ?>
     </div>
 
 <?php $this->stop('main_content') ?>
