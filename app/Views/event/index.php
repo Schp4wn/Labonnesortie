@@ -18,7 +18,6 @@
                     <h1><?= $event['title']; ?></h1>
                     
                     <p><?php echo $event['event']; ?></p>
-
                     <p> Evénement posté le  <?php $datetime = new DateTime($event['post']);
 
                       $intl = new IntlDateFormatter( 'fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::MEDIUM); echo $intl->format($datetime); ?></p>

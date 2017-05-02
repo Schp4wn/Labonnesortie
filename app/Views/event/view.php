@@ -2,7 +2,9 @@
 
 <?php $this->start('main_content'); ?>
 
+
 <?php //var_dump($event) ?>
+
 <div id="sd-entete-map">
 		<div class="container well">
 			<div class="col-md-6 col-md-push-6">
@@ -59,11 +61,6 @@
 		</div>
 	</div>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c6b58e4ea6363cd230f95219da273a2791db7eb5
 <?php $this->stop('main_content'); ?>
 
 <?php $this->start('javascript'); ?>
