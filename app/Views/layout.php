@@ -114,22 +114,22 @@
                <div id="meta-3" class="widget widgetFooter widget_meta">
                <h4 class="widgettitle">l'Essentiels :</h4>
                <ul>
- 			    		  <li><a href="#"><i class="fa fa-home fa-fw"></i> Accueil</a></li>
- 							  <li><a href="#"><i class="fa fa-link"></i> Evenement</a></li>
- 							  <li><a href="#"><i class="fa fa-envelope fa-fw"></i> Contact </a></li>
+ 			    	<li><a href="#"><i class="fa fa-home fa-fw"></i> Accueil</a></li>
+ 					<li><a href="#"><i class="fa fa-link"></i> Evenement</a></li>
+ 					<li><a href="#"><i class="fa fa-envelope fa-fw"></i> Contact </a></li>
               </ul>
- 					 	</div>
- 				 	</div>
+ 			  </div>
+ 			 </div>
            <div class="col-sm-6 col-md-2">
                		<div id="recent-posts-3" class="widget widgetFooter widget_recent_entries">
                      <h4 class="widgettitle">Aussi sur  :</h4>
                      <ul>
- 											<li><a href="#" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
- 											<li><a href="#" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
- 											<li><a href="#" target="_blank"><i class="fa fa-youtube"></i> Youtube</a></li>
- 										</ul>
- 									</div>
- 				</div>
+ 						<li><a href="#" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+ 						<li><a href="#" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
+ 						<li><a href="#" target="_blank"><i class="fa fa-youtube"></i> Youtube</a></li>
+ 					</ul>
+ 		   </div>
+ 		 </div>
        </div>
      </div> <!--  #footer -->
        <div id="sub-floor">

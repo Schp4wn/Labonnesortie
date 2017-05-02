@@ -88,9 +88,11 @@ class DefaultController extends Controller
 		//var_dump($count_events);
 		$profil_event = $user_manager->getAllEventsByUser($this->getUser()['id']);
 
-		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']);
+		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']); 
 
-		$this->show('default/profile', ['count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
+		$km =	$event_manager->countKmOfUser($this->getUser()['id']);
+
+		$this->show('default/profile', [ 'km' => $km ,'count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
 
 	}
 
