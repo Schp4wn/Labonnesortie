@@ -98,28 +98,31 @@ class DefaultController extends Controller
 	 	$this->show('default/contact');
 	 }
 
- 	    public function login()
- 	    {
+	 /**
+     * Permet la connexion d'un utilisateur
+    */
+    public function login()
+    {
 
- 	        if (isset($_POST['button-login'])) {
- 	            $username = $_POST['username'];
- 	            $password = $_POST['password'];
- 	            $auth_manager = new \W\Security\AuthentificationModel();
+      if (isset($_POST['button-login'])) {
+          $username = $_POST['username'];
+          $password = $_POST['password'];
+          $auth_manager = new \W\Security\AuthentificationModel();
 
- 	            $user_id = $auth_manager->isValidLoginInfo($username, $password);
- 	            if ($user_id) { // Si le couple username/password est valid
- 	                $user_manager = new UserModel();
- 	                $user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
- 	                $auth_manager->logUserIn($user); // La connexion se fait
- 	                $this->redirectToRoute('default_frontPage');
- 	            }
- 	        }
+          $user_id = $auth_manager->isValidLoginInfo($username, $password);
+          if ($user_id) { // Si le couple username/password est valid
+              $user_manager = new UserModel();
+              $user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
+              $auth_manager->logUserIn($user); // La connexion se fait
+              $this->redirectToRoute('default_frontPage');
+          }
+      }
 
-					$user_manager = new UserModel();
-					$event_manager 	= new EventsModel();
-					$lastevent = $event_manager->lastevent();
-		      $this->show('default/frontpage' , ['lastevent'=> $lastevent]);
+			$user_manager = new UserModel();
+			$event_manager 	= new EventsModel();
+			$lastevent = $event_manager->lastevent();
 
- 	  }
-
+ 	    // J'injecte la variable lastevent dans ma vue
+ 	    $this->show('default/frontPage', ['lastevent'=> $lastevent]);
+		}
 }
