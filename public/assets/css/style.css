@@ -21,8 +21,34 @@
  			 -moz-background-size: cover;
  			 background-size: cover;
  			 -o-background-size: cover;
- 			 padding:  11%;
+       padding: 4.2% 0;
  	 }
+   @media   screen and (min-width: 1024px) and (max-width: 729px) {
+     .demo-header{
+       padding: 4.2% 0;
+     }
+   }
+   @media   screen and (min-width: 728px) and (max-width: 424px) {
+     .demo-header{
+       padding: 5.3% 0;
+     }
+   }
+    @media   screen and (min-width: 425px) and (max-width: 374px) {
+      .demo-header{
+        padding: 33% 0 ;
+      }
+    }
+
+      @media  screen and (min-width: 375px) and (max-width: 318px) {
+        .demo-header{
+          padding: 41% 0 ;
+        }
+      }
+      @media  screen and (min-width: 319px) and (max-width: 310px) {
+        .demo-header{
+          padding: 52% 11% 11% 11% ;
+        }
+      }
 
  	 .preview-pane {
  			 text-align: center;
@@ -228,7 +254,7 @@
    -o-transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
    transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
  }
- #page.hover-text.leave {
+ .hover-text.leave {
    left: 100%;
    opacity: 0;
    -webkit-transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.3s, opacity 0.5s;

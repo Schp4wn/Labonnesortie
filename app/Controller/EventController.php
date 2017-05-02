@@ -188,7 +188,6 @@ class EventController extends Controller
       if( !empty($_POST) )
       {
 
-
           $title       = ucfirst(trim($_POST['title']));
           $description = trim($_POST['event']);
           $image       = trim($_POST['image']);
