@@ -3,6 +3,7 @@
 <?php $this->start('main_content'); ?>
   <div id="allEventsUser" class="container">
    <h1>Tous les  Article</h1>
+
    <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a><br />
 
     <div class="container-fluid">

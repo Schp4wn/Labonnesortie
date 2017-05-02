@@ -1,6 +1,13 @@
 .navbar {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   margin: 0;
+  background-color: transparent;
+}
+.modal-backdrop {
+  z-index: 1;
+}
+.btn-login {
+  margin-top : 6%;
 }
 
 /******************/
@@ -20,8 +27,34 @@
  			 -moz-background-size: cover;
  			 background-size: cover;
  			 -o-background-size: cover;
- 			 padding:  11%;
+       padding: 4.2% 0;
  	 }
+   @media   screen and (min-width: 1024px) and (max-width: 729px) {
+     .demo-header{
+       padding: 4.2% 0;
+     }
+   }
+   @media   screen and (min-width: 728px) and (max-width: 424px) {
+     .demo-header{
+       padding: 5.3% 0;
+     }
+   }
+    @media   screen and (min-width: 425px) and (max-width: 374px) {
+      .demo-header{
+        padding: 33% 0 ;
+      }
+    }
+
+      @media  screen and (min-width: 375px) and (max-width: 318px) {
+        .demo-header{
+          padding: 41% 0 ;
+        }
+      }
+      @media  screen and (min-width: 319px) and (max-width: 310px) {
+        .demo-header{
+          padding: 52% 11% 11% 11% ;
+        }
+      }
 
  	 .preview-pane {
  			 text-align: center;
@@ -189,16 +222,17 @@
    text-align: center;
    color: white;
  }
- #-3 .btn {
+
+  #puce.btn {
+
    height: 51px;
    min-width: 218px;
-   color: #d5402b ;
    font-size: 18px;
    font-weight: 400;
    line-height: 2.8;
    text-transform: uppercase;
    display: inline-block;
-   border: 1px solid #d5402b;
+   border: 1px solid white;
    position: relative;
    overflow: hidden;
    text-decoration: none;
@@ -227,7 +261,7 @@
    -o-transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
    transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
  }
- #page.hover-text.leave {
+ .hover-text.leave {
    left: 100%;
    opacity: 0;
    -webkit-transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.3s, opacity 0.5s;

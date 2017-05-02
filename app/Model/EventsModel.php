@@ -3,6 +3,7 @@
 namespace Model;
 
 use \W\Model\Model;
+use  Model\EventsModel;
 
 class EventsModel extends Model
 {
@@ -23,7 +24,15 @@ class EventsModel extends Model
   {
     $query = $this->dbh->query('SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id ORDER BY `post` DESC LIMIT 3');
     return $query->fetchAll();
+  }
 
+  public function subscribersEvent($event, $id)
+  {
+    $event_manager = new EventsModel();
+    $event = $event_manager->find($event);
+
+    $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.id = '.$id);
+    return $query->fetchAll();
   }
   public function countAllEvent(){
     $query = $this->dbh->query('SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id' );

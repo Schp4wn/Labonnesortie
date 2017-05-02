@@ -8,13 +8,13 @@ body .profil_index
     background: -webkit-linear-gradient(#ccc, black); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#ccc, #333); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#ccc, #333); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#ccc, #333); 
+    background: linear-gradient(#ccc, #333);
 }
-.profil_index .img.well img 
+.profil_index .img.well img
 {
     width:25%;
 }
-.well
+.profil_index .well
 {
 	box-shadow: 1px 1px 1px #504a4a;
 }
@@ -23,7 +23,7 @@ hr
 	border-top : 1px solid #333;
 	/*box-shadow: 1px 2px 1px 1px grey;*/
 }
-.list-group 
+.list-group
 {
 	margin-top:50px;
 }

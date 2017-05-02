@@ -102,7 +102,6 @@ class DefaultController extends Controller
 	 	$this->show('default/contact');
 	 }
 
-
 	/**
 		* Permet la connexion d'un utilisateur
 	*/
