@@ -141,14 +141,14 @@ class EventController extends Controller
     {
 
 
-        $this->allowTo('admin');
+        //$this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
 
 
         $event_manager = new EventsModel();
         $user_manager = new UserModel();
         $events        = $event_manager->findAll();
-        $count_events = $event_manager->countEventsForUser();
+        $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         $count_users = $user_manager->countUsers();
         $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
     }

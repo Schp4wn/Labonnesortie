@@ -2,10 +2,6 @@
 
 <?php $this->start('main_content'); ?>
 <?php //var_dump($event) ?>
-<div id="sd-entete-map">
-		<div class="container well">
-			<div class="col-md-6 col-md-push-6">
-
 	<div id="eventMap" class="container-fluid">
 		<div class="sd-entete-map">
 			<div class="col-md-6">
@@ -31,6 +27,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="parcours">
 			<div class="container">
 				<h1 class="text-center">Parcours :</h1>
