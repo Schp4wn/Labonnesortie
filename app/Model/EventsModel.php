@@ -45,4 +45,9 @@ class EventsModel extends Model
       $query = $this->dbh->query('SELECT COUNT(*) as events FROM events Where events.user_id =' . $id);
       return $query->fetch();
     }
+    public function countKmOfUser($id)
+    {
+      $query = $this->dbh->query('SELECT SUM(distance) FROM `events` WHERE user_id = ' .$id);
+      return $query->fetch();
+    }
 }

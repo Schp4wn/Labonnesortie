@@ -14,7 +14,7 @@
                    
                     <img class="img-responsive" src="<?= $event['image']; ?>" alt="Event img">
                   </div>
-                  <div class="col-md-6 col-pull-md-4">   
+                  <div class="col-md-6 col-md-pull-3">   
                     <h1><?= $event['title']; ?></h1>
                     
                     <p><?php echo $event['event']; ?></p>
