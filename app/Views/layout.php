@@ -55,30 +55,34 @@
 										<h4 class="modal-title" id="myModalLabel">Se connecter</h4>
 									</div>
 										<div class="modal-body">
-											<ul>
-												<form class="" method="post">
-													<div class="row">
-														<div class="col-lg-4">
-															<div class="form-group">
-																<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
-															</div><!-- /input-group -->
-														</div><!-- /.col-lg-6 -->
-														<div class="col-lg-4">
-															<div class="form-group">
-																<input type="password" class="form-control" name="password" placeholder="Mot de passe">
-															</div><!-- /input-group -->
-														</div><!-- /.col-lg-6 -->
-														<div class="col-lg-4">
-															<div class="input-group">
-																<button class="btn" type="submit" name="button-login">Se connecter</button>
-															</div><!-- /input-group -->
-														</div><!-- /.col-lg-6 -->
-													</div><!-- /.row -->
-												</form>
+											<form class="" method="post">
+												<div class="row">
+													<div class="col-md-6 col-md-push-3">
+														<div class="form-group">
+															<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
+														</div><!-- /input-group -->
+													</div><!-- /.col-lg-6 -->
+												</div><!-- /.row -->
+												<div class="row">
+													<div class="col-md-6 col-md-push-3">
+														<div class="form-group">
+															<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+														</div><!-- /input-group -->
+													</div><!-- /.col-lg-6 -->
+												</div><!-- /.row -->
+												<div class="row">
+													<div class="col-md-6 col-md-push-4">
+														<div class="input-group">
+															<button class="btn" type="submit" name="button-login">Se connecter</button>
+														</div><!-- /input-group -->
+													</div><!-- /.col-lg-6 -->
+												</div><!-- /.row -->
+											</form>
+											<ul class="list-unstyled">
 												<li><a href="<?php echo $this->url('security_register'); ?>">Pas encore de compte ?</a></li>
 												<li><a href="<?php echo $this->url('security_forget'); ?>">Mot de passe oublié</a></li>
 											</ul>
-										</div>
+										</div><!-- /.modal-body -->
 									</div><!-- /.modal-content -->
 								</div><!-- /.modal-dialog -->
 							</div><!-- /.modal -->

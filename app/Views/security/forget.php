@@ -25,4 +25,6 @@
     <?php } ?>
 </div>
 
+<?php var_dump($user_id); ?>
+
 <?php $this->stop('main_content'); ?>

@@ -147,7 +147,7 @@ class SecurityController extends Controller
     public function forget()
     {
       $user_manager = new UserModel();
-      $user_id = new UserModel();
+      // $user_id = new UserModel();
       if (!empty($_POST) && isset($_POST['forgetSend'])) { // On vérifie le 1er formulaire qui doit envoyer le mail avec un lien pour redéfinir le password
         $email = $_POST['email'];
         if ($user = $user_manager->getUserByUsernameOrEmail($email)) {
@@ -166,29 +166,31 @@ class SecurityController extends Controller
                   'token_forget' =>$token_forget,
                    'date_forget' =>$date_forget
                                 ] , $user['id'] );// l'id est $user
-          echo "Voici le lien vous permettant de redéfinir votre mot de passe : <a href='http://localhost/Labonnesortie/public/forget?token=".$token_forget."'>http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
+          echo "Voici le lien vous permettant de redéfinir votre mot de passe :
+          <a href='http://localhost/Labonnesortie/public/forget?token=".$token_forget."&id=".$user['id']."'
+          >http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
           } else {
             echo 'L\'email n\'existe pas';
           }
         }
 
-
         if (!empty($_POST) && isset($_POST['forgetPassword'])) {
           $token = $_GET['token'];
+          $user_id = $_GET['id'];
           $password = $_POST['password'];
           $cfpassword = $_POST['cfpassword'];
 
           if ($user_id->isValidToken($token)) {
             if ($password == $cfpassword) { // Je vérifie que les deux champs mot de passe soit identique
-              $user_manager->changeUserPassword( $this->getUser()['id'], $password);   // a la base $user_id['id']
+              $user_manager->changeUserPassword( $user_id, $password);   // a la base $user_id['id']
               // Renvoyer un mail
             }
-            // var_dump($user_manager);
+
           } else {
             echo "Le token a expiré ou n'existe pas.";
           }
         }
-        $this->show('security/forget');
+        $this->show('security/forget', ['user_id' => $user_id]);
       }
 
   public function changeInfos()
