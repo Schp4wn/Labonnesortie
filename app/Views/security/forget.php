@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content'); ?>
 <div class="container">
-    <?php if(isset($_GET['token'])) { ?>
+    <?php if(isset($_GET['token'])) : ?>
         <form action="" method="POST">
             <div class="form-group">
                 <label for="password">Nouveau mot de passe : </label>
@@ -12,9 +12,9 @@
                 <label for="cfpassword">Confirmer nouveau mot de passe : </label>
                 <input type="password" name="cfpassword" id="cfpassword" class="form-control">
             </div>
-            <button name="forgetPassword" class="btn btn-primary">MChanger le mot de passe</button>
+            <button name="forgetPassword" class="btn btn-primary">Changer le mot de passe</button>
         </form>
-    <?php } else { ?>
+    <?php else: ?>
         <form action="" method="POST">
             <div class="form-group">
                 <label for="email">Email : </label>
@@ -22,9 +22,7 @@
             </div>
             <button name="forgetSend" class="btn btn-primary">M'envoyer un lien pour redéfinir mon mot de passe</button>
         </form>
-    <?php } ?>
+    <?php endif; ?>
 </div>
-
-<?php var_dump($user_id); ?>
 
 <?php $this->stop('main_content'); ?>

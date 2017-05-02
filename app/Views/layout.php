@@ -4,6 +4,8 @@
 
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
+
+	<!-- CSS FILES  -->
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
@@ -11,14 +13,14 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/profil_index.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/view.css') ?>">
-	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/main.css') ?>">
-
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/eventUser.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/default.css') ?>">
-	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
 
+	<!-- FAVICON -->
+	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
+	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 
 </head>
 <body>
@@ -60,25 +62,25 @@
 										<h4 class="modal-title" id="myModalLabel">Se connecter</h4>
 									</div>
 										<div class="modal-body">
-											<form class="" method="post">
+											<form id="login-form" class="" method="post">
 												<div class="row">
 													<div class="col-md-6 col-md-push-3">
 														<div class="form-group">
-															<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
+															<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur" required>
 														</div><!-- /input-group -->
 													</div><!-- /.col-lg-6 -->
 												</div><!-- /.row -->
 												<div class="row">
 													<div class="col-md-6 col-md-push-3">
 														<div class="form-group">
-															<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+															<input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
 														</div><!-- /input-group -->
 													</div><!-- /.col-lg-6 -->
 												</div><!-- /.row -->
 												<div class="row">
 													<div class="col-md-6 col-md-push-4">
 														<div class="input-group">
-															<button class="btn" type="submit" name="button-login">Se connecter</button>
+															<button id="button-login" class="btn" type="submit" name="button-login">Se connecter</button>
 														</div><!-- /input-group -->
 													</div><!-- /.col-lg-6 -->
 												</div><!-- /.row -->
@@ -146,10 +148,12 @@
 				 <?php endif; ?>
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
-			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY&callback=initMap" type="text/javascript"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY" type="text/javascript"></script>
 			<script src="<?= $this->assetUrl('js/autocomplete.js') ?>" charset="utf-8"></script>
+			<script src="<?= $this->assetUrl('js/jquery.validate.min.js') ?>" charset="utf-8"></script>
+			<script src="<?= $this->assetUrl('js/additional-methods.min.js') ?>" charset="utf-8"></script>
+			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
 			<?= $this->section('javascript') ?> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY-->
 		</footer>
 

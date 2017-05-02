@@ -11,28 +11,29 @@
         <div class="form-group <?= (isset($message['title'])) ? 'has-error' : ''?>">
           <label for="title">Titre :</label>
           <input type="text" class="form-control" name="title" value="">
-          <?= (isset($message['title'])) ? '<span class="help-block">'.$message['title'].' .</span>'  : '' ?>
+          <?= (isset($message['title'])) ? '<span class="help-block">'.$message['title'].' </span>'  : '' ?>
         </div>
 
         <div class="form-group <?= (isset($message['event'])) ? 'has-error' : ''?>">
           <label for="event">contenu :</label>
           <textarea type="text" class="form-control" name="event" value=""></textarea>
-          <?= (isset($message['event'])) ? '<span class="help-block">'.$message['event'].' .</span>'  : '' ?>
+          <?= (isset($message['event'])) ? '<span class="help-block">'.$message['event'].' </span>'  : '' ?>
         </div>
 
         <div class="form-group <?= (isset($message['date'])) ? 'has-error' : ''?>">
           <label for="date">Date de l'evenement :</label>
-          <input type="date" class="form-control" name="date"  placeholder="xx/xx/xxxx  ">
+          <input type="text" class="form-control" name="date" placeholder="xx/xx/xxxx">
+          <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' </span>'  : '' ?>
 
           <label for="hour">Heure :</label>
           <input type="time"  class="form-control" name="hour" placeholder="Heure:Min">
-          <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' .</span>'  : '' ?>
+          <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' </span>'  : '' ?>
         </div>
 
         <div class="form-group <?= (isset($message['image'])) ? 'has-error' : ''?>">
           <label for="image">Image  :</label>
           <input type="text" class="form-control" name="image"  placeholder="Url ...">
-          <?= (isset($message['image'])) ? '<span class="help-block">'.$message['image'].' .</span>'  : '' ?>
+          <?= (isset($message['image'])) ? '<span class="help-block">'.$message['image'].' </span>'  : '' ?>
         </div>
         <hr>
         <div class="form-group">

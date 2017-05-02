@@ -1,3 +1,4 @@
+window.onload = function () {
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-10528250-13']);
@@ -28,3 +29,25 @@ $( ".btn" ).mouseenter(function() {
     }, 500);
 
   });
+
+
+  // jQuery Validate
+  
+  $('#login-form').validate({
+		rules : {
+			username : {
+	      required: true,
+        minlength: 2
+			},
+			password : {
+				required: true,
+        minlength: 2
+			}
+		},
+	  messages: {
+	    username: "Veuillez saisir un nom d'utilisateur correct",
+	    password: "Veuillez saisir un mot de passe plus long"
+	  }
+	});
+
+} // window.onload = function ()

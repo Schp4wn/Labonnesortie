@@ -61,16 +61,16 @@ class EventController extends Controller
 
              if( strlen( $event ) < 15 || empty($event))
              {
-                 $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
+                 $errors['event'] = "Votre paragraphe doit comporter 15 lignes minimum.";
              }
              if(!filter_var($image, FILTER_VALIDATE_URL) === true  )
              {
                  $errors['image'] = "Votre url doit etre valide";
              }
 
-             if(  empty( $date ) )
+             if( strlen( $date ) > 10 )
              {
-                 $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
+                 $errors['date'] = "Votre date doit être au format Jour/Mois/Année.";
              }
 
              if( strlen( $depart ) <= 3 || empty($depart) )
@@ -82,7 +82,8 @@ class EventController extends Controller
              {
                $errors['arrivee'] = "L'addresse d'arrivée doit comporter 3 caractères minimum.";
              }
-
+var_dump($_POST);
+var_dump($errors['date']);
              if( empty($errors) )
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
@@ -330,7 +331,7 @@ class EventController extends Controller
   }
 
 
-  public function setTrajet($depart = null, $arrivee = null) 
+  public function setTrajet($depart = null, $arrivee = null)
   {
     $arrivee_coord = $this->geocode($_POST['arrivee']);
     $depart_coord = $this->geocode($_POST['depart']);
