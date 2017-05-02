@@ -49,6 +49,7 @@
   </div>
     </div>
   </div><!-- /.row -->
+  <?php //var_dump($lastevent); ?>
 		<div class="row" id="lastevent">
       <?php foreach ($lastevent as  $value) :?>
       <div class="col-md-4">

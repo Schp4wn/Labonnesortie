@@ -37,7 +37,7 @@ class EventController extends Controller
 
         if(!empty($_POST))
         {
-            $title   = trim($_POST['title']);
+            $title   = ucfirst(trim($_POST['title']));
             $event   = trim($_POST['event']);
             $image   = trim($_POST['image']);
             $date    = date('Y-m-d' , strtotime( $_POST['date'] ));
@@ -140,6 +140,7 @@ class EventController extends Controller
     public function index()
     {
 
+
         $this->allowTo('admin');
         //redirection a une pages d'erreur si on on n'est pas admin
 
@@ -189,7 +190,7 @@ class EventController extends Controller
       if(!empty($_POST))
       {
 
-          $title       = trim($_POST['title']);
+          $title       = ucfirst(trim($_POST['title']));
           $description = trim($_POST['event']);
           $image       = trim($_POST['image']);
           $date        = date('Y-m-d' , strtotime( $_POST['date'] ));

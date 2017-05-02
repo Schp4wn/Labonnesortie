@@ -58,5 +58,5 @@
     </div>
   </div><!-- /.row -->
 </div><!-- /.container-fluid -->
-
+<?php //var_dump($lastevents) ?>
 <?php $this->stop('main_content'); ?>
