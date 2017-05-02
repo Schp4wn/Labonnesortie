@@ -50,10 +50,6 @@
               </td>
             </tr>
             <?php endforeach; ?>
-            <?php
-            // if (isset($_POST['button-1'])) {
-            //   var_dump($_POST['role']);
-            // } ?>
           </tbody>
         </table>
       </div>

@@ -37,7 +37,7 @@
         <hr>
         <div class="form-group">
           <label for="depart">Départ :</label>
-          <input type='text' name="depart user_input_autocomplete_address" id="user_input_autocomplete_address" class="form-control" placeholder="Entrez une addresse de départ" />
+          <input type='text' name="depart" id="user_input_autocomplete_address" class="form-control" placeholder="Entrez une addresse de départ" />
         </div>
         <div class="form-group">
           <label for="arrivee">Arrivée :</label>

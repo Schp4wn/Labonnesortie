@@ -10,7 +10,7 @@
         </div>
 
    <h1>Tous les  Article</h1>
-   <a class="btn btn-success" href="<?= $this->url('event_create'   )?>">Ajouter un evenement</a>
+   <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a>
    <div class="row">
         <table class="table table-striped">
           <thead>

@@ -39,7 +39,7 @@
       <input type="password" class="form-control" id="cfpassword" name="cfpassword">
     </div>
 
-    <input type="submit" class="btn btn-submit" value="Valider">
+    <button type="submit" class="btn btn-default" name="button-register">S'enregistrer</button>
 
   </form>
 </div>

@@ -37,13 +37,13 @@ class EventController extends Controller
 
         if(!empty($_POST))
         {
-            $title   = trim($_POST['title']);
+            $title   = ucfirst(trim($_POST['title']));
             $event   = trim($_POST['event']);
             $image   = trim($_POST['image']);
             $date    = date('Y-m-d' , strtotime( $_POST['date'] ));
             $hour    = date('H:i' , strtotime( $_POST['hour'] ));
-            $depart  = trim($_POST['depart']);
-            $arrivee = trim($_POST['arrivee']);
+            $depart  = ucfirst(trim($_POST['depart']));
+            $arrivee = ucfirst(trim($_POST['arrivee']));
 
             $event_manager = new EventsModel();
 
@@ -130,9 +130,8 @@ class EventController extends Controller
         //$this->allow(['admin' , 'user']);
         $event_manager = new EventsModel();
         $event = $event_manager->find($id);
-
-        $this->show('event/view' , ['event'=> $event]);
-
+        $subscribers_event 	= $event_manager->subscribersEvent($event,$id);
+        $this->show('event/view' , ['event'=> $event, 'subscribers_event' => $subscribers_event]);
     }
 
     /**
@@ -190,13 +189,13 @@ class EventController extends Controller
       {
 
 
-          $title       = trim($_POST['title']);
+          $title       = ucfirst(trim($_POST['title']));
           $description = trim($_POST['event']);
           $image       = trim($_POST['image']);
           $date        = date('Y-m-d' , strtotime( $_POST['date'] ));
           $hour        =   date('H:i:s' , strtotime( $_POST['hour'] ));
-          $depart      = trim($_POST['depart']);
-          $arrivee     = trim($_POST['arrivee']);
+          $depart      = ucfirst(trim($_POST['depart']));
+          $arrivee     = ucfirst(trim($_POST['arrivee']));
 
 
           if (!empty($_POST['depart']) && !empty($_POST['arrivee'])) {

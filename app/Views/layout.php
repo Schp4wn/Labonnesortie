@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
@@ -14,13 +15,12 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/frontp.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/main.css') ?>">
 
-
 </head>
 <body>
 	<?php if ($w_current_route != 'default_home'): ?>
 		<header>
 			<nav class="navbar navbar-default">
-				<div class="container">
+				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

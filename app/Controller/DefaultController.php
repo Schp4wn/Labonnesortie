@@ -98,59 +98,32 @@ class DefaultController extends Controller
 	 	$this->show('default/contact');
 	 }
 
-	 public function lastevent(){
+	 /**
+     * Permet la connexion d'un utilisateur
+    */
+    public function login()
+    {
 
-		 		$user_manager = new UserModel();
-				$event_manager 	= new EventsModel();
-				$lastevent = $event_manager->lastevent();
-	      $this->show('default/frontpage' , ['lastevent'=> $lastevent]);
-	     }
+        if (isset($_POST['button-login'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $auth_manager = new \W\Security\AuthentificationModel();
 
-			 /**
- 	     * Permet la connexion d'un utilisateur
- 	    */
- 	    public function login()
- 	    {
+            $user_id = $auth_manager->isValidLoginInfo($username, $password);
+            if ($user_id) { // Si le couple username/password est valid
+                $user_manager = new UserModel();
+                $user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
+                $auth_manager->logUserIn($user); // La connexion se fait
+                $this->redirectToRoute('default_frontPage');
+            }
+        }
 
- 	        if (isset($_POST['button-login'])) {
- 	            $username = $_POST['username'];
- 	            $password = $_POST['password'];
- 	            $auth_manager = new \W\Security\AuthentificationModel();
+			$user_manager = new UserModel();
+			$event_manager 	= new EventsModel();
+			$lastevent = $event_manager->lastevent();
 
- 	            $user_id = $auth_manager->isValidLoginInfo($username, $password);
- 	            if ($user_id) { // Si le couple username/password est valid
- 	                $user_manager = new UserModel();
- 	                $user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
- 	                $auth_manager->logUserIn($user); // La connexion se fait
- 	                $this->redirectToRoute('default_frontPage');
- 	            }
- 	        }
-
- 	        // TCHAT //
-
- 	        // J'instancie la classe pour gérer mes messages en BDD
- 	        $message_manager = new MessagesModel();
-
- 	        // Je récupére tous les messages en BDD (SELECT * FROM messages)
- 	        $messages = $message_manager->findAll();
-
- 	        if (isset($_POST['button-tchat'])) {
- 	          $message = $_POST['message'];
-
- 	          $errors = [];
-
- 	          if (empty($message)) {
- 	            $errors['message'] = 'Le message est vide';
- 	          }
-
- 	          if (empty($errors)) {
-
- 	          $message_manager->insert(['content' => $message]);
- 	        }
-
- 	    }
- 	    // J'injecte la variable messages dans ma vue
- 	    $this->show('default/frontPage', ['messages' => $messages]);
+ 	    // J'injecte la variable lastevent dans ma vue
+ 	    $this->show('default/frontPage', ['lastevent'=> $lastevent]);
  	  }
 
 }

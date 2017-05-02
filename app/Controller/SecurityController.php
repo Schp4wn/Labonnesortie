@@ -19,7 +19,7 @@ class SecurityController extends Controller
         $password  = null;
         $message   = null;
 
-        if (!empty($_POST) ) {
+        if (isset($_POST['button-register']) ) {
             $firstname  = trim($_POST['firstname']);
             $lastname   = trim($_POST['lastname']);
             $username   = trim($_POST['username']);
@@ -90,6 +90,7 @@ class SecurityController extends Controller
     {
 
         if (isset($_POST['button-login'])) {
+            var_dump($_POST);
             $username = $_POST['username'];
             $password = $_POST['password'];
             $auth_manager = new \W\Security\AuthentificationModel();
