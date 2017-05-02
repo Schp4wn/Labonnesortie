@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content'); ?>
   <div id="allEventsUser" class="container">
-   <h1>Tous les  Article</h1>
+   <h1>Toutes nos sorties</h1>
 
    <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a><br />
 
@@ -14,7 +14,7 @@
                    
                     <img class="img-responsive" src="<?= $event['image']; ?>" alt="Event img">
                   </div>
-                  <div class="col-md-6 col-pull-md-2">   
+                  <div class="col-md-6 col-pull-md-4">   
                     <h1><?= $event['title']; ?></h1>
                     
                     <p><?php echo $event['event']; ?></p>
