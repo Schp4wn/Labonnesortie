@@ -20,7 +20,7 @@
 	<?php if ($w_current_route != 'default_home'): ?>
 		<header>
 			<nav class="navbar navbar-default">
-				<div class="container-fluid">
+				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -42,34 +42,50 @@
 								 <?php  endif; ?>
 							</ul>
 						<?php else: ?>
-							<ul class="nav navbar-nav form">
-								<form class="" method="post">
-									<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group">
-												<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
-											</div><!-- /input-group -->
-										</div><!-- /.col-lg-6 -->
-										<div class="col-lg-4">
-											<div class="form-group">
-												<input type="password" class="form-control" name="password" placeholder="Mot de passe">
-											</div><!-- /input-group -->
-										</div><!-- /.col-lg-6 -->
-										<div class="col-lg-4">
-											<div class="input-group">
-												<button class="btn" type="submit" name="button-login">Se connecter</button>
-											</div><!-- /input-group -->
-										</div><!-- /.col-lg-6 -->
-									</div><!-- /.row -->
-								</form>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="<?php echo $this->url('security_register'); ?>">Pas encore de compte ?</a></li>
-								<li><a href="<?php echo $this->url('security_forget'); ?>">Mot de passe oublié</a></li>
-							</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<!-- Bouton execution modal -->
+							<button class="btn btn-primary btn-login" data-toggle="modal" data-target="#myModal">Se connecter</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">Se connecter</h4>
+									</div>
+										<div class="modal-body">
+											<ul>
+												<form class="" method="post">
+													<div class="row">
+														<div class="col-lg-4">
+															<div class="form-group">
+																<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
+															</div><!-- /input-group -->
+														</div><!-- /.col-lg-6 -->
+														<div class="col-lg-4">
+															<div class="form-group">
+																<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+															</div><!-- /input-group -->
+														</div><!-- /.col-lg-6 -->
+														<div class="col-lg-4">
+															<div class="input-group">
+																<button class="btn" type="submit" name="button-login">Se connecter</button>
+															</div><!-- /input-group -->
+														</div><!-- /.col-lg-6 -->
+													</div><!-- /.row -->
+												</form>
+												<li><a href="<?php echo $this->url('security_register'); ?>">Pas encore de compte ?</a></li>
+												<li><a href="<?php echo $this->url('security_forget'); ?>">Mot de passe oublié</a></li>
+											</ul>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+						</ul>
 						<?php endif; ?>
 					</div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
+				</div><!-- /.container -->
 			</nav>
 
 		</header>
