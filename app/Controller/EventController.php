@@ -136,7 +136,7 @@ class EventController extends Controller
       *  Recupère tous les évènement
       *
      **/
-    public function index()
+    public function index($page = 1)
     {
 
         $event_manager= new EventsModel();
@@ -146,11 +146,37 @@ class EventController extends Controller
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
         $count_users  = $user_manager->countUsers();
+        
+        $event_by_page = 10;
+        $total_event   = count( $event_manager->findAll() );
+        $offset        = ( $page - 1  ) * $event_by_page;
+        $max_events    = ceil($total_event / $event_by_page  );
+
+        $allEvent = $event_manager->eventsPagination('' , 'DESC' , $event_by_page , $offset);
 
         if(isset($count_events)){
-            $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+            $this->show('event/index' , [
+                'events'       => $events, 
+                'count_events' => $count_events, 
+                'count_users'  => $count_users,
+
+                 'page'         =>$page,
+                 'event_by_page'=>$event_by_page,
+                 'offset'       =>$offset,
+                 'max_events'   => $max_events,
+                 'allEvent'     => $allEvent
+                ]);
         }else{
-             $this->show('event/index' , ['events' => $events, 'count_users' => $count_users]);
+             $this->show('event/index' , [
+                 'events'      => $events, 
+                 'count_users' => $count_users,
+
+                 'page'         =>$page,
+                 'event_by_page'=>$event_by_page,
+                 'offset'       =>$offset,
+                 'max_events'   => $max_events,
+                 'allEvent'     => $allEvent
+                 ]);
         }
     }
 

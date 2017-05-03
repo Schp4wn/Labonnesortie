@@ -30,22 +30,18 @@
       </div>
               
    
-      <div class="col-lg-6 adress-event">
-        <div class="col-lg-6">
-          <h4>Moto show</h4>
-          <ul class="list-unstyled">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <li>104 avenue de la République</li>
-            <li>59110</li>
-            <li>La Madeleine</li>
-          </ul>
-          <p><i class="fa fa-calendar-o" aria-hidden="true"></i> Samedi 08 avril 2017</p>
-        </div>
-        <div class="col-lg-6">
-          <img class="img-responsive" src="<?= $this->assetUrl('img/tampon_evenement.png') ?>" alt="event">
-        </div>
-      </div>
-    </div>
-  </div><!-- /.row -->
-</div><!-- /.container-fluid -->
+   <ul class="pagination">
+			<?php if ($page > 1): ?>
+				<li><a href="<?= $this->url('event_index' , ['page' => $page - 1]); ?>"><<</a></li>
+			<?php endif; ?>
+
+			<?php for ($i=1; $i <= $max_events ; $i++) { ?>
+				<li><a href="<?= $this->url('event_index', ['page' => $i ] );  ?>"><?php echo $i; ?></a></li>
+			<?php } ?>
+
+			<?php if ($max_events > $page ): ?>
+				<li><a href="<?= $this->url('event_index' , ['page' => $page + 1]); ?>">>></a></li>
+			<?php endif; ?>
+		</ul>
+
 <?php $this->stop('main_content'); ?>

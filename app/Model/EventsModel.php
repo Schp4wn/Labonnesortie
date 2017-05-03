@@ -70,7 +70,6 @@ class EventsModel extends Model
     return $query->fetchAll();
   }
 
-	//on herite de tout ce qu il ya dans W
 	public function countEventsForUser($id)
     {
       $query = $this->dbh->query('SELECT COUNT(*) as events FROM events Where events.user_id =' . $id);
@@ -80,5 +79,41 @@ class EventsModel extends Model
     {
       $query = $this->dbh->query('SELECT SUM(distance) FROM `events` WHERE user_id = ' .$id);
       return $query->fetch();
+    }
+    public function eventsPagination($orderBy = '', $orderDir = 'ASC', $limit = null, $offset = null)
+    {
+
+     // SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id ORDER BY `post` DESC LIMIT 10 OFFSET 0
+      $sql = 'SELECT * FROM ' . $this->table;
+      if (!empty($orderBy)){
+
+        //sécurisation des paramètres, pour éviter les injections SQL
+        if(!preg_match('#^[a-zA-Z0-9_$]+$#', $orderBy)){
+          die('Error: invalid orderBy param');
+        }
+        $orderDir = strtoupper($orderDir);
+        if($orderDir != 'ASC' && $orderDir != 'DESC'){
+          die('Error: invalid orderDir param');
+        }
+        if ($limit && !is_int($limit)){
+          die('Error: invalid limit param');
+        }
+        if ($offset && !is_int($offset)){
+          die('Error: invalid offset param');
+        }
+
+        $sql .= ' ORDER BY '.$orderBy.' '.$orderDir;
+      }
+      $sql .= ' INNER JOIN events ON users.id = events.user_id'; // ne pas oublier lespace avant le LEFT JOIN
+          if($limit){
+              $sql .= ' LIMIT '.$limit;
+              if($offset){
+                  $sql .= ' OFFSET '.$offset;
+              }
+          }
+      $sth = $this->dbh->prepare($sql);
+      $sth->execute();
+
+      return $sth->fetchAll();
     }
 }
