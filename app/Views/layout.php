@@ -19,7 +19,6 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/default.css') ?>">
 
 	<!-- FAVICON -->
-	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/screenshot.png') ?>" />
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 
 

@@ -23,6 +23,12 @@
             <button name="forgetSend" class="btn btn-primary">M'envoyer un lien pour redéfinir mon mot de passe</button>
         </form>
     <?php endif; ?>
+    <?php if (isset($message)): ?>
+      <br>
+      <div class="well">
+        <?= $message; ?>
+      </div>
+    <?php endif; ?>
 </div>
 
 <?php $this->stop('main_content'); ?>
