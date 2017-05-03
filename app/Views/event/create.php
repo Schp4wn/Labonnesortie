@@ -2,7 +2,6 @@
 
 <?php $this->start('main_content') ?>
 
-
     <div class="container">
       <h1>Ajouter un évènement :</h1>
 
@@ -26,7 +25,7 @@
           <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' </span>'  : '' ?>
 
           <label for="hour">Heure :</label>
-          <input type="time"  class="form-control" name="hour" placeholder="Heure:Min">
+          <input type="time"  class="form-control" name="hour" placeholder="heure:minutes">
           <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' </span>'  : '' ?>
         </div>
 
@@ -45,15 +44,9 @@
           <input type='text' name='arrivee'  class="form-control" placeholder="Entrez une addresse de d\'arrive" />
         </div>
 
-
         <button id="publie" type="submit" class="btn btn-default">Publier l'évènement</button>
 
       </form>
-      <?php
-          if ( isset($message['success']) ){
-                echo '<h1 class="text-success">' . $mess . '</h1>';
-            }
-      ?>
     </div>
 
 <?php $this->stop('main_content') ?>

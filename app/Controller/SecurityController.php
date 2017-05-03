@@ -141,7 +141,7 @@ class SecurityController extends Controller
     {
         $auth_manager = new \W\Security\AuthentificationModel();
         $auth_manager->logUserOut(); // Déconnecte l'utilisateur connecté
-        $this->redirectToRoute('default_home');
+        $this->redirectToRoute('default_frontPage');
     }
 
     /**
