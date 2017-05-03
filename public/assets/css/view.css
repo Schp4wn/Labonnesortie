@@ -2,7 +2,7 @@
 /*      view gogglemap     */
 /***************************/
 
-#sd-entete-map .container{  margin-top: 30px; margin-left: 120px;}
+#sd-entete-map .container{  margin: 60px; margin-left: 20%;}
 
 #sd-entete-map .container .profil-img { width:50%; }
 
