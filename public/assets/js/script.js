@@ -1,3 +1,4 @@
+
 window.onload = function () {
 
   var _gaq = _gaq || [];
@@ -32,7 +33,7 @@ $( ".btn" ).mouseenter(function() {
 
 
   // jQuery Validate
-  
+
   $('#login-form').validate({
 		rules : {
 			username : {

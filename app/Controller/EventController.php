@@ -16,7 +16,9 @@ class EventController extends Controller
      **/
     public function create()
     {
+
         $this->allowTo(['admin' , 'user']);
+
         $title           = null;
         $event           = null;
         $date            = null;
@@ -65,10 +67,10 @@ class EventController extends Controller
              }
              if(!filter_var($image, FILTER_VALIDATE_URL) === true  )
              {
-                 $errors['image'] = "Votre url doit etre valide";
+                 $errors['image'] = "Votre url doit etre valide.";
              }
 
-             if( strlen( $date ) > 10 )
+             if( empty( $date ) )
              {
                  $errors['date'] = "Votre date doit être au format Jour/Mois/Année.";
              }
@@ -82,8 +84,7 @@ class EventController extends Controller
              {
                $errors['arrivee'] = "L'addresse d'arrivée doit comporter 3 caractères minimum.";
              }
-var_dump($_POST);
-var_dump($errors['date']);
+
              if( empty($errors) )
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
@@ -107,7 +108,8 @@ var_dump($errors['date']);
                     'distance'        => $dist[0],
                     'temps_dist'      => $dist[1]
                   ]);
-                  $message = ["L'evenement a bien etait enregistré"];
+
+
 
              }
              else{
@@ -140,11 +142,11 @@ var_dump($errors['date']);
         $event_manager= new EventsModel();
         $user_manager = new UserModel();
         $events       = $event_manager->findAll();
-        if(isset($w_user)){ 
+        if(isset($w_user)){
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
         $count_users  = $user_manager->countUsers();
-        
+
         if(isset($count_events)){
             $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
         }else{
@@ -255,25 +257,25 @@ var_dump($errors['date']);
 
                 ], $id);
 
-                $message = ["success" => "L'evenement a bien etait modifié"];
-
-                //si c'est un bien un user
-
-                if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
-                  $this->redirectToRoute('default_profile');
-
-                  }
-
-                //si cest un admin et quilest sur profil on le renvoi a profil
-                if (isset($_GET['redirect']) && $_GET['redirect'] == 'default_profile') {
+                // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
+                if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) {
                   $this->redirectToRoute('default_profile');
                 }
-           }
-           else{
+
+                elseif ($this->getUser()['role'] === 'admin') {
+                $this->redirectToRoute('default_profile_admin');
+                }
+                // //si cest un admin et quil est sur profil on le renvoi a profil
+                // if (isset($_GET['redirect']) && $_GET['redirect'] == 'default_profile_admin') {
+                //   $this->redirectToRoute('default_profile_admin');
+                // }
+          }
+          else {
+
                $message = $errors ;
-           }
+          }
       }
-      $this->show('event/update' , ['message' => $message  , 'title'=>$title , 'event' => $event ]);
+      $this->show('event/update' , ['message' => $message  , 'title'=> $title , 'event' => $event ]);
     }
 
     //on recupere l'id de l'article avec l'url pour le supprimer

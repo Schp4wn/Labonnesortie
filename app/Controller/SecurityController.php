@@ -141,7 +141,7 @@ class SecurityController extends Controller
     {
         $auth_manager = new \W\Security\AuthentificationModel();
         $auth_manager->logUserOut(); // Déconnecte l'utilisateur connecté
-        $this->redirectToRoute('default_home');
+        $this->redirectToRoute('default_frontPage');
     }
 
     /**
@@ -171,9 +171,13 @@ class SecurityController extends Controller
                    'date_forget' =>$date_forget
                                 ] , $user['id'] ); // l'id est $user
 
-          echo "Voici le lien vous permettant de redéfinir votre mot de passe :
+          $message = "Voici le lien vous permettant de redéfinir votre mot de passe :
           <a href='http://localhost/Labonnesortie/public/forget?token=".$token_forget."'
           >http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
+
+          // echo "Voici le lien vous permettant de redéfinir votre mot de passe :
+          // <a href='http://localhost/Labonnesortie/public/forget?token=".$token_forget."'
+          // >http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
 
           } else {
             echo 'L\'email n\'existe pas';
@@ -196,9 +200,13 @@ class SecurityController extends Controller
             echo "Le token a expiré ou n'existe pas.";
           }
         }
-
+      if (isset($message)) {
+        $this->show('security/forget', ['message' => $message]);
+      }
+      else {
         $this->show('security/forget');
       }
+    }
   public function changeInfos()
   {
 

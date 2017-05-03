@@ -27,14 +27,12 @@
                 <h1><?= $event['title']; ?></h1>
                 <p><?php echo $event['event']; ?></p>
                 <p> Evénement posté le  <?php $datetime = new DateTime($event['post']);
-                  $intl = new IntlDateFormatter(
-                  'fr_FR',
-                  IntlDateFormatter::FULL,
-                  IntlDateFormatter::MEDIUM
-                  );
-                  echo $intl->format($datetime); ?></p>
+                  $intl = new IntlDateFormatter('fr_FR',IntlDateFormatter::FULL,IntlDateFormatter::MEDIUM);
+                  echo $intl->format($datetime); ?>
+                </p>
                 <div class="btn-group" role="group" aria-label="...">
-                  <a class="btn btn-default" href="<?= $this->url('event_update' , ['id' => $event['id'] ] ) ?>?redirect=default_profile"><i class="fa fa-scissors"></i> Modifier</a>
+                  <!-- <a class="btn btn-default" href="<?= $this->url('event_update' , ['id' => $event['id'] ] ) ?>?redirect=default_profile"><i class="fa fa-scissors"></i> Modifier</a> -->
+                  <a class="btn btn-default" href="<?= $this->url('event_update' , ['id' => $event['id'] ] ) ?>"><i class="fa fa-scissors"></i> Modifier</a>
                   <a class="btn btn-default" href="<?= $this->url('event_delete', ['id' => $event['id'] ] )?>"><i class="fa fa-trash-o"></i> Suprimer</a>
                   <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>
                 </div>

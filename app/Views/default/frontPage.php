@@ -19,7 +19,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="<?= $this->assetUrl('img/moto.jpg')?>" alt="">
+        <img src="<?= $this->assetUrl('img/test.png')?>" alt="">
       </div>
 
       <div class="item">
@@ -27,7 +27,7 @@
       </div>
 
       <div class="item">
-        <img src="<?= $this->assetUrl('img/course.gif')?>" alt="">
+        <img src="<?= $this->assetUrl('img/moto.jpg')?>" alt="">
       </div>
       <div class="item">
         <img src="<?= $this->assetUrl('img/carte.png')?>" alt="">
@@ -50,10 +50,11 @@
     </div>
   </div><!-- /.row -->
   <div class="container">
+    <div class="row" id="lastevent">
     <div class="col-md-12 center-block">
-      <div class="row" id="lastevent">
-        <?php foreach ($lastevent as  $value) :?>
-        <div class="col-md-4">
+        <h2>Les derniers événements postés :</h2>
+        <?php foreach ($lastevent as $value) :?>
+        <div class="col-md-4 col-sm-6">
           <br/>
             <div class="well">
               <div class="center">
@@ -69,7 +70,7 @@
                     <td><i class="icon-road"></i> <b><?= $value['depart']; ?></b></td>
                   </tr>
                   <tr>
-                    <td class="strong">Arrivé</td>
+                    <td class="strong">Arrivée</td>
                     <td><i class="icon-road"></i> <b><?= $value['arrivee']; ?></b></td>
                   </tr>
                 <tr>
@@ -81,9 +82,9 @@
                   <td><i class="icon-road"></i> <b><?= $value['temps_dist']; ?></b></td>
                 </tr>
                <tr>
-                  <td class="strong">Créée par</td>
+                  <td class="strong">Créé par</td>
                   <td>
-                      <?= $value['username']; ?>
+                    <?= $value['username']; ?>
                   </td>
                </tr>
               </tbody>
