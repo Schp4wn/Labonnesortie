@@ -9,7 +9,7 @@
               <li><a href="<?= $this->url('event_create'); ?>" class="list-group-item first">Ajouter un évènement ?</a></li>
               <br/>
               <li><a href="<?= $this->url('default_profile'); ?>" class="list-group-item ">Mes événements <span class="badge badge-default"><?php echo $count_events['events'] ?></span></a></li>
-              <li><a href="#" class="list-group-item">Km parcourus (a redefinir ici)</a></li>
+              <li><a href="#" class="list-group-item">Km parcourus <span class="badge badge-default"><?php echo $km['SUM(distance)'] ?></span></a></li>
               <li><a href="<?= $this->url('security_changeInfos'); ?>" class="list-group-item">Information</a></li>
               <li><a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Déconnexion</a></li>
             </ul>

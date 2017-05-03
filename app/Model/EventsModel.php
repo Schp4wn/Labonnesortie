@@ -34,10 +34,20 @@ class EventsModel extends Model
     $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.id = '.$id);
     return $query->fetchAll();
   }
+  public function countAllEvent(){
+    $query = $this->dbh->query('SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id' );
+    return $query->fetchAll();
+  }
 
-  // public function getsearch($search)
-  // {
-  //   $query = $this->dbh->query('SELECT * as events FROM events WHERE  depart_address = '. $search);
-  //   return $query->fetch();
-  // }
+	//on herite de tout ce qu il ya dans W
+	public function countEventsForUser($id)
+    {
+      $query = $this->dbh->query('SELECT COUNT(*) as events FROM events Where events.user_id =' . $id);
+      return $query->fetch();
+    }
+    public function countKmOfUser($id)
+    {
+      $query = $this->dbh->query('SELECT SUM(distance) FROM `events` WHERE user_id = ' .$id);
+      return $query->fetch();
+    }
 }

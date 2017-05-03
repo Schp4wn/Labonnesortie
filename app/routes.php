@@ -3,7 +3,7 @@
 	$w_routes = array(
 
 		['GET', '/', 'Default#home', 'default_home'],//page d'acceuil
-		// ['GET|POST', '/frontpage', 'security#login', 'default_frontPage'],//page d'acceuil après avoir cliqué sur la carte
+
 		['GET|POST', '/frontpage', 'default#login', 'default_frontPage'],//page d'acceuil après avoir cliqué sur la carte
 
 		//Dans le fichier je Crée le controller ContactController

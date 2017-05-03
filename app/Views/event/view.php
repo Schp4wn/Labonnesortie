@@ -2,6 +2,9 @@
 
 <?php $this->start('main_content'); ?>
 
+
+<?php //var_dump($event) ?>
+
 <div id="sd-entete-map">
 		<div class="container well">
 			<div class="col-md-6 col-md-push-6">
@@ -27,30 +30,33 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="parcours">
 			<div class="container-fluid">
 				<div class="row">
-				  <div class="col-md-5">
-						<h1 class="text-center">Parcours :</h1>
-						<ul class="list-unstyled text-center">
-							<li><h4>Départ : <span><?php echo $event['depart'] ?></span></h4></li>
-							<li><h4>Arrivé : <span><?php echo $event['arrivee'] ?></span></h4></li>
-							<li><h4>Distance : <span><?php echo $event['distance'] ?></span></h4></li>
-							<li><h4>Temp estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
-						</ul>
-					  <div id="gmap_canvas" style="height:400px"></div>
-			      <div id='map-label'></div>
-					</div>
+					<div class="col-md-12">
+					  <div class="col-md-5">
+							<h1 class="text-center">Parcours :</h1>
+							<ul class="list-unstyled text-center">
+								<li><h4>Départ : <span><?php echo $event['depart'] ?></span></h4></li>
+								<li><h4>Arrivé : <span><?php echo $event['arrivee'] ?></span></h4></li>
+								<li><h4>Distance : <span><?php echo $event['distance'] ?></span></h4></li>
+								<li><h4>Temp estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
+							</ul>
+						  <div id="gmap_canvas" style="height:400px"></div>
+				      <div id='map-label'></div>
+						</div>
 
-					<div class="col-md-5 col-md-push-1">
-						<h3>Participants à cet événement :</h3>
-						<?php var_dump($subscribers_event); ?>
-						<ul>
-							<?php foreach ($subscribers_event as $subscriber): ?>
-								<li><?= $subscriber['username']; ?></li>
-							<?php endforeach; ?>
-						</ul>
-						S'inscrire
+						<div class="col-md-5 col-md-push-1">
+							<h3>Participants à cet événement :</h3>
+							<?php var_dump($subscribers_event); ?>
+							<ul>
+								<?php foreach ($subscribers_event as $subscriber): ?>
+									<li><?= $subscriber['username']; ?></li>
+								<?php endforeach; ?>
+							</ul>
+							S'inscrire
+						</div>
 					</div>
 				</div>
 			</div>

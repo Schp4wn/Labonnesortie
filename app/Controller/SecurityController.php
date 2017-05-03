@@ -38,17 +38,19 @@ class SecurityController extends Controller
                     $errors['lastname'] = "Le nom doit comporter au moins 2 caratères.";
                 }
                 if ( $user_manager->emailExists($email) || $user_manager->usernameExists($username) ) {
-                    $errors['exists'] = "Lemail ou l'username existe deja";
+                    $errors['exists'] = "L'email ou le nom d'utilisateur existe deja";
                 }
                 if ( empty($username)) {
-                    $errors['username'] = "l'username est vide";
+                    $errors['username'] = "Le nom d'utilisateur est vide.";
                 }
                 if ( empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) ){
-                    $errors['email'] = "L'email est vide ou invalide";
+                    $errors['email'] = "L'email est vide ou invalide.";
                 }
-
+                if ( empty($password)) {
+                    $errors['password'] = "Le mot de passe est vide.";
+                }
                 if ( $password != $cfpassword ){
-                    $errors['password'] = "Les mots de passe ne correspondent pas";
+                    $errors['cfpassword'] = "Les mots de passe ne correspondent pas.";
                 }
 
             if( empty($errors) ){
@@ -74,7 +76,8 @@ class SecurityController extends Controller
                       $this->redirectToRoute('default_frontPage');
                   }
 
-            }else{
+            }
+            else {
 
                 $message = $errors;
             }
@@ -148,6 +151,7 @@ class SecurityController extends Controller
     {
       $user_manager = new UserModel();
       $user_id = new UserModel();
+
       if (!empty($_POST) && isset($_POST['forgetSend'])) { // On vérifie le 1er formulaire qui doit envoyer le mail avec un lien pour redéfinir le password
         $email = $_POST['email'];
         if ($user = $user_manager->getUserByUsernameOrEmail($email)) {
@@ -165,13 +169,16 @@ class SecurityController extends Controller
 
                   'token_forget' =>$token_forget,
                    'date_forget' =>$date_forget
-                                ] , $user['id'] );// l'id est $user
-          echo "Voici le lien vous permettant de redéfinir votre mot de passe : <a href='http://localhost/Labonnesortie/public/forget?token=".$token_forget."'>http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
+                                ] , $user['id'] ); // l'id est $user
+
+          echo "Voici le lien vous permettant de redéfinir votre mot de passe :
+          <a href='http://localhost/Labonnesortie/public/forget?token=".$token_forget."'
+          >http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
+
           } else {
             echo 'L\'email n\'existe pas';
           }
         }
-
 
         if (!empty($_POST) && isset($_POST['forgetPassword'])) {
           $token = $_GET['token'];
@@ -180,17 +187,18 @@ class SecurityController extends Controller
 
           if ($user_id->isValidToken($token)) {
             if ($password == $cfpassword) { // Je vérifie que les deux champs mot de passe soit identique
-              $user_manager->changeUserPassword( $this->getUser()['id'], $password);   // a la base $user_id['id']
-              // Renvoyer un mail
+              $user_manager->changeUserPassword($user_id->isValidToken($token), $password);
+
+              $this->redirectToRoute('default_frontPage');
             }
-            // var_dump($user_manager);
+
           } else {
             echo "Le token a expiré ou n'existe pas.";
           }
         }
+
         $this->show('security/forget');
       }
-
   public function changeInfos()
   {
 

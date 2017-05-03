@@ -72,21 +72,27 @@ class DefaultController extends Controller
 	 */
 	public function profile()
 	{
-
 		$this->allowTo('user');
    		//ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
 		//si lutilisateur n'a pas d'evenement message de empty evenement
 
+		$this->allowTo('user');
 		$user_manager = new UserModel();
 		$event_manager = new EventsModel();
 
-		$profil = $user_manager->find($this->getUser()['id']);
+		$event_manager = new EventsModel();
 
+		$profil = $user_manager->findAll($this->getUser()['id']);
+		//var_dump($profil);
+		$count_events = $event_manager->countEvents($this->getUser()['id']);
+		//var_dump($count_events);
 		$profil_event = $user_manager->getAllEventsByUser($this->getUser()['id']);
 
 		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']);
 
-		$this->show('default/profile', ['count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
+		$km =	$event_manager->countKmOfUser($this->getUser()['id']);
+
+		$this->show('default/profile', [ 'km' => $km ,'count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
 
 	}
 
@@ -97,32 +103,32 @@ class DefaultController extends Controller
 	 {
 	 	$this->show('default/contact');
 	 }
+	/**
+		* Permet la connexion d'un utilisateur
+	*/
+	public function login()
+	{
 
-	 /**
-     * Permet la connexion d'un utilisateur
-    */
-    public function login()
-    {
+		if (isset($_POST['button-login'])) {
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			$auth_manager = new \W\Security\AuthentificationModel();
 
-      if (isset($_POST['button-login'])) {
-          $username = $_POST['username'];
-          $password = $_POST['password'];
-          $auth_manager = new \W\Security\AuthentificationModel();
-
-          $user_id = $auth_manager->isValidLoginInfo($username, $password);
-          if ($user_id) { // Si le couple username/password est valid
-              $user_manager = new UserModel();
-              $user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
-              $auth_manager->logUserIn($user); // La connexion se fait
-              $this->redirectToRoute('default_frontPage');
-          }
-      }
-
-			$user_manager = new UserModel();
-			$event_manager 	= new EventsModel();
-			$lastevent = $event_manager->lastevent();
-
- 	    // J'injecte la variable lastevent dans ma vue
- 	    $this->show('default/frontPage', ['lastevent'=> $lastevent]);
+			$user_id = $auth_manager->isValidLoginInfo($username, $password);
+			if ($user_id) { // Si le couple username/password est valid
+				$user_manager = new UserModel();
+				$user = $user_manager->find($user_id); // Récupére toutes les infos de l'utilisateur qui se connecte
+				$auth_manager->logUserIn($user); // La connexion se fait
+				$this->redirectToRoute('default_frontPage');
+			}
 		}
+
+			$user_manager  = new UserModel();
+			$event_manager = new EventsModel();
+			$lastevent     = $event_manager->lastevent();
+
+	// J'injecte la variable messages dans ma vue
+	$this->show('default/frontPage', ['lastevent'=> $lastevent]);
+	}
+
 }

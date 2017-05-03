@@ -34,7 +34,6 @@ class EventController extends Controller
         $distance        = null;
         $temps           = null;
 
-
         if(!empty($_POST))
         {
             $title   = ucfirst(trim($_POST['title']));
@@ -62,16 +61,16 @@ class EventController extends Controller
 
              if( strlen( $event ) < 15 || empty($event))
              {
-                 $errors['event'] = "Votre paragraphes doit comporte 15 lignes minimum.";
+                 $errors['event'] = "Votre paragraphe doit comporter 15 lignes minimum.";
              }
              if(!filter_var($image, FILTER_VALIDATE_URL) === true  )
              {
                  $errors['image'] = "Votre url doit etre valide";
              }
 
-             if(  empty( $date ) )
+             if( strlen( $date ) > 10 )
              {
-                 $errors['date']= "Votre date doit etre au format Année/Mois/Jours .";
+                 $errors['date'] = "Votre date doit être au format Jour/Mois/Année.";
              }
 
              if( strlen( $depart ) <= 3 || empty($depart) )
@@ -83,7 +82,8 @@ class EventController extends Controller
              {
                $errors['arrivee'] = "L'addresse d'arrivée doit comporter 3 caractères minimum.";
              }
-
+var_dump($_POST);
+var_dump($errors['date']);
              if( empty($errors) )
              {
                  $auth_manager = new \W\Security\AuthentificationModel();
@@ -106,11 +106,7 @@ class EventController extends Controller
                     'arrivee_address' => $coords['arrivee']['arrivee_address'],
                     'distance'        => $dist[0],
                     'temps_dist'      => $dist[1]
-
-
                   ]);
-
-
                   $message = ["L'evenement a bien etait enregistré"];
 
              }
@@ -140,14 +136,11 @@ class EventController extends Controller
      **/
     public function index()
     {
-        //$this->allowTo('admin');
-        //redirection a une pages d'erreur si on on n'est pas admin
-
 
         $event_manager = new EventsModel();
         $user_manager = new UserModel();
         $events        = $event_manager->findAll();
-        $count_events = $event_manager->countEvents();
+        $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         $count_users = $user_manager->countUsers();
         $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
     }
@@ -180,12 +173,13 @@ class EventController extends Controller
 
       $event = $event_manager->find($id); // Je vais chercher un evenement dans la bdd par son id
       if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user
+
         $allowed[] = 'user';
       }
 
       $this->allowTo($allowed);
 
-      if( !empty($_POST) )
+      if(!empty($_POST))
       {
 
           $title       = ucfirst(trim($_POST['title']));
@@ -195,7 +189,6 @@ class EventController extends Controller
           $hour        =   date('H:i:s' , strtotime( $_POST['hour'] ));
           $depart      = ucfirst(trim($_POST['depart']));
           $arrivee     = ucfirst(trim($_POST['arrivee']));
-
 
           if (!empty($_POST['depart']) && !empty($_POST['arrivee'])) {
             $coords = $this->setTrajet($depart, $arrivee);
@@ -256,15 +249,14 @@ class EventController extends Controller
 
                 ], $id);
 
-
-
                 $message = ["success" => "L'evenement a bien etait modifié"];
 
                 //si c'est un bien un user
+
                 if ( $this->getUser()['role'] === 'user' && $this->getUser()['id'] == $event['user_id'] ) { // Si le role est user et que l'event appartient à cet user / &&  $this->getUser()['id'] == $w_user['role']
                   $this->redirectToRoute('default_profile');
 
-                }
+                  }
 
                 //si cest un admin et quilest sur profil on le renvoi a profil
                 if (isset($_GET['redirect']) && $_GET['redirect'] == 'default_profile') {
@@ -298,7 +290,6 @@ class EventController extends Controller
     $this->redirectToRoute('event_index');
   }
 
-  // Fonction pour géocoder l'adresse, il renverra false s'il est impossible de géocoder l'adresse
   public function geocode($address)
   {
         $lati = null;
@@ -359,7 +350,6 @@ class EventController extends Controller
     return $tableau;
   }
 
-
   // function to geocode address, it will return false if unable to geocode address
   public function getdistance($depart, $arrivee)
   {
@@ -406,8 +396,6 @@ class EventController extends Controller
         var_dump($temps_dist);
     }
   }
-
-
 
 
 }
