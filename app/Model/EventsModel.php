@@ -46,7 +46,7 @@ class EventsModel extends Model
       $sql .= ' LEFT JOIN users ON users.id = events.user_id';
 
       $sql .= ' GROUP BY '.$orderBy.' '.$orderDir;
-      
+
         if($limit){
             $sql .= ' LIMIT '.$limit;
             if($offset){
@@ -59,11 +59,28 @@ class EventsModel extends Model
     return $sth->fetchAll();
   }
 
-  public function subscribersEvent($event, $id)
-  {
-    $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.subscriber_id');
-    return $query->fetchAll();
+  public function subscribersEvent($id)
+{
+  if (!is_numeric($id)){
+    return false;
   }
+
+  $sql = 'SELECT username, firstname, lastname, GROUP_CONCAT(events.title) as events FROM ' . $this->table . '
+  LEFT JOIN subscribers ON subscribers.id_event = events.id
+  INNER JOIN users ON users.id = subscribers.id_user
+  WHERE events.' . $this->primaryKey .'  = :id';
+  $sth = $this->dbh->prepare($sql);
+  $sth->bindValue(':id', $id);
+  $sth->execute();
+
+  return $sth->fetchAll();
+}
+
+  // public function subscribersEvent($event, $id)
+  // {
+  //   $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.subscriber_id');
+  //   return $query->fetchAll();
+  // }
 
   public function countAllEvent(){
     $query = $this->dbh->query('SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id' );
@@ -75,16 +92,18 @@ class EventsModel extends Model
       $query = $this->dbh->query('SELECT COUNT(*) as events FROM events Where events.user_id =' . $id);
       return $query->fetch();
     }
+
     public function countKmOfUser($id)
     {
       $query = $this->dbh->query('SELECT SUM(distance) FROM `events` WHERE user_id = ' .$id);
       return $query->fetch();
     }
+
     public function eventsPagination($orderBy = '', $orderDir = 'ASC', $limit = null, $offset = null)
     {
 
      // SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id ORDER BY `post` DESC LIMIT 10 OFFSET 0
-      $sql = 'SELECT * FROM ' . $this->table;
+      $sql = 'SELECT *, users.id as id_user, events.id as id_article FROM ' . $this->table;
       if (!empty($orderBy)){
 
         //sécurisation des paramètres, pour éviter les injections SQL
@@ -104,7 +123,7 @@ class EventsModel extends Model
 
         $sql .= ' ORDER BY '.$orderBy.' '.$orderDir;
       }
-      $sql .= ' INNER JOIN events ON users.id = events.user_id'; // ne pas oublier lespace avant le LEFT JOIN
+      $sql .= ' LEFT JOIN users ON users.id = events.user_id'; // ne pas oublier lespace avant le LEFT JOIN
           if($limit){
               $sql .= ' LIMIT '.$limit;
               if($offset){
@@ -116,4 +135,5 @@ class EventsModel extends Model
 
       return $sth->fetchAll();
     }
-}
+
+} //class EventsModel

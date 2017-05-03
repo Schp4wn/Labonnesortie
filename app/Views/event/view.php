@@ -2,9 +2,6 @@
 
 <?php $this->start('main_content'); ?>
 
-
-<?php //var_dump($event) ?>
-
 <div id="sd-entete-map">
 		<div class="container well">
 			<div class="col-sm-10 col-md-6 col-md-push-6">
@@ -49,14 +46,16 @@
 
 						<div class="col-md-5 col-md-push-1">
 							<h3>Participants à cet événement :</h3>
-							<ul><?php var_dump($subscribers_event)?>
-									<?php foreach ($subscribers_event as $row) :?>
+							<!-- <ul><?php var_dump($subscribers_event)?> -->
+									<?php foreach ($subscribers_event as $subscriber) :?>
 								<li>
-        					<?=  $row['username'];?>
+        					<?=  $subscriber['username'];?>
 								</li>
 									<?php endforeach ; ?>
 							</ul>
-							S'inscrire
+							<form class="" action="" method="post">
+								<button type="submit" class="btn btn-success" name="button-subscribe">S'inscrire à cet événement</button>
+							</form>
 						</div>
 					</div>
 				</div>

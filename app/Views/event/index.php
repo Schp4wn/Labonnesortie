@@ -9,13 +9,13 @@
     <div class="container-fluid">
       <div class="row">
           <?php foreach( $events as $event) : ?>
-              <div class="well">  
-                  <div class="col-md-6">            
+              <div class="well">
+                  <div class="col-md-6">
                     <img class="img-responsive" src="<?= $event['image']; ?>" alt="Event img">
                   </div>
-                  <div class="col-md-6 col-md-pull-3">   
+                  <div class="col-md-6 col-md-pull-3">
                     <h1><?= $event['title']; ?></h1>
-                    
+
                     <p><?php echo $event['event']; ?></p>
                     <p> Evénement posté le  <?php $datetime = new DateTime($event['post']);
 
@@ -23,23 +23,22 @@
                       <h4>depart : <?= $event['depart']; ?></h4>
                       <h4>Arriée : <?= $event['arrivee']; ?></h4>
                   </div>
-                      <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>
-                      <a class="btn btn-default" href="#"><i class="fa fa-thumbs-o-up"></i> S'inscrire a cet évènement ?</a>
+                      <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>  
                 </div><!--.img well-->
           <?php endforeach; ?>
       </div>
-              
-   
+
+
    <ul class="pagination">
 			<?php if ($page > 1): ?>
 				<li><a href="<?= $this->url('event_index' , ['page' => $page - 1]); ?>"><<</a></li>
 			<?php endif; ?>
 
-			<?php for ($i=1; $i <= $max_events ; $i++) { ?>
+			<?php for ($i=1; $i <= $max_pages ; $i++) { ?>
 				<li><a href="<?= $this->url('event_index', ['page' => $i ] );  ?>"><?php echo $i; ?></a></li>
 			<?php } ?>
 
-			<?php if ($max_events > $page ): ?>
+			<?php if ($max_pages > $page ): ?>
 				<li><a href="<?= $this->url('event_index' , ['page' => $page + 1]); ?>">>></a></li>
 			<?php endif; ?>
 		</ul>

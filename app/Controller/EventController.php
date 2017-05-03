@@ -5,7 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use  Model\EventsModel;
 use  Model\UserModel;
-
+use  Model\SubscribersModel;
 
 class EventController extends Controller
 {
@@ -127,8 +127,23 @@ class EventController extends Controller
     {
         //$this->allow(['admin' , 'user']);
         $event_manager = new EventsModel();
+        $subscribers_manager = new SubscribersModel();
         $event = $event_manager->find($id);
-        $subscribers_event 	= $event_manager->subscribersEvent($event,$id);
+        $subscribers_event 	= $event_manager->subscribersEvent($id);
+
+        if (isset($_POST['button-subscribe']) ) {
+            $id_event  = $event['id'];
+            $id   = $this->getUser()['id'];
+
+            // Evite que l'utilisateur s'inscrit plusieurs fois au même événement
+            $subscribers_manager->deleteId($id);
+
+            $subscribers_manager->insert([
+            'id_event'=> $id_event,
+            'id_user' => $id
+            ]);
+        }
+
         $this->show('event/view' , ['event'=> $event, 'subscribers_event' => $subscribers_event]);
     }
 
@@ -138,7 +153,6 @@ class EventController extends Controller
      **/
     public function index($page = 1)
     {
-
         $event_manager= new EventsModel();
         $user_manager = new UserModel();
         $events       = $event_manager->findAll();
@@ -146,35 +160,34 @@ class EventController extends Controller
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
         $count_users  = $user_manager->countUsers();
-        
-        $event_by_page = 10;
-        $total_event   = count( $event_manager->findAll() );
-        $offset        = ( $page - 1  ) * $event_by_page;
-        $max_events    = ceil($total_event / $event_by_page  );
+
+        $event_by_page = 1;
+        $total_events   = count( $event_manager->findAll() );
+        $offset        = ( $page - 1 ) * $event_by_page;
+        $max_pages    = ceil($total_events / $event_by_page);
 
         $allEvent = $event_manager->eventsPagination('' , 'DESC' , $event_by_page , $offset);
 
-        if(isset($count_events)){
-            $this->show('event/index' , [
-                'events'       => $events, 
-                'count_events' => $count_events, 
-                'count_users'  => $count_users,
-
-                 'page'         =>$page,
-                 'event_by_page'=>$event_by_page,
-                 'offset'       =>$offset,
-                 'max_events'   => $max_events,
-                 'allEvent'     => $allEvent
-                ]);
-        }else{
+      if(isset($count_events)) {
+        $this->show('event/index' , [
+            'events'       => $events,
+            'count_events' => $count_events,
+            'count_users'  => $count_users,
+            'page'         =>$page,
+            'event_by_page'=>$event_by_page,
+            'offset'       =>$offset,
+            'max_pages'   => $max_pages,
+            'allEvent'     => $allEvent
+            ]);
+        }
+        else {
              $this->show('event/index' , [
-                 'events'      => $events, 
+                 'events'      => $events,
                  'count_users' => $count_users,
-
                  'page'         =>$page,
                  'event_by_page'=>$event_by_page,
                  'offset'       =>$offset,
-                 'max_events'   => $max_events,
+                 'max_pages'   => $max_pages,
                  'allEvent'     => $allEvent
                  ]);
         }
