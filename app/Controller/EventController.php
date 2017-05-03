@@ -244,7 +244,6 @@ var_dump($errors['date']);
                   'image'          => $image,
                   'date_time'      => date('Y-m-d' , strtotime( $_POST['date'] )),
                   'hour'           => date('H:i:s' , strtotime( $_POST['hour'] )),
-                  'user_id'        => $this->getUser()['id'],  // ici l'id de lutilisateur connecté $this->getuser()['id']
                   'depart'         => $depart,
                   'depart_lat'     => $coords['depart']['depart_lat'],
                   'depart_long'    => $coords['depart']['depart_long'],

@@ -1,10 +1,10 @@
-<?php $this->layout('layout', ['title' => 'Ajouté un evenelent']) ?>
+<?php $this->layout('layout', ['title' => 'Ajouté un évènement']) ?>
 
 <?php $this->start('main_content') ?>
 
 
     <div class="container">
-      <h1>Ajouter un evenement</h1>
+      <h1>Ajouter un évènement :</h1>
 
       <form class="col-lg-7" method="POST">
 
@@ -22,7 +22,7 @@
 
         <div class="form-group <?= (isset($message['date'])) ? 'has-error' : ''?>">
           <label for="date">Date de l'evenement :</label>
-          <input type="text" class="form-control" name="date" placeholder="xx/xx/xxxx">
+          <input type="date" class="form-control" name="date" placeholder="xx/xx/xxxx">
           <?= (isset($message['date'])) ? '<span class="help-block">'.$message['date'].' </span>'  : '' ?>
 
           <label for="hour">Heure :</label>
