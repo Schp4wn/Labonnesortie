@@ -16,7 +16,7 @@ class EventController extends Controller
      **/
     public function create()
     {
-        //$this->allow('admin');
+        $this->allowTo(['admin' , 'user']);
         $title           = null;
         $event           = null;
         $date            = null;
@@ -137,12 +137,19 @@ var_dump($errors['date']);
     public function index()
     {
 
-        $event_manager = new EventsModel();
+        $event_manager= new EventsModel();
         $user_manager = new UserModel();
-        $events        = $event_manager->findAll();
-        $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
-        $count_users = $user_manager->countUsers();
-        $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+        $events       = $event_manager->findAll();
+        if(isset($w_user)){ 
+            $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
+        }
+        $count_users  = $user_manager->countUsers();
+        
+        if(isset($count_events)){
+            $this->show('event/index' , ['events' => $events, 'count_events' => $count_events, 'count_users' => $count_users]);
+        }else{
+             $this->show('event/index' , ['events' => $events, 'count_users' => $count_users]);
+        }
     }
 
     /**
