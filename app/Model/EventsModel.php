@@ -28,10 +28,7 @@ class EventsModel extends Model
 
   public function subscribersEvent($event, $id)
   {
-    $event_manager = new EventsModel();
-    $event = $event_manager->find($event);
-
-    $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.id = '.$id);
+    $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.subscriber_id');
     return $query->fetchAll();
   }
   public function countAllEvent(){

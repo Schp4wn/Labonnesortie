@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="parcours">
 			<div class="container-fluid">
 				<div class="row">
@@ -49,11 +49,12 @@
 
 						<div class="col-md-5 col-md-push-1">
 							<h3>Participants à cet événement :</h3>
-							<?php var_dump($subscribers_event); ?>
-							<ul>
-								<?php foreach ($subscribers_event as $subscriber): ?>
-									<li><?= $subscriber['username']; ?></li>
-								<?php endforeach; ?>
+							<ul><?php var_dump($subscribers_event)?>
+									<?php foreach ($subscribers_event as $row) :?>
+								<li>
+        					<?=  $row['username'];?>
+								</li>
+									<?php endforeach ; ?>
 							</ul>
 							S'inscrire
 						</div>
