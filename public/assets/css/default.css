@@ -80,10 +80,11 @@
     border: 0;
     border-top: 1px solid #eee;
 }    
-
-#profil_user .event_user h1
-{
-    
+.register { 
+    background-color: aliceblue;
+    width: 50%;
+    padding-bottom: 25px;
+    padding-top: 15px;
 }
 #profil_user .event_user img
 {
