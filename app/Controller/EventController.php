@@ -417,7 +417,7 @@ class EventController extends Controller
 
         // google map geocode api url
         $url = "https://maps.googleapis.com/maps/api/directions/json?origin={$depart}&destination={$arrivee}&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY";
-        https://maps.googleapis.com/maps/api/directions/json?origin={$depart}&destination={$arrivee}&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY
+        https://maps.googleapis.com/maps/api/directions/json?origin={$depart}&destination={$arrivee}&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY  // clef moh:  AIzaSyCBLynodCrw0lB99t1SANF8PbXwANKcBK4
 
         // get the json response
         $resp_json = file_get_contents($url);
@@ -431,13 +431,6 @@ class EventController extends Controller
             // get the important data
             $distance = $resp['routes'][0]['legs'][0]['distance']['text'];
             $temps_dist = $resp['routes'][0]['legs'][0]['duration']['text'];
-            //
-            // var_dump($distance);
-            // var_dump($temps_dist);
-
-
-
-
 
         // verify if data is complete
         if ($distance && $temps_dist) {
@@ -448,10 +441,22 @@ class EventController extends Controller
 
             return $data_arr;
         }
-        var_dump($data_arr);
-        var_dump($temps_dist);
+
     }
   }
 
+  public function searching()
+  {
+    if (!empty($_GET['search'])) {
+      $event_manager = new EventsModel();
+      $searching = ['depart' => $_GET['search'], 'arrivee' => $_GET['search'], 'depart_address' => $_GET['search'], 'arrivee_address' => $_GET['search']];
+      $result = $event_manager->search($searching, 'OR');
+      if (!empty($_GET['search'])) {
+        $this->show('event/search' , ['result'=> $result]);
+      }
+      $this->redirectToRoute('default_frontPage');
+    }
+    $this->redirectToRoute('default_frontPage');
+  }
 
 }

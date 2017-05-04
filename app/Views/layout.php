@@ -128,14 +128,16 @@
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/nav.js') ?>" charset="utf-8"></script>
-			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY&callback=initMap" type="text/javascript"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY" type="text/javascript"></script>
+			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/autocomplete.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/jquery.validate.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/additional-methods.min.js') ?>" charset="utf-8"></script>
-			<script src="<?= $this->assetUrl('js/script.js') ?>" charset="utf-8"></script>
-			<?= $this->section('javascript') ?> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY-->
+			<script src="<?= $this->assetUrl('js/typeahead.js') ?>" charset="utf-8"></script>
+			<?= $this->section('script') ?>
+
+			<?= $this->section('javascript') ?> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY--> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY  //  clef: mohammed si l'autre fonctionne pas:  AIzaSyCBLynodCrw0lB99t1SANF8PbXwANKcBK4 -->
 		</footer>
 
 	</div>

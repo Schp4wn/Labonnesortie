@@ -76,12 +76,6 @@ class EventsModel extends Model
   return $sth->fetchAll();
 }
 
-  // public function subscribersEvent($event, $id)
-  // {
-  //   $query = $this->dbh->query('SELECT username FROM users INNER JOIN events ON events.subscriber_id = users.id WHERE events.subscriber_id');
-  //   return $query->fetchAll();
-  // }
-
   public function countAllEvent(){
     $query = $this->dbh->query('SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id' );
     return $query->fetchAll();
@@ -92,6 +86,7 @@ class EventsModel extends Model
       $query = $this->dbh->query('SELECT COUNT(*) as events FROM events Where events.user_id =' . $id);
       return $query->fetch();
     }
+
 
     public function countKmOfUser($id)
     {
@@ -136,4 +131,37 @@ class EventsModel extends Model
       return $sth->fetchAll();
     }
 
+    public function search(array $search, $operator = 'OR', $stripTags = true){
+
+    // Sécurisation de l'opérateur
+    $operator = strtoupper($operator);
+    if($operator != 'OR' && $operator != 'AND'){
+      die('Error: invalid operator param');
+    }
+
+        $sql = 'SELECT * FROM ' . $this->table.' INNER JOIN users ON  users.id = events.user_id WHERE';
+
+    foreach($search as $key => $value){
+      $sql .= " `$key` LIKE :$key ";
+      $sql .= $operator;
+    }
+    // Supprime les caractères superflus en fin de requète
+    if($operator == 'OR') {
+      $sql = substr($sql, 0, -3);
+    }
+    elseif($operator == 'AND') {
+      $sql = substr($sql, 0, -4);
+    }
+
+    $sth = $this->dbh->prepare($sql);
+
+    foreach($search as $key => $value){
+      $value = ($stripTags) ? strip_tags($value) : $value;
+      $sth->bindValue(':'.$key, '%'.$value.'%');
+    }
+    if(!$sth->execute()){
+      return false;
+    }
+        return $sth->fetchAll();
+  }
 } //class EventsModel
