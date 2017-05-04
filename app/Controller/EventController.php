@@ -167,6 +167,7 @@ class EventController extends Controller
         $event_manager= new EventsModel();
         $user_manager = new UserModel();
         //$events       = $event_manager->findAll();
+       
         if(isset($w_user)){
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
