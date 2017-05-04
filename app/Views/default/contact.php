@@ -32,5 +32,4 @@
       <h3 class="text-center">Réalisé par les 4 fantastiques de la Madeleine</h3>
     </div>
   </div>
-
 <?php $this->stop('main_content'); ?>
