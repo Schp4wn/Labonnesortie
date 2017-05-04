@@ -130,6 +130,11 @@ class EventsModel extends Model
 
       return $sth->fetchAll();
     }
+    public function sumtotalki()
+      {
+        $query = $this->dbh->query('SELECT SUM(distance) FROM `events`');
+        return $query->fetch();
+      }
 
     public function search(array $search, $operator = 'OR', $stripTags = true){
 

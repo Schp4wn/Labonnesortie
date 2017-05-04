@@ -2,73 +2,59 @@
 
 <?php $this->start('main_content') ?>
 
-    <div id="frontPage">
-  <div class="container-fluid">
-      <div class="col-md-12" id="carousel" >
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-          <li data-target="#myCarousel" data-slide-to="3"></li>
-          <li data-target="#myCarousel" data-slide-to="4"></li>
-          <li data-target="#myCarousel" data-slide-to="5"></li>
-        </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="<?= $this->assetUrl('img/harley.jpg')?>" alt="">
-      </div>
-          <div class="item">
-            <img src="<?= $this->assetUrl('img/styléé.jpg')?>" alt="">
-          </div>
-      <div class="item">
-        <img src="<?= $this->assetUrl('img/moto.jpg')?>" alt="">
-      </div>
-      <div class="item">
-        <img src="<?= $this->assetUrl('img/tjravcmespoto.jpg')?>" alt="">
-      </div>
-      <div class="item">
-        <img src="<?= $this->assetUrl('img/carousel/Perso_BSM_doigt.png')?>" alt="">
-        </div>
-      <div class="item">
-        <img src="<?= $this->assetUrl('img/course.gif')?>" alt="">
-      </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only">Next</span>
-        </a>
-
-      </div>
-    </div></div>
-  </div><!-- /.row -->
-
-  <!-- Recherche -->
-  <div class="container">
-    <div class="row">
-      <form class="search_bar" action="<?= $this->url('event_search');?>">
-        <div class="form-group">
-          <label class="text-center" for="search">barre de recherche</label>
-          <input type="text" class="form-control class-lg-6 class-md-6" name="search" id="search" placeholder="Entrez le nom de la ville...">
-        </div>
-        <button type="submit" class="form-control class-lg-4 class-md-4" name="" value="">search</button>
-        <?php if (isset($w_flash_message)): ?>
-          <?php  $w_flash_message->level; ?>
-          <?php echo $w_flash_message->message; ?>
-
-        <?php endif; ?>
-      </form>
+<!-- Swiper Silder
+    ================================================== -->
+<!-- Slider main container -->
+<div class="swiper-container main-slider" id="myCarousel">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide slider-bg-position" style="background:url('<?= $this->assetUrl('img/harley.jpg');?>')" data-hash="slide1">
+      <h2>Partagez vos balades en moto !</h2>
+    </div>
+    <div class="swiper-slide slider-bg-position" style="background:url('<?= $this->assetUrl('img/planet.jpg');?>')" data-hash="slide2">
+      <h2>Trouvez, Parcourez, Contribuez !</h2>
+    </div>
+    <div class="swiper-slide slider-bg-position" style="background:url('<?= $this->assetUrl('img/roa.jpg');?>')" data-hash="slide1">
+      <h2>Trouvez des trajets touristiques en moto</h2>
+    </div>
+    <div class="swiper-slide slider-bg-position" style="background:url('<?= $this->assetUrl('img/moto.jpg');?>')" data-hash="slide2">
+      <h2>Profitez de votre Carte en ligne</h2>
     </div>
   </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Navigation -->
+  <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+  <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+</div>
 
+<!-- slider
+    ================================================== -->
+  <!-- Recherche -->
+  <div class="headline" style="background-color:slategrey; height:122px;" >
+	<div class="container">
+		<div class="center">
+			<p class="lead">Découvrez les <span class="headline-distance"><?= $kilo['SUM(distance)'] ?></span> km de balades à moto dans toute la région</p>		</div>
+		<div>
+			<meta>
+      <form class="search_bar" action="<?= $this->url('event_search');?>">
+        <div class="form-group col-md-2">
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" name="search" id="search" placeholder="Entrez le nom de la ville...">
+        </div>
+        <div class="form-group col-md-2">
+          <button type="submit" class="btn btn-primary btn-large visible-phone hidden-desktop hidden-tablet"><span class="fa fa-search"></span> Rechercher une balade</button>
+        </div>
+          <?php if (isset($w_flash_message)): ?>
+            <?php  $w_flash_message->level; ?>
+            <?php echo $w_flash_message->message; ?>
+          <?php endif; ?>
+        </form>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
     <!-- Balade du jour -->
   <div class="container">
     <div class="row" id="lastevent">

@@ -12,7 +12,7 @@
 												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">
 											  <span class="hover-bg reset">
 											    <span class="hover-text reset"><img src="<?= $this->assetUrl('img/moto.gif')?>" alt="" id="moto"></span>
-											  </span>Voir Tous Nos Evénements</a>
+											  </span>Accèder a notre site </a>
 										</li>
 									</ul>
 								<div class="container pt-2 col-md-12" id="previews">

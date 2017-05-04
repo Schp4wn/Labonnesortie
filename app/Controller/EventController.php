@@ -460,5 +460,5 @@ class EventController extends Controller
     }
     $this->redirectToRoute('default_frontPage');
   }
-
+  
 }

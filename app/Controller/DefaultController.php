@@ -127,10 +127,13 @@ class DefaultController extends Controller
 			$user_manager  = new UserModel();
 			$event_manager = new EventsModel();
 			$lastevent     = $event_manager->findAllWithAuthor('post', 'DESC', 3);
-			// $lastevent4     = $event_manager->findAllWithAuthor('post', 'DESC', 4);
+			$kilo    = $event_manager->sumtotalki();
 
-	// J'injecte la variable messages dans ma vue
-	$this->show('default/frontPage', ['lastevent'=> $lastevent]);
+			// $lastevent4     = $event_manager->findAllWithAuthor('post', 'DESC', 4);
+			// J'injecte la variable messages dans ma vue
+			$this->show('default/frontPage', ['lastevent'=> $lastevent, 'kilo' => $kilo]);
+
+
 	}
 
 }
