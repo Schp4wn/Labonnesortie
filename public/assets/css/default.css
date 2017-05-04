@@ -1,4 +1,6 @@
-
+/******************/
+/*    PROFILS     */
+/******************/
 .panel-admin {
   background-color: #475b6a;
   height: 800px;
@@ -63,60 +65,18 @@
   border-right: 1px solid grey;
   border-left: 1px solid grey;
 }
-/************************/
-/*    PROFIL DE USER    */
-/************************/
 
-#profil_user>row
-{
-    background-color: darkblue;
-}
-#profil_user .stat_user{
-    padding-top: 100px;
-}
-#profil_user .stat_user hr {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    border: 0;
-    border-top: 1px solid #eee;
-}    
-
-#profil_user .event_user h1
-{
-    
-}
-#profil_user .event_user img
-{
-    width: 100%;
-}
-#profil_user .event_user > .img-contain
-{
-    width: 40%;
+/******************/
+/*    CONTACT     */
+/******************/
+#contact hr {
+  border-top: 2px solid #036e7f;
 }
 
-/******************************/
-/*      GOOGLMAP              */
-/******************************/
-
-#gmap_canvas{
-    height: 400px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
+#contact .find-us {
+  margin-top: 6%;
 }
 
-/*******************************/
-/*      UN EVENT   EVENT/[ID:] */
-/*******************************/
-
-#eventMap .parcours{
-    margin-top: 40px;
-    margin-bottom: 0px;
-    padding: 10px 10px;
-    color:#fff;
-    background-color: #000;
-}
-.sd-entete-map img
-{
-    width:30%;
+#contact .btn {
+  margin-bottom: 5%;
 }

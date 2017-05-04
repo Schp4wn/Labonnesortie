@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 	<!-- CSS FILES  -->
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
@@ -31,28 +32,16 @@
 			<div class="parent2">
 				<?php if($w_user) : ?>
 					<?php if($w_user['role'] === 'user') : ?>
-						<div class="test1" >
-							<a href="<?php echo $this->url('default_profile'); ?>" title="Afficher mon profil"><i class="fa fa-user fa-2x"></i></a>
-						</div>
+						<a class="test1" href="<?php echo $this->url('default_profile'); ?>" title="Afficher mon profil"><i class="fa fa-user fa-2x"></i></a>
 					<?php elseif($w_user['role'] === 'admin'): ?>
-						<div class="test1">
-							<a href="<?php echo $this->url('default_profile_admin'); ?>" title="Afficher mon profil"><i class="fa fa-user-secret fa-2x"></i></a>
-						</div>
-					<?php  endif; ?>
+						<a class="test1" href="<?php echo $this->url('default_profile_admin'); ?>" title="Afficher mon profil"><i class="fa fa-user-secret fa-2x"></i></a>
+					<?php  endif; ?> <!-- $w_user['role'] -->
 				<?php  else: ?> <!-- if($w_user) -->
-						<div class="test1" >
-							<a href="#" title="Me connecter"><i class="fa fa-user-plus fa-2x" data-toggle="modal" data-target="#modalLogin"></i></a>
-						</div>
-				<?php  endif; ?>
-				<div class="test2">
-					<a href="<?php echo $this->url('event_index'); ?>" title="Afficher les événements"><i class="fa fa-motorcycle fa-2x"></i></a>
-				</div>
-				<div class="test3">
-					<a href="<?php echo $this->url('default_contact'); ?>" title="Nous contacter"><i class="fa fa-envelope-o fa-2x"></i></a>
-				</div>
-				<div class="test4">
-					<a href="<?php echo $this->url('default_frontPage'); ?>" title="Retour à l'accueil"><i class="fa fa-home fa-2x"></i></a>
-				</div>
+					<a class="test1" href="#" title="Me connecter"><i class="fa fa-user-plus fa-2x" data-toggle="modal" data-target="#modalLogin"></i></a>
+				<?php  endif; ?><!-- if($w_user) -->
+					<a class="test2" href="<?php echo $this->url('event_index'); ?>" title="Afficher les événements"><i class="fa fa-motorcycle fa-2x"></i></a>
+					<a class="test3" href="<?php echo $this->url('default_contact'); ?>" title="Nous contacter"><i class="fa fa-envelope-o fa-2x"></i></a>
+					<a class="test4" href="<?php echo $this->url('default_frontPage'); ?>" title="Retour à l'accueil"><i class="fa fa-home fa-2x"></i></a>
 				<div class="mask2">
 					<i class="fa fa-bars fa-3x"></i>
 				</div>
@@ -99,7 +88,7 @@
 			</div><!-- /.modal -->
 		</ul>
 		<?php else: ?><!-- $w_current_route != 'default_home' -->
-						<?php endif; ?>
+						<?php endif; ?><!-- $w_current_route != 'default_home' -->
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container -->
 			</nav>
