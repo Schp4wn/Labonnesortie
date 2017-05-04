@@ -17,7 +17,7 @@
 
 
 		//Dans le fichier je Crée le controller EventController
-		['GET|POST', '/event/[i:page]?/'              , 'Event#index' , 'event_index'],  //afficher un evenement*
+		['GET|POST', '/event/[i:page]?/'   , 'Event#index' , 'event_index'],  //afficher un evenement*
 		['GET|POST', '/event/create'       , 'Event#create', 'event_create'], //add un evenement*
 		['GET|POST', '/event/update/[i:id]', 'Event#update', 'event_update'], //modifie un evenement
 		['GET|POST', '/event/delete/[i:id]', 'Event#delete', 'event_delete'], //supprime un evenement

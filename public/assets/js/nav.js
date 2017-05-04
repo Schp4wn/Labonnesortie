@@ -1,4 +1,3 @@
-
   var active1 = false;
   var active2 = false;
   var active3 = false;
@@ -6,13 +5,13 @@
 
     $('.parent2').on('mousedown touchstart', function() {
 
-    if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,125px)'});
+    if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,90px)'});
     else $(this).find('.test1').css({'background-color': 'dimGray', 'transform': 'none'});
-     if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(60px,105px)'});
+     if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(60px,60px)'});
     else $(this).find('.test2').css({'background-color': 'darkGray', 'transform': 'none'});
-      if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'transform': 'translate(105px,60px)'});
+      if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'transform': 'translate(105px,22px)'});
     else $(this).find('.test3').css({'background-color': 'silver', 'transform': 'none'});
-      if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'transform': 'translate(125px,0px)'});
+      if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'transform': 'translate(125px,-30px)'});
     else $(this).find('.test4').css({'background-color': 'silver', 'transform': 'none'});
     active1 = !active1;
     active2 = !active2;
