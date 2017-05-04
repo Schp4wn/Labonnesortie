@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
   var active1 = false;
   var active2 = false;
@@ -21,4 +20,3 @@ $(document).ready(function() {
     active4 = !active4;
 
     });
-});

@@ -452,10 +452,12 @@ class EventController extends Controller
       $event_manager = new EventsModel();
       $searching = ['depart' => $_GET['search'], 'arrivee' => $_GET['search'], 'depart_address' => $_GET['search'], 'arrivee_address' => $_GET['search']];
       $result = $event_manager->search($searching, 'OR');
-      if (!empty($_GET['search'])) {
+      if (!empty($result) && !empty($searching) ) {
         $this->show('event/search' , ['result'=> $result]);
+      } else {
+        $this->flash('il n\'existe pas d\'évenement dans cette ville' , 'success');
+        $this->redirectToRoute('default_frontPage');
       }
-      $this->redirectToRoute('default_frontPage');
     }
     $this->redirectToRoute('default_frontPage');
   }
