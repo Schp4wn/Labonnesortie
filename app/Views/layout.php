@@ -24,7 +24,6 @@
 	<!-- FAVICON -->
 	<link rel="icon" type="img/png" href="<?= $this->assetUrl('img/fav.png') ?>" />
 
-
 </head>
 <body>
 	<?php if ($w_current_route != 'default_home'): ?>

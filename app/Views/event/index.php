@@ -2,7 +2,8 @@
 
 <?php $this->start('main_content'); ?>
   <div id="allEventsUser" class="container">
-   <h1>Toutes nos sorties</h1>
+    <h2 class="text-center">Toutes Nos Sorties</h2>
+    <div class="container" style="border-top:2px solid #036e7f;">
 <?php if(isset($count_events)): ?>
    <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a><br />
 <?php endif; ?>
@@ -27,10 +28,7 @@
                 </div><!--.img well-->
           <?php endforeach; ?>
       </div>
-
     <div class="row">
-
-
    <ul class="pagination col-md-4 col-md-push-4">
 			<?php if ($page > 1): ?>
 				<li><a href="<?= $this->url('event_index' , ['page' => $page - 1]); ?>"><<</a></li>

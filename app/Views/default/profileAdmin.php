@@ -23,7 +23,8 @@
         </div>
       </div>
       <div class="col-md-10 col-sm-9">
-        <h2 class="text-center">Evénements</h2>
+        <h2 class="text-center">Toutes Nos Sorties</h2>
+        <div class="container" style="border-top:2px solid #036e7f;"></br>
         <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a>
         <table class="table table-striped">
           <thead>

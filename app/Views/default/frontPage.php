@@ -52,7 +52,8 @@
   <div class="container">
     <div class="row" id="lastevent">
     <div class="col-md-12 center-block">
-        <h2>Les derniers événements postés :</h2>
+        <h2 class="text-center">Les derniers événements postés :</h2>
+        <div class="container" style="border-top:2px solid #036e7f;">
         <?php foreach ($lastevent as $value) :?>
         <div class="col-md-4 col-sm-6">
           <br/>
