@@ -19,16 +19,16 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="<?= $this->assetUrl('img/test.png')?>" alt="">
+        <img src="<?= $this->assetUrl('img/harley.jpg')?>" alt="">
       </div>
           <div class="item">
-            <img src="<?= $this->assetUrl('img/plan.jpg')?>" alt="">
+            <img src="<?= $this->assetUrl('img/styléé.jpg')?>" alt="">
           </div>
       <div class="item">
         <img src="<?= $this->assetUrl('img/moto.jpg')?>" alt="">
       </div>
       <div class="item">
-        <img src="<?= $this->assetUrl('img/carte.png')?>" alt="">
+        <img src="<?= $this->assetUrl('img/tjravcmespoto.jpg')?>" alt="">
       </div>
       <div class="item">
         <img src="<?= $this->assetUrl('img/carousel/Perso_BSM_doigt.png')?>" alt="">
@@ -56,10 +56,15 @@
     <div class="row">
       <form class="search_bar" action="<?= $this->url('event_search');?>">
         <div class="form-group">
-          <label for="search">barre de recherche</label>
-          <input type="text" class="form-control" name="search" id="search">
+          <label class="text-center" for="search">barre de recherche</label>
+          <input type="text" class="form-control class-lg-6 class-md-6" name="search" id="search" placeholder="Entrez le nom de la ville...">
         </div>
-        <button type="submit" class="form-control" name="" value="">search</button>
+        <button type="submit" class="form-control class-lg-4 class-md-4" name="" value="">search</button>
+        <?php if (isset($w_flash_message)): ?>
+          <?php  $w_flash_message->level; ?>
+          <?php echo $w_flash_message->message; ?>
+
+        <?php endif; ?>
       </form>
     </div>
   </div>
