@@ -96,7 +96,6 @@
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>
-
 			<?php if ($w_current_route != 'default_home'): ?>
 				<footer>
 					<div class="container">
