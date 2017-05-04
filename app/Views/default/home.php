@@ -12,7 +12,7 @@
 												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">
 											  <span class="hover-bg reset">
 											    <span class="hover-text reset"><img src="<?= $this->assetUrl('img/moto.gif')?>" alt="" id="moto"></span>
-											  </span>Acceder au Site -></a>
+											  </span>Voir Tous Nos Evénements</a>
 										</li>
 									</ul>
 								<div class="container pt-2 col-md-12" id="previews">
@@ -23,13 +23,13 @@
 													      <div class="contenu article">
 													        <div class="conteneur-carte-coordonnees">
 													          <div class="carte"><img src="<?= $this->assetUrl('img/carte-npdc-Recovered.png')?>" width="400" height="258" border="0">
-													            <p class="dunkerque"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Dunkerque">Dunkerque</a></p>
-													            <p class="lille"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Lille">Lille</a></p>
-													            <p class="maubeuge"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Maubeuge">Maubeuge</a></p>
-													            <p class="valenciennes"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Valenciennes">Valenciennes</a></p>
-																			<p class="bethune"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Béthune">Béthune</a></p>
-																			<p class="arras"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Arras">Arras</a></p>
-													            <p class="boulogne"><a href="<?= $this->url('default_frontPage')?>" title="Sortie à Boulogne sur mer">Boulogne sur mer</a></p>
+													            <p class="dunkerque"><a href="<?= $this->url('event_search');?>?search=Dunkerque" title="Sortie à Dunkerque">Dunkerque</a></p>
+													            <p class="lille"><a href="<?= $this->url('event_search');?>?search=Lille" title="Sortie à Lille">Lille</a></p>
+													            <p class="maubeuge"><a href="<?= $this->url('event_search');?>?search=Maubeuge" title="Sortie à Maubeuge">Maubeuge</a></p>
+													            <p class="valenciennes"><a href="<?= $this->url('event_search');?>?search=Valenciennes" title="Sortie à Valenciennes">Valenciennes</a></p>
+																			<p class="bethune"><a href="<?= $this->url('event_search');?>?search=Béthune" title="Sortie à Béthune">Béthune</a></p>
+																			<p class="arras"><a href="<?= $this->url('event_search');?>?search=Arras" title="Sortie à Arras">Arras</a></p>
+													            <p class="boulogne"><a href="<?= $this->url('event_search');?>?search=Boulogne sur mer" title="Sortie à Boulogne sur mer">Boulogne sur mer</a></p>
 													          </div>
 													        </div>
 													      </div><br/><br/>
