@@ -42,35 +42,35 @@ header .fa-user-secret {
  			 -o-background-size: cover;
        padding-top: 4%;
        padding-bottom: 17%;
-
  	 }
-   @media screen and (max-device-width: 1440px) {
-     .demo-header{
-       padding-top: 4%;
-       padding-bottom: 13%;
-     }
-   }
-   @media screen and (min-width: 728px) and (max-device-width: 424px) {
-     .demo-header{
-       padding: 5.3% 0;
-     }
-   }
-    @media screen and (min-width: 425px) and (max-device-width: 374px) {
-      .demo-header{
-        padding: 33% 0 ;
-      }
-    }
 
-      @media screen and (min-width: 375px) and (max-device-width: 318px) {
-        .demo-header{
-          padding: 41% 0 ;
-        }
-      }
-      @media screen and (min-width: 319px) and (max-device-width: 310px) {
-        .demo-header{
-          padding: 52% 11% 11% 11% ;
-        }
-      }
+   @media screen and (min-width: 768px) and (max-device-width: 1440px) {
+     .demo-header{
+       padding-top: 6%;
+       padding-bottom: 16%;
+     }
+   }
+
+   @media screen and (min-width: 768px) and (max-device-width: 1024px) {
+     .demo-header{
+       padding-top: 6%;
+       padding-bottom: 25%;
+     }
+   }
+
+   @media screen and (min-width: 425px) and (max-device-width: 768px) {
+     .demo-header{
+       padding-top: 6%;
+       padding-bottom: 35%;
+     }
+   }
+
+   @media screen and (max-device-width: 425px) {
+     .demo-header{
+       padding-top: 12%;
+       padding-bottom: 48%;
+     }
+   }
 
  	 .preview-pane {
  			 text-align: center;
