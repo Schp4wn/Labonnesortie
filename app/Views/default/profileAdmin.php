@@ -8,7 +8,7 @@
         <img src="<?= $this->assetUrl('img/casque-panel.jpg')?>" class="img-responsive center-block" alt="Casque">
         <h3 class="text-center">Bonjour <?= $user['firstname']; ?></h3 >
         <div class="list-group">
-          <ul class="list-unstyled">
+          <ul class="list-unstyled" id="admin">
             <li>
               <a href="<?= $this->url('default_profile_admin'); ?> " class="list-group-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Evénements<span class="badge"><?= $count_events['events']; ?></span></a>
             </li>

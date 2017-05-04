@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-3 ">
           <div class="list-group ">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" id="profil">
               <li><a href="<?= $this->url('event_create'); ?>" class="list-group-item first">Ajouter un évènement ?</a></li>
               <br/>
               <li><a href="<?= $this->url('default_profile'); ?>" class="list-group-item ">Mes événements <span class="badge badge-default"><?php echo $count_events['events'] ?></span></a></li>
