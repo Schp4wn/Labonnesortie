@@ -6,7 +6,7 @@
     <div class="row">
     
       <form class="col-md-9 col-md-push-2" method="POST">
-
+        <h2>Inscription :</h2>
         <div class="form-group <?= (isset($message['lastname'])) ? 'has-error' : ''?>">
           <label class="control-label" for="lastname">Nom :</label>
           <input type="text" class="form-control" id="lastname" name="lastname" value="<?= $lastname  ?>">
