@@ -65,7 +65,7 @@ class EventsModel extends Model
     return false;
   }
 
-  $sql = 'SELECT username, firstname, lastname, GROUP_CONCAT(events.title) as events FROM ' . $this->table . '
+  $sql = 'SELECT username, firstname, lastname FROM ' . $this->table . '
   LEFT JOIN subscribers ON subscribers.id_event = events.id
   INNER JOIN users ON users.id = subscribers.id_user
   WHERE events.' . $this->primaryKey .'  = :id';
@@ -103,7 +103,7 @@ class EventsModel extends Model
     {
 
      // SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id ORDER BY `post` DESC LIMIT 10 OFFSET 0
-      $sql = 'SELECT *, users.id as id_user, events.id as id_article FROM ' . $this->table;
+      $sql = 'SELECT *, users.id as id_user, events.id as id_events FROM ' . $this->table;
       if (!empty($orderBy)){
 
         //sécurisation des paramètres, pour éviter les injections SQL

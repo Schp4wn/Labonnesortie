@@ -23,13 +23,15 @@
                       <h4>depart : <?= $event['depart']; ?></h4>
                       <h4>Arriée : <?= $event['arrivee']; ?></h4>
                   </div>
-                      <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>  
+                      <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id_events'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>
                 </div><!--.img well-->
           <?php endforeach; ?>
       </div>
 
+    <div class="row">
 
-   <ul class="pagination">
+
+   <ul class="pagination col-md-4 col-md-push-4">
 			<?php if ($page > 1): ?>
 				<li><a href="<?= $this->url('event_index' , ['page' => $page - 1]); ?>"><<</a></li>
 			<?php endif; ?>
@@ -42,5 +44,5 @@
 				<li><a href="<?= $this->url('event_index' , ['page' => $page + 1]); ?>">>></a></li>
 			<?php endif; ?>
 		</ul>
-
+</div>
 <?php $this->stop('main_content'); ?>

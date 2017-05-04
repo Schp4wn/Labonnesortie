@@ -131,6 +131,7 @@ class EventController extends Controller
         $event = $event_manager->find($id);
         $subscribers_event 	= $event_manager->subscribersEvent($id);
 
+        // S'inscrire à l'événement
         if (isset($_POST['button-subscribe']) ) {
             $id_event  = $event['id'];
             $id   = $this->getUser()['id'];
@@ -144,6 +145,16 @@ class EventController extends Controller
             ]);
         }
 
+        // Se désinscrire à l'événement
+        if (isset($_POST['button-unsigned']) ) {
+            // $id_event  = $event['id'];
+            $id = $this->getUser()['id'];
+
+            // Evite que l'utilisateur s'inscrit plusieurs fois au même événement
+            $subscribers_manager->deleteId($id);
+
+          }
+
         $this->show('event/view' , ['event'=> $event, 'subscribers_event' => $subscribers_event]);
     }
 
@@ -155,18 +166,18 @@ class EventController extends Controller
     {
         $event_manager= new EventsModel();
         $user_manager = new UserModel();
-        $events       = $event_manager->findAll();
+        //$events       = $event_manager->findAll();
         if(isset($w_user)){
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
         $count_users  = $user_manager->countUsers();
 
-        $event_by_page = 1;
+        $event_by_page = 4;
         $total_events   = count( $event_manager->findAll() );
         $offset        = ( $page - 1 ) * $event_by_page;
         $max_pages    = ceil($total_events / $event_by_page);
 
-        $allEvent = $event_manager->eventsPagination('' , 'DESC' , $event_by_page , $offset);
+        $events = $event_manager->eventsPagination('' , 'DESC' , $event_by_page , $offset);
 
       if(isset($count_events)) {
         $this->show('event/index' , [
@@ -176,8 +187,7 @@ class EventController extends Controller
             'page'         =>$page,
             'event_by_page'=>$event_by_page,
             'offset'       =>$offset,
-            'max_pages'   => $max_pages,
-            'allEvent'     => $allEvent
+            'max_pages'   => $max_pages
             ]);
         }
         else {
@@ -187,8 +197,7 @@ class EventController extends Controller
                  'page'         =>$page,
                  'event_by_page'=>$event_by_page,
                  'offset'       =>$offset,
-                 'max_pages'   => $max_pages,
-                 'allEvent'     => $allEvent
+                 'max_pages'   => $max_pages
                  ]);
         }
     }

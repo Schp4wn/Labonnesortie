@@ -14,11 +14,7 @@
 				$datetime = new DateTime($event['post']);
 				// La class IntlDateFormatter est disponible dans l'extension php_intl. Il faut donc vérifier qu'elle soit bien installée dans le php.ini (extension=php_intl.dll)
 				// http://benjamin.leveque.me/formater-une-date-avec-php-5-3-l10n-partie-2.html
-				$intl = new IntlDateFormatter(
-						'fr_FR',
-						IntlDateFormatter::FULL,
-						IntlDateFormatter::MEDIUM
-				);
+				$intl = new IntlDateFormatter('fr_FR',IntlDateFormatter::FULL,IntlDateFormatter::MEDIUM);
 				echo $intl->format($datetime);?></p>
 			</div>
 			<div class="col-md-6 col-md-pull-6">
@@ -36,9 +32,9 @@
 							<h1 class="text-center">Parcours :</h1>
 							<ul class="list-unstyled text-center">
 								<li><h4>Départ : <span><?php echo $event['depart'] ?></span></h4></li>
-								<li><h4>Arrivé : <span><?php echo $event['arrivee'] ?></span></h4></li>
+								<li><h4>Arrivée : <span><?php echo $event['arrivee'] ?></span></h4></li>
 								<li><h4>Distance : <span><?php echo $event['distance'] ?></span></h4></li>
-								<li><h4>Temp estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
+								<li><h4>Temps estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
 							</ul>
 						  <div id="gmap_canvas" style="height:400px"></div>
 				      <div id='map-label'></div>
@@ -46,16 +42,21 @@
 
 						<div class="col-md-5 col-md-push-1">
 							<h3>Participants à cet événement :</h3>
-							<!-- <ul><?php var_dump($subscribers_event)?> -->
+							<ul>
 									<?php foreach ($subscribers_event as $subscriber) :?>
 								<li>
         					<?=  $subscriber['username'];?>
 								</li>
 									<?php endforeach ; ?>
 							</ul>
+							<?php if ($w_user): ?>
 							<form class="" action="" method="post">
 								<button type="submit" class="btn btn-success" name="button-subscribe">S'inscrire à cet événement</button>
+								<button type="submit" class="btn btn-success" name="button-unsigned">Se désinscrire de cet événement</button>
 							</form>
+							<?php else: ?>
+								<p>Si vous voulez vous inscrire, veuillez vous connecter</p>
+						<?php endif; ?>
 						</div>
 					</div>
 				</div>
