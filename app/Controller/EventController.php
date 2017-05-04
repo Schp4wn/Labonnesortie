@@ -18,7 +18,7 @@ class EventController extends Controller
     {
 
         $this->allowTo(['admin' , 'user']);
-
+        
         $title           = null;
         $event           = null;
         $date            = null;

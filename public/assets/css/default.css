@@ -80,12 +80,7 @@
     border: 0;
     border-top: 1px solid #eee;
 }    
-.register { 
-    background-color: aliceblue;
-    width: 50%;
-    padding-bottom: 25px;
-    padding-top: 15px;
-}
+
 #profil_user .event_user img
 {
     width: 100%;
@@ -120,4 +115,33 @@
 .sd-entete-map img
 {
     width:30%;
+}
+
+#sd-entete-map
+{
+    padding-top: 2%;
+}
+#sd-entete-map .container-fluid
+{
+    padding-bottom: 70px;
+} 
+#sd-entete-map .container-fluid .row 
+{
+  padding-top: 2%;
+}
+#sd-entete-map .list-unstyled {
+    margin-top: 10%;
+    padding-left: 5px;
+    list-style: none;
+}
+/*************************/
+/*       inscription     */
+/************************/
+
+#register .container-fluid 
+{ 
+    background-color: aliceblue;
+    width: 50%;
+    padding-bottom: 25px;
+    padding-top: 15px;
 }
