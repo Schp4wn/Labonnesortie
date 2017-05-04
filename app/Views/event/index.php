@@ -14,17 +14,18 @@
                   <div class="col-md-6">
                     <img class="img-responsive" src="<?= $event['image']; ?>" alt="Event img">
                   </div>
-                  <div class="col-md-6 col-md-pull-3">
+                  <div class="col-md-6 col-md-pull-2">
                     <h1><?= $event['title']; ?></h1>
-
                     <p><?php echo $event['event']; ?></p>
-                    <p> Evénement posté le  <?php $datetime = new DateTime($event['post']);
+                    <p>Evénement posté le  <?php $datetime = new DateTime($event['post']);
 
                       $intl = new IntlDateFormatter( 'fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::MEDIUM); echo $intl->format($datetime); ?></p>
-                      <h4>depart : <?= $event['depart']; ?></h4>
-                      <h4>Arriée : <?= $event['arrivee']; ?></h4>
+                      <h4>Départ : <?= $event['depart']; ?></h4>
+                      <h4>Arrivée : <?= $event['arrivee']; ?></h4>
                   </div>
-                      <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id_events'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>
+                  <div class="text-right">
+                      <a class="btn btn-default " href="<?= $this->url('event_view', ['id' => $event['id_events'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>
+                  </div>
                 </div><!--.img well-->
           <?php endforeach; ?>
       </div>
