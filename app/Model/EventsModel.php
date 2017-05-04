@@ -25,14 +25,6 @@ class EventsModel extends Model
       // Il faut utiliser des alias (as) pour éviter d'écraser l'id article avec l'id user
       $sql = 'SELECT *, users.id as id_user, events.id as id_event FROM ' . $this->table;
       if (!empty($orderBy)){
-
-      $sql .= ' GROUP BY '.$orderBy.' '.$orderDir;
-
-        if($limit){
-            $sql .= ' LIMIT '.$limit;
-            if($offset){
-                $sql .= ' OFFSET '.$offset;
-            }
         //sécurisation des paramètres, pour éviter les injections SQL
         if(!preg_match('#^[a-zA-Z0-9_$]+$#', $orderBy)){
           die('Error: invalid orderBy param');
@@ -138,7 +130,7 @@ class EventsModel extends Model
               }
           }
       $sth = $this->dbh->prepare($sql);
-      //$sth->execute();
+      $sth->execute();
 
       return $sth->fetchAll();
     }

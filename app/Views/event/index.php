@@ -27,7 +27,6 @@
                 </div><!--.img well-->
           <?php endforeach; ?>
       </div>
-
     <div class="row">
 
 
