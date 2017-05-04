@@ -22,7 +22,22 @@ header .fa-user-plus {
 header .fa-user-secret {
   color: rgb(142, 23, 23);
 }
+/******************
 
+MIXINS PRE-CHARGER
+
+*****************/
+.auto-marg{
+  margin: auto;
+}
+
+.base-size{
+  height: 300px;
+  width: 70%;
+}
+.max_width{
+  width: 100%;
+}
 /******************/
 /*    Accueil   */
 /******************/
@@ -312,6 +327,15 @@ header .fa-user-secret {
  #moto{
     width:281%;
   }
+
+/*********************
+  page de recherche
+*********************/
+
+
+.search_page{
+
+}
 
 /******************/
 /*    FOOTER      */

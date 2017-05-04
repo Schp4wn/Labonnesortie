@@ -7,7 +7,7 @@
 <?php if(isset($count_events)): ?>
    <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a><br />
 <?php endif; ?>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
           <?php foreach( $events as $event) : ?>
               <div class="well">

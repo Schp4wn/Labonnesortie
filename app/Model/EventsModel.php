@@ -139,7 +139,7 @@ class EventsModel extends Model
       die('Error: invalid operator param');
     }
 
-        $sql = 'SELECT * FROM ' . $this->table.' INNER JOIN users ON  users.id = events.user_id WHERE';
+        $sql = 'SELECT *, events.id as event_id, users.id as user_id  FROM ' . $this->table.' INNER JOIN users ON  users.id = events.user_id WHERE';
 
     foreach($search as $key => $value){
       $sql .= " `$key` LIKE :$key ";
