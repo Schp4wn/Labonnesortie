@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 col-sm-3 panel-admin">
-        <img src="<?= $this->assetUrl('img/casque-panel.jpg')?>" class="img-responsive center-block" alt="Casque">
+        <img src="<?= $this->assetUrl('img/key-admin.png')?>" class="img-responsive center-block" alt="Casque">
         <h3 class="text-center">Bonjour <?= $user['firstname']; ?></h3 >
         <div class="list-group">
           <ul class="list-unstyled" id="admin">
@@ -24,7 +24,7 @@
       </div>
       <div class="col-md-10 col-sm-9">
         <h2 class="text-center">Toutes Nos Sorties</h2>
-        <div class="container" style="border-top:2px solid #036e7f;"></br>
+        <hr>
         <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a>
         <table class="table table-striped">
           <thead>

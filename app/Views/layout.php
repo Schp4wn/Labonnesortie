@@ -98,7 +98,7 @@
 		</section>
 			<?php if ($w_current_route != 'default_home'): ?>
 				<footer>
-					<div class="container">
+					<div class="container-fluid">
 						<div class="row">
 							<h4 class="text-center">Aussi sur :</h4>
 							<ul class="list-inline text-center">
@@ -112,7 +112,7 @@
 					</div> <!-- .row -->
 				</div> <!-- .container -->
         	 <?php endif; ?>
-			 
+
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/nav.js') ?>" charset="utf-8"></script>

@@ -52,7 +52,7 @@ class EventsModel extends Model
                   $sql .= ' OFFSET '.$offset;
               }
           }
- 
+
       $sth = $this->dbh->prepare($sql);
       $sth->execute();
 
@@ -65,7 +65,7 @@ class EventsModel extends Model
     return false;
   }
 
-  $sql = 'SELECT username, firstname, lastname FROM ' . $this->table . '
+  $sql = 'SELECT id_event, id_user, username, firstname, lastname FROM ' . $this->table . '
   LEFT JOIN subscribers ON subscribers.id_event = events.id
   INNER JOIN users ON users.id = subscribers.id_user
   WHERE events.' . $this->primaryKey .'  = :id';
@@ -168,4 +168,3 @@ class EventsModel extends Model
         return $sth->fetchAll();
   }
 } //class EventsModel
-

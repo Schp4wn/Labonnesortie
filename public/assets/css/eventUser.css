@@ -4,7 +4,7 @@
 
 #allEventsUser .well  img
 {
-    width: 56%;
+    width: 100%;
 }
 @media screen and (max-device-width: 1100px) {
   #allEventsUser img {

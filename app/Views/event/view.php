@@ -1,4 +1,5 @@
-<?php $this->layout('layout', ['title' => 'Un évènement']); ?>
+
+<?php $this->layout('layout', ['title' => 'Un événement']); ?>
 
 <?php $this->start('main_content'); ?>
 
@@ -57,7 +58,7 @@
 				      <div id='map-label'></div>
 						</div>
 
-						
+
 					</div>
 				</div>
 			</div>

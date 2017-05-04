@@ -1,14 +1,14 @@
-<?php $this->layout('layout', ['title' => 'Search']) ?>
+<?php $this->layout('layout', ['title' => 'Evénements de votre ville']) ?>
 
 <?php $this->start('main_content') ?>
 <!-- Balade du jour -->
-<<<<<<< HEAD
+
 <div class="container">
-=======
+
 <div class="container search_page max_width">
   <h2 class="text-center">Toutes Nos Sorties</h2>
 <div class="col-md-12 center-block" style="border-top:2px solid #036e7f;">
->>>>>>> mohammed
+
   <div class="row" id="searching">
 
     <?php foreach ($result as  $value) :?>
@@ -28,7 +28,7 @@
                   <td><i class="icon-road"></i> <b><?= $value['depart']; ?></b></td>
                 </tr>
                 <tr>
-                  <td class="strong">Arrivé</td>
+                  <td class="strong">Arrivée</td>
                   <td><i class="icon-road"></i> <b><?= $value['arrivee']; ?></b></td>
                 </tr>
                 <tr>
@@ -50,14 +50,13 @@
         <?php endforeach; ?>
       <div class="clear"></div>
     </div>
-<<<<<<< HEAD
-=======
+
   </div>
   <h3>
     <a href="<?= $this->url('event_index') ?>" class="control-form text-center col-lg-12 col-md-12 center-block">Pour plus d'événements</a>
 
   </h3>
->>>>>>> mohammed
+
 </div>
 
 <?php $this->stop('main_content') ?>

@@ -9,14 +9,14 @@
               <br/>
               <li><a href="<?= $this->url('default_profile'); ?>" class="list-group-item ">Mes événements <span class="badge badge-default"><?php echo $count_events['events'] ?></span></a></li>
               <li><a href="#" class="list-group-item">Km parcourus <span class="badge badge-default"><?php echo $km['SUM(distance)'] ?></span></a></li>
-              <li><a href="<?= $this->url('security_changeInfos'); ?>" class="list-group-item">Information</a></li>
+              <li><a href="<?= $this->url('security_changeInfos'); ?>" class="list-group-item">Mes informations</a></li>
               <li><a href="<?= $this->url('security_logout'); ?>" class="list-group-item">Déconnexion</a></li>
             </ul>
             <br/>
           </div><!--list-group-->
       </div><!--col-md-3-->
 
-      <div class="col-md-6 ">
+      <div class="col-md-6">
         <h1>Profil : <?= $w_user['firstname'];?>  <?= $w_user['lastname']; ?></h1>
           <?php if(!empty($profil_event)) : ?>
             <?php foreach( $profil_event as $event) : ?>

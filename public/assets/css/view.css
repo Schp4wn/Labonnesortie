@@ -2,18 +2,18 @@
 /*      view gogglemap     */
 /***************************/
 
-#sd-entete-map .container .profil-img { 
-    width:50%; 
-    margin:auto ; 
+#sd-entete-map .container .profil-img {
+    /*width:50%; */
+    margin:auto ;
     }
 
-#sd-entete-map .parcours { 
-    background-color:#333; 
-    color : white ; 
-    padding-bottom: 5%; 
+#sd-entete-map .parcours {
+    background-color:#333;
+    color : white ;
+    padding-bottom: 5%;
     padding-top: 5%;
     }
 
-#sd-entete-map .parcours ul li span { 
+#sd-entete-map .parcours ul li span {
     color:#ffb300;
     }

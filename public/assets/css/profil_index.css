@@ -12,7 +12,7 @@ body .profil_index
 }
 .profil_index .img.well img
 {
-    width:25%;
+    width:99%;
 }
 .profil_index .well
 {
@@ -23,11 +23,11 @@ hr
 	border-top : 1px solid #333;
 	/*box-shadow: 1px 2px 1px 1px grey;*/
 }
-.list-group
+.profil_index .list-group
 {
-	margin-top:50px;
+	margin-top: 20%;
 }
-.profil_index  .list-group a:hover
+.profil_index .list-group a:hover
 {
 	border-bottom: 2px red solid;
 }
@@ -39,4 +39,20 @@ a.list-group-item {
 .profil_index {
   padding-top: 5%;
   padding-bottom: 12%;
+}
+
+#changeInfos {
+  background: #fff; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#ccc,lightslategray); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#ccc, #333); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#ccc, #333); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#ccc, #333);
+}
+
+#changeInfos .profile_panel {
+	margin-top: 35%;
+}
+
+#changeInfos form {
+  padding-bottom: 5%;
 }

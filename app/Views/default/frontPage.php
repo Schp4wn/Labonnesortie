@@ -33,7 +33,7 @@
   <div class="headline" style="background-color:slategrey; height:122px;" >
 	<div class="container">
 		<div class="center">
-			<p class="lead">Découvrez les <span class="headline-distance"><?= $kilo['SUM(distance)'] ?></span> km de balades à moto dans toute la région</p>		</div>
+			<p class="lead">Découvrez les <span class="headline-distance"><?= $kilo['SUM(distance)'] ?></span> kms de balades à moto dans toute la région</p>		</div>
 		<div>
 			<meta>
       <form class="search_bar" action="<?= $this->url('event_search');?>">

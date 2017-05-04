@@ -30,6 +30,10 @@
   color: black;
 }
 
+#profileAdmin hr {
+  border-top: 2px solid #036e7f;
+}
+
 #profileAdmin .btn {
   border: none;
   color: white;

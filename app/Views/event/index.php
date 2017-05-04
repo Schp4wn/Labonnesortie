@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Tous les évènement']); ?>
 
 <?php $this->start('main_content'); ?>
-<<<<<<< HEAD
+
   <div id="allEventsUser">
     <div class="container-fluid">
       <h2 class="text-center">Toutes Nos Sorties</h2>
@@ -14,10 +14,10 @@
           <div class="row">
         <?php endif; ?>
           <div class="well col-md-8 col-md-push-2 col-sm-6 col-sm-push-0 col-xs-10 col-xs-push-1">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <img class="img-responsive" src="<?= $event['image']; ?>" alt="Event img">
               </div>
-              <div class="col-md-6 col-md-push-2">
+              <div class="col-md-6">
                 <h1><?= $event['title']; ?></h1>
                 <p><?php echo $event['event']; ?></p>
                 <p>

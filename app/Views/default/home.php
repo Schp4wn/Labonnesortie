@@ -6,7 +6,7 @@
 						<div class="container">
 								<h1>Bienvenue sur LaBonneSortie !</h1>
 								<hr class="colored">
-								<p>Nous recensons toutes les sorties organiser dans le Nord est le Pas de Calais de la france !</p>
+								<p>Nous recensons toutes les sorties organisées dans le Nord et le Pas de Calais en France !</p>
 								<ul class="list-inline cta-list">
 										<li class="list-inline-item">
 												<a href="<?= $this->url('default_frontPage')?>" class="btn skip" id="puce">

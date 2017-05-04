@@ -18,7 +18,7 @@ class EventController extends Controller
     {
 
         $this->allowTo(['admin' , 'user']);
-        
+
         $title           = null;
         $event           = null;
         $date            = null;
@@ -135,31 +135,35 @@ class EventController extends Controller
         if (isset($_POST['button-subscribe']) ) {
             $id_event  = $event['id'];
             $id   = $this->getUser()['id'];
-
             // Evite que l'utilisateur s'inscrit plusieurs fois au même événement
-            $subscribers_manager->deleteId($id);
+            foreach ($subscribers_event as $subscriber) {
+              if ($subscriber['id_user'] == $this->getUser()['id']) {
+                $subscribers_manager->deleteId($id);
+              }
+            }
 
             $subscribers_manager->insert([
             'id_event'=> $id_event,
             'id_user' => $id
             ]);
+            $this->redirectToRoute('event_view', ['id' => $id_event]);
         }
 
         // Se désinscrire à l'événement
         if (isset($_POST['button-unsigned']) ) {
-            // $id_event  = $event['id'];
+            $id_event  = $event['id'];
             $id = $this->getUser()['id'];
 
             // Evite que l'utilisateur s'inscrit plusieurs fois au même événement
-            $subscribers_manager->deleteId($id);
-
-          }
+                $subscribers_manager->deleteId($id);
+                $this->redirectToRoute('event_view', ['id' => $id_event]);
+            }
 
         $this->show('event/view' , ['event'=> $event, 'subscribers_event' => $subscribers_event]);
     }
 
     /**
-      *  Recupère tous les évènement
+      *  Recupère tous les évènements
       *
      **/
     public function index($page = 1)
@@ -167,7 +171,7 @@ class EventController extends Controller
         $event_manager= new EventsModel();
         $user_manager = new UserModel();
         //$events       = $event_manager->findAll();
-       
+
         if(isset($w_user)){
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
@@ -461,5 +465,5 @@ class EventController extends Controller
     }
     $this->redirectToRoute('default_frontPage');
   }
-  
+
 }
