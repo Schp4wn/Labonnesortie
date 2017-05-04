@@ -1,12 +1,12 @@
 <?php $this->layout('layout', ['title' => 'Inscription']) ?>
 
 <?php $this->start('main_content') ?>
-
-<div class="container">
-  <div class="row">
-    <div id="register">
-      <form class="col-md-4 col-md-push-3" method="POST">
-
+<div id="register">
+  <div class="container-fluid">
+    <div class="row">
+    
+      <form class="col-md-9 col-md-push-2" method="POST">
+        <h2>Inscription :</h2>
         <div class="form-group <?= (isset($message['lastname'])) ? 'has-error' : ''?>">
           <label class="control-label" for="lastname">Nom :</label>
           <input type="text" class="form-control" id="lastname" name="lastname" value="<?= $lastname  ?>">
@@ -47,8 +47,8 @@
 
 
       </form>
-    </div> <!-- #register -->
-  </div> <!-- .row -->
-</div> <!-- .container -->
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</div><!-- #register --> 
 
 <?php $this->stop('main_content') ?>

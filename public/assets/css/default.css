@@ -66,9 +66,22 @@
   border-left: 1px solid grey;
 }
 
+#profil_user .event_user img
+{
+    width: 100%;
+}
 /******************/
 /*    CONTACT     */
 /******************/
+
+#contact {
+  padding-top: 5%;
+}
+
+#contact h3 {
+  padding-bottom: 6%;
+}
+
 #contact hr {
   border-top: 2px solid #036e7f;
 }
@@ -79,4 +92,38 @@
 
 #contact .btn {
   margin-bottom: 5%;
+}
+
+#sd-entete-map
+{
+    padding-top: 2%;
+}
+#sd-entete-map .container-fluid
+{
+    padding-bottom: 70px;
+}
+#sd-entete-map .container-fluid .row
+{
+  padding-top: 2%;
+}
+#sd-entete-map .list-unstyled {
+    margin-top: 10%;
+    padding-left: 5px;
+    list-style: none;
+}
+/*************************/
+/*       inscription     */
+/************************/
+
+#register .container-fluid
+{
+    background-color: aliceblue;
+    width: 50%;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+#register .register{
+    background-color: #9eadb9;
+    color:#fff;
 }

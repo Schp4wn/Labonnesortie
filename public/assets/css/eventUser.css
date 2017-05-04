@@ -4,10 +4,24 @@
 
 #allEventsUser .well  img
 {
-    width: 27%;
+    width: 56%;
 }
-#allEventsUser .well
-{
-    margin:60px 0 ;
+@media screen and (max-device-width: 1100px) {
+  #allEventsUser img {
+    margin: auto !important;
+    margin-top: 10% !important;
+  }
 }
 
+#allEventsUser .well {
+    margin: 2% 0;
+}
+#allEventsUser h2 {
+  margin-top: 8%;
+  margin-bottom: 2%;
+}
+#allEventsUser hr {
+  width: 85%;
+  margin: auto;
+  border-top:2px solid #036e7f;
+}

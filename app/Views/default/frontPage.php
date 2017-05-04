@@ -69,7 +69,7 @@
                 <img src="<?= $value['image']; ?>" alt="Event img">
               </div>
               <h3>
-                <a href="<?= $this->url('event_view', ['id' => $value['id'] ] );?>" title=""><?= $value['title']; ?></a>
+                <a href="<?= $this->url('event_view', ['id' => $value['id_event'] ] );?>" title=""><?= $value['title']; ?></a>
               </h3>
               <table class="table table-bordered table-condensed">
                 <tbody>

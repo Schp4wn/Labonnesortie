@@ -5,7 +5,7 @@
 body .profil_index
 {
    	background: #fff; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#ccc, black); /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#ccc,lightslategray); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#ccc, #333); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#ccc, #333); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#ccc, #333);
@@ -27,11 +27,6 @@ hr
 {
 	margin-top:50px;
 }
-.profil_index  .list-group .first:hover
-{
-	background-color: green ;
-	color: white;
-}
 .profil_index  .list-group a:hover
 {
 	border-bottom: 2px red solid;
@@ -40,8 +35,8 @@ a.list-group-item {
     color: #000;
     background-color: #eee;
 }
-#profil{
-  margin-top: 235px;
-    padding-left: 5px;
-    list-style: none;
+
+.profil_index {
+  padding-top: 5%;
+  padding-bottom: 12%;
 }

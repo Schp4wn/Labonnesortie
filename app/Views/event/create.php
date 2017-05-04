@@ -1,12 +1,11 @@
 <?php $this->layout('layout', ['title' => 'Ajouté un evenement']) ?>
 
 <?php $this->start('main_content') ?>
+<div id="register">
+    <div class="container register">
+      <h1 class="text-center">Ajouter un évènement :</h1>
 
-    <div class="container">
-      <h1>Ajouter un évènement :</h1>
-
-      <form class="col-lg-7" method="POST">
-
+      <form class="col-lg-8 col-lg-push-2" method="POST">
         <div class="form-group <?= (isset($message['title'])) ? 'has-error' : ''?>">
           <label for="title">Titre :</label>
           <input type="text" class="form-control" name="title" value="">
@@ -48,5 +47,5 @@
 
       </form>
     </div>
-
+</div>
 <?php $this->stop('main_content') ?>

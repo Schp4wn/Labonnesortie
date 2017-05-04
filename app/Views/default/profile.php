@@ -2,7 +2,6 @@
 
 <?php $this->start('main_content') ?>
   <div class="container-fluid profil_index">
-    <div class="row">
       <div class="col-md-3 ">
           <div class="list-group ">
             <ul class="list-unstyled">
@@ -44,7 +43,6 @@
               <p>Cliquez <a href="<?= $this->url('event_create')?>">ici</a> pour rajouter votre premier événement.</p>
           <?php endif; ?>
         </div><!--col-md-6-->
-    </div>  <!-- row -->
   </div> <!-- container-fluid -->
 
 <?php $this->stop('main_content'); ?>

@@ -96,7 +96,6 @@
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>
-
 			<?php if ($w_current_route != 'default_home'): ?>
 				<footer>
 					<div class="container">
@@ -112,8 +111,8 @@
 						</div> <!-- #sub-floor -->
 					</div> <!-- .row -->
 				</div> <!-- .container -->
-
-			<?php endif; ?>
+        	 <?php endif; ?>
+			 
 			<script src="<?= $this->assetUrl('js/jquery-3.2.1.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>" charset="utf-8"></script>
 			<script src="<?= $this->assetUrl('js/nav.js') ?>" charset="utf-8"></script>
@@ -129,6 +128,5 @@
 			<?= $this->section('javascript') ?> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY--> <!--AIzaSyDw-gYmqJqQ-8RYU_8LZoTNFyQ51_yWYCY  //  clef: mohammed si l'autre fonctionne pas:  AIzaSyCBLynodCrw0lB99t1SANF8PbXwANKcBK4 -->
 		</footer>
 
-	</div>
 </body>
 </html>

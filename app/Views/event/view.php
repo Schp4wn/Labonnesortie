@@ -4,7 +4,12 @@
 
 <div id="sd-entete-map">
 		<div class="container well">
-			<div class="col-sm-10 col-md-6 col-md-push-6">
+			<div class="col-md-6">
+				<div class="profil-img">
+					<img class="img-responsive" src="<?= $event['image']; ?>" alt="">
+				</div>
+			</div>
+			<div class="col-md-6">
 				<h1><?= $event['title']; ?></h1>
 				<p><?php echo $event['event'] ?></p>
 				<p>Date de l'evenement : <?php echo date('d-m-Y' ,strtotime($event['date_time'])) ?></p>
@@ -17,30 +22,12 @@
 				$intl = new IntlDateFormatter('fr_FR',IntlDateFormatter::FULL,IntlDateFormatter::MEDIUM);
 				echo $intl->format($datetime);?></p>
 			</div>
-			<div class="col-md-6 col-md-pull-6">
-				<div class="profil-img">
-					<img class="img-responsive" src="<?= $event['image']; ?>" alt="">
-				</div>
-			</div>
 		</div>
 
 		<div class="parcours">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-					  <div class="col-md-5">
-							<h1 class="text-center">Parcours :</h1>
-							<ul class="list-unstyled text-center">
-								<li><h4>Départ : <span><?php echo $event['depart'] ?></span></h4></li>
-								<li><h4>Arrivée : <span><?php echo $event['arrivee'] ?></span></h4></li>
-								<li><h4>Distance : <span><?php echo $event['distance'] ?></span></h4></li>
-								<li><h4>Temps estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
-							</ul>
-						  <div id="gmap_canvas" style="height:400px"></div>
-				      <div id='map-label'></div>
-						</div>
-
-						<div class="col-md-5 col-md-push-1">
+			<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-lg-6">
 							<h3>Participants à cet événement :</h3>
 							<ul>
 									<?php foreach ($subscribers_event as $subscriber) :?>
@@ -58,6 +45,19 @@
 								<p>Si vous voulez vous inscrire, veuillez vous connecter</p>
 						<?php endif; ?>
 						</div>
+					  <div class="col-md-6 col-lg-6">
+							<h1 class="text-center">Parcours :</h1>
+							<ul class="list-unstyled text-center">
+								<li><h4>Départ : <span><?php echo $event['depart'] ?></span></h4></li>
+								<li><h4>Arrivée : <span><?php echo $event['arrivee'] ?></span></h4></li>
+								<li><h4>Distance : <span><?php echo $event['distance'] ?></span></h4></li>
+								<li><h4>Temps estimé : <span><?php echo $event['temps_dist'] ?></span></h4></li>
+							</ul>
+						  <div id="gmap_canvas" style="height:400px"></div>
+				      <div id='map-label'></div>
+						</div>
+
+						
 					</div>
 				</div>
 			</div>

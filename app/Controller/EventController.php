@@ -18,7 +18,7 @@ class EventController extends Controller
     {
 
         $this->allowTo(['admin' , 'user']);
-
+        
         $title           = null;
         $event           = null;
         $date            = null;
@@ -167,6 +167,7 @@ class EventController extends Controller
         $event_manager= new EventsModel();
         $user_manager = new UserModel();
         //$events       = $event_manager->findAll();
+       
         if(isset($w_user)){
             $count_events = $event_manager->countEventsForUser($this->getUser()['id']);
         }
@@ -184,10 +185,10 @@ class EventController extends Controller
             'events'       => $events,
             'count_events' => $count_events,
             'count_users'  => $count_users,
-            'page'         =>$page,
-            'event_by_page'=>$event_by_page,
-            'offset'       =>$offset,
-            'max_pages'   => $max_pages
+            'page'         => $page,
+            'event_by_page'=> $event_by_page,
+            'offset'       => $offset,
+            'max_pages'    => $max_pages
             ]);
         }
         else {
@@ -243,7 +244,7 @@ class EventController extends Controller
           $description = trim($_POST['event']);
           $image       = trim($_POST['image']);
           $date        = date('Y-m-d' , strtotime( $_POST['date'] ));
-          $hour        =   date('H:i:s' , strtotime( $_POST['hour'] ));
+          $hour        = date('H:i:s' , strtotime( $_POST['hour'] ));
           $depart      = ucfirst(trim($_POST['depart']));
           $arrivee     = ucfirst(trim($_POST['arrivee']));
 
