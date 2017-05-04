@@ -1,6 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Tous les évènement']); ?>
 
 <?php $this->start('main_content'); ?>
+<<<<<<< HEAD
   <div id="allEventsUser">
     <div class="container-fluid">
       <h2 class="text-center">Toutes Nos Sorties</h2>
