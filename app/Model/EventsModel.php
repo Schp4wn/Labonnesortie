@@ -98,7 +98,7 @@ class EventsModel extends Model
       return $query->fetch();
     }
 
-    public function eventsPagination($orderBy = '', $orderDir = 'ASC', $limit = null, $offset = null)
+    public function eventsPagination($orderBy = '', $orderDir = 'DESC', $limit = null, $offset = null)
     {
 
      // SELECT * FROM `users` INNER JOIN events ON users.id = events.user_id ORDER BY `post` DESC LIMIT 10 OFFSET 0

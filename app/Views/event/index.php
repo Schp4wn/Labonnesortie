@@ -36,7 +36,7 @@
 			<?php endif; ?>
 
 			<?php for ($i=1; $i <= $max_pages ; $i++) { ?>
-				<li><a href="<?= $this->url('event_index', ['page' => $i ] );  ?>"><?php echo $i; ?></a></li>
+				<li <?= ( $page == $i ) ? 'class="active"' : '' ;?> ><a href="<?= $this->url('event_index', ['page' => $i ] );  ?>"><?php echo $i; ?></a></li>
 			<?php } ?>
 
 			<?php if ($max_pages > $page ): ?>
