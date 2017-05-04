@@ -45,13 +45,14 @@ class EventsModel extends Model
         $sql .= ' LEFT JOIN users ON users.id = events.user_id';
 
         $sql .= ' GROUP BY '.$orderBy.' '.$orderDir;
-        
+
           if($limit){
               $sql .= ' LIMIT '.$limit;
               if($offset){
                   $sql .= ' OFFSET '.$offset;
               }
           }
+ 
       $sth = $this->dbh->prepare($sql);
       $sth->execute();
 

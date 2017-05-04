@@ -73,6 +73,15 @@
 /******************/
 /*    CONTACT     */
 /******************/
+
+#contact {
+  padding-top: 5%;
+}
+
+#contact h3 {
+  padding-bottom: 6%;
+}
+
 #contact hr {
   border-top: 2px solid #036e7f;
 }
@@ -92,8 +101,8 @@
 #sd-entete-map .container-fluid
 {
     padding-bottom: 70px;
-} 
-#sd-entete-map .container-fluid .row 
+}
+#sd-entete-map .container-fluid .row
 {
   padding-top: 2%;
 }
@@ -106,14 +115,15 @@
 /*       inscription     */
 /************************/
 
-#register .container-fluid 
-{ 
+#register .container-fluid
+{
     background-color: aliceblue;
     width: 50%;
     padding-bottom: 25px;
     padding-top: 15px;
 }
-#register .register{ 
+
+#register .register{
     background-color: #9eadb9;
     color:#fff;
 }

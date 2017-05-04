@@ -27,11 +27,6 @@ hr
 {
 	margin-top:50px;
 }
-.profil_index  .list-group .first:hover
-{
-	background-color: green ;
-	color: white;
-}
 .profil_index  .list-group a:hover
 {
 	border-bottom: 2px red solid;
@@ -40,8 +35,8 @@ a.list-group-item {
     color: #000;
     background-color: #eee;
 }
-#profil{
-  margin-top: 235px;
-    padding-left: 5px;
-    list-style: none;
+
+.profil_index {
+  padding-top: 5%;
+  padding-bottom: 12%;
 }
