@@ -43,7 +43,7 @@
 								<button type="submit" class="btn btn-success" name="button-unsigned">Se désinscrire de cet événement</button>
 							</form>
 							<?php else: ?>
-								<p>Si vous voulez vous inscrire, veuillez vous connecter</p>
+								<p>Si vous voulez vous inscrire, veuillez vous <a href="<?= $this->url('default_frontPage') ?>">connecter</a></p>
 						<?php endif; ?>
 						</div>
 					  <div class="col-md-6 col-lg-6">

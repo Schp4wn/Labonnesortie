@@ -72,26 +72,24 @@ class DefaultController extends Controller
 	 */
 	public function profile()
 	{
-		$this->allowTo('user');
-   		//ici on doit afficher les evenements lié a un utilisateur ici celui qui est connecté
-		//si lutilisateur n'a pas d'evenement message de empty evenement
+
+   	//Ici on doit afficher les evenements liés à l'utilisateur connecté
+		//si l'utilisateur n'a pas d'evenement on lui indiquera le chemin à suivre pour en créer un
 
 		$this->allowTo('user');
 		$user_manager = new UserModel();
 		$event_manager = new EventsModel();
 
-		$event_manager = new EventsModel();
+		$profil = $user_manager->find($this->getUser()['id']);
 
-		$profil = $user_manager->findAll($this->getUser()['id']);
-		//var_dump($profil);
 		$count_events = $event_manager->countEvents($this->getUser()['id']);
-		//var_dump($count_events);
+
 		$profil_event = $user_manager->getAllEventsByUser($this->getUser()['id']);
 
-		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']); 
+		$count_events 	= $event_manager->countEventsOfUser($this->getUser()['id']);
 
 		$km =	$event_manager->countKmOfUser($this->getUser()['id']);
-
+		
 		$this->show('default/profile', [ 'km' => $km ,'count_events' => $count_events , 'profil' => $profil , 'profil_event' => $profil_event]);
 
 	}
@@ -133,18 +131,18 @@ class DefaultController extends Controller
 			$boundary     = "-----=".md5(rand());
 			$boundary_alt = "-----=".md5(rand());
         //==========
-        
+
         //=====Définition du sujet.
        	 	$sujet = $_POST['nom'];
         //=========
-        
+
         //=====Création du header de l'e-mail.
 			$header = "From: \" ".$_POST['nom']." \" <".$_POST['mail'].">".$passage_ligne;
 			$header.= "Reply-to: \" ".$_POST['nom']." \" <labonnesortie@yopmail.com>".$passage_ligne;
 			$header.= "MIME-Version: 1.0".$passage_ligne;
 			$header.= "Content-Type: multipart/mixed;charset='iso-8859-1'; DelSp='Yes'; format=flowed'".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
         //==========
-        
+
         //=====Création du message.
 			$message = $passage_ligne."--".$boundary.$passage_ligne;
 			$message.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary_alt\"".$passage_ligne;
@@ -155,33 +153,33 @@ class DefaultController extends Controller
 			$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
 			$message.= $passage_ligne.$message_txt.$passage_ligne;
         //==========
-        
+
         	$message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
-        
+
         //=====Ajout du message au format HTML.
 			$message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
 			$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
 			$message.= $passage_ligne.$message_html.$passage_ligne;
         //==========
-        
+
         //=====On ferme la boundary alternative.
         	$message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
         //==========
-        
-        
-        
+
+
+
         	$message.= $passage_ligne."--".$boundary.$passage_ligne;
-        
+
         //=====Ajout de la pièce jointe.
 			$message.= "Content-Type: image/jpeg; name=\"image.jpg\"".$passage_ligne;
 			$message.= "Content-Transfer-Encoding: base64".$passage_ligne;
 			$message.= "Content-Disposition: attachment; filename=\"image.jpg\"".$passage_ligne;
         //$message.= $passage_ligne.$attachement.$passage_ligne.$passage_ligne;
-        	$message.= $passage_ligne."--".$boundary."--".$passage_ligne; 
-        //========== 
+        	$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+        //==========
         //=====Envoi de l'e-mail.
         	mail($mail,$sujet,$message,$header);
-       
+
     	}
 	 	$this->show('default/contact');
 	 }

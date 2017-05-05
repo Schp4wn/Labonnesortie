@@ -1,7 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Tous les évènement']); ?>
 
 <?php $this->start('main_content'); ?>
-
   <div id="allEventsUser">
     <div class="container-fluid">
       <h2 class="text-center">Toutes Nos Sorties</h2>
@@ -10,14 +9,12 @@
          <a class="btn btn-success" href="<?= $this->url('event_create')?>">Ajouter un evenement</a><br />
       <?php endif; ?>
       <?php foreach( $events as $count => $event) : ?>
-        <?php if ($count % 2 == 0): ?>
-          <div class="row">
-        <?php endif; ?>
+      <div class="row">
           <div class="well col-md-8 col-md-push-2 col-sm-6 col-sm-push-0 col-xs-10 col-xs-push-1">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <img class="img-responsive" src="<?= $event['image']; ?>" alt="Event img">
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 col-md-push-1">
                 <h1><?= $event['title']; ?></h1>
                 <p><?php echo $event['event']; ?></p>
                 <p>
@@ -29,9 +26,7 @@
                 <a class="btn btn-default" href="<?= $this->url('event_view', ['id' => $event['id_events'] ] )?>"><i class="fa fa-search-plus"></i> Consulter l'évènement</a>
               </div>
             </div><!--.img well-->
-            <?php if ( ($count + 1) % 2 == 0 || $count == 4 -1 ) : ?>
-            </div>
-            <?php endif; ?>
+         </div>
       <?php endforeach; ?>
 
       <div class="row">

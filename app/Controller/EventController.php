@@ -112,7 +112,7 @@ class EventController extends Controller
 
 
              }
-             else{
+             else {
                  $message = $errors ;
              }
         }
@@ -155,8 +155,15 @@ class EventController extends Controller
             $id = $this->getUser()['id'];
 
             // Evite que l'utilisateur s'inscrit plusieurs fois au même événement
+            foreach ($subscribers_event as $subscriber) {
+              if ($subscriber['id_user'] == $this->getUser()['id']) {
+
                 $subscribers_manager->deleteId($id);
                 $this->redirectToRoute('event_view', ['id' => $id_event]);
+
+              }
+            }
+
             }
 
         $this->show('event/view' , ['event'=> $event, 'subscribers_event' => $subscribers_event]);

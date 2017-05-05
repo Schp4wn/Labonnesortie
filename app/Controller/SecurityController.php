@@ -107,28 +107,6 @@ class SecurityController extends Controller
             }
         }
 
-        // TCHAT //
-
-        // J'instancie la classe pour gérer mes messages en BDD
-        $message_manager = new MessagesModel();
-
-        // Je récupére tous les messages en BDD (SELECT * FROM messages)
-        $messages = $message_manager->findAll();
-
-        if (isset($_POST['button-tchat'])) {
-          $message = $_POST['message'];
-
-          $errors = [];
-
-          if (empty($message)) {
-            $errors['message'] = 'Le message est vide';
-          }
-
-          if (empty($errors)) {
-
-          $message_manager->insert(['content' => $message]);
-        }
-
     }
     // J'injecte la variable messages dans ma vue
     $this->show('default/frontPage', ['messages' => $messages]);
