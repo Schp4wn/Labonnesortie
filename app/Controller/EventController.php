@@ -63,7 +63,7 @@ class EventController extends Controller
 
              if( strlen( $event ) < 15 || empty($event))
              {
-                 $errors['event'] = "Votre paragraphe doit comporter 15 lignes minimum.";
+                 $errors['event'] = "Votre paragraphe doit comporter 15 caractères minimum.";
              }
              if(!filter_var($image, FILTER_VALIDATE_URL) === true  )
              {

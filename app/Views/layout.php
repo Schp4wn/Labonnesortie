@@ -79,8 +79,8 @@
 										</div><!-- /.col-lg-6 -->
 									</div><!-- /.row -->
 								</form>
-								<li><a href="<?php echo $this->url('security_register'); ?>">Pas encore de compte ?</a></li>
-								<li><a href="<?php echo $this->url('security_forget'); ?>">Mot de passe oublié</a></li>
+								<li class="list-unstyled"><a href="<?php echo $this->url('security_register'); ?>">Pas encore de compte ?</a></li>
+								<li class="list-unstyled"><a href="<?php echo $this->url('security_forget'); ?>">Mot de passe oublié</a></li>
 							</ul>
 						</div><!-- /.modal-body -->
 					</div><!-- /.modal-content -->

@@ -107,7 +107,6 @@ class SecurityController extends Controller
             }
         }
 
-    }
     // J'injecte la variable messages dans ma vue
     $this->show('default/frontPage', ['messages' => $messages]);
   }
@@ -158,7 +157,7 @@ class SecurityController extends Controller
           // >http://localhost/Labonnesortie/public/forget?token=".$token_forget."</a>";
 
           } else {
-            echo 'L\'email n\'existe pas';
+            $message = "L'email n'existe pas";
           }
         }
 
